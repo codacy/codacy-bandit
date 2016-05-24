@@ -45,6 +45,15 @@ mappings in Universal <++= (resourceDirectory in Compile) map { (resourceDir: Fi
   } yield path -> path.toString.replaceFirst(src.toString, dest)
 }
 
+mappings in Universal <++= (baseDirectory in Compile) map { (directory: File) =>
+  val src = directory / "tool-scripts"
+
+  for {
+    path <- (src ***).get
+    if !path.isDirectory
+  } yield path -> src.toPath.relativize(path.toPath).toString
+}
+
 val dockerUser = "docker"
 val dockerGroup = "docker"
 
