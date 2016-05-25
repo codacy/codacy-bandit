@@ -10,6 +10,7 @@ import scala.io.Source
 import scala.util.Try
 
 private case class FilesByVersion(python2: List[String], python3: List[String])
+
 private case class ClassifiedLine(filename: String, pythonVersion: Int)
 
 object Bandit extends Tool {
@@ -29,7 +30,8 @@ object Bandit extends Tool {
 
       val filesByVersion = partitionFilesByPythonVersion(filesToLint)
 
-      runTool("bandit", filesByVersion.python2, enabledPatterns)
+      runTool("python", filesByVersion.python2, enabledPatterns) ++
+        runTool("python3", filesByVersion.python3, enabledPatterns)
     }
   }
 
@@ -57,7 +59,7 @@ object Bandit extends Tool {
       case Right(resultFromTool) if resultFromTool.exitCode > 0 =>
         throw new scala.Exception(
           s"[ClassifyScript]\n" +
-          s"Exit code: ${resultFromTool.exitCode}\n" +
+            s"Exit code: ${resultFromTool.exitCode}\n" +
             s"stdout: ${resultFromTool.stdout}\n" +
             s"sterr: ${resultFromTool.stdout}\n"
         )
@@ -66,13 +68,13 @@ object Bandit extends Tool {
     }
   }
 
-  private def runTool(toolName: String, filesToLint: List[String], enabledPatterns: => Set[PatternId]): List[Result] = {
-    if(filesToLint.isEmpty) {
+  private def runTool(pythonEngine: String, filesToLint: List[String], enabledPatterns: => Set[PatternId]): List[Result] = {
+    if (filesToLint.isEmpty) {
       List.empty[Result]
     }
     else {
       val toolResultPath = "/tmp/bandit-out.json"
-      val command = List(toolName, "-f", "json", "-o", toolResultPath) ++ filesToLint
+      val command = List(pythonEngine, "-m", "bandit", "-f", "json", "-o", toolResultPath) ++ filesToLint
 
       CommandRunner.exec(command) match {
         case Right(resultFromTool) if resultFromTool.exitCode <= 1 =>

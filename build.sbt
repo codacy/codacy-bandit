@@ -25,6 +25,9 @@ enablePlugins(DockerPlugin)
 
 version in Docker := "1.0"
 
+val banditTag = "1.0.2.dev5-with-m"
+val banditPath = "/opt/docker/bandit"
+
 val installAll =
   s"""apt-get update && apt-get install bash curl &&
       |apt-get -y install python &&
@@ -32,7 +35,10 @@ val installAll =
       |apt-get -y install wget ca-certificates &&
       |wget "https://bootstrap.pypa.io/get-pip.py" -O /dev/stdout | python &&
       |wget "https://bootstrap.pypa.io/get-pip.py" -O /dev/stdout | python3 &&
-      |pip install bandit
+      |git clone https://github.com/codacy/bandit.git &&
+      |(cd $banditPath && git checkout tags/$banditTag) &&
+      |python -m pip install --upgrade --ignore-installed --no-cache-dir -e $banditPath &&
+      |python3 -m pip install --upgrade --ignore-installed --no-cache-dir -e $banditPath
       |""".stripMargin.replaceAll(System.lineSeparator(), " ")
 
 mappings in Universal <++= (resourceDirectory in Compile) map { (resourceDir: File) =>
