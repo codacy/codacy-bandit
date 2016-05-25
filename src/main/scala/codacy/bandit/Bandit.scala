@@ -3,7 +3,7 @@ package codacy.bandit
 import java.nio.file.Path
 
 import codacy.dockerApi._
-import codacy.dockerApi.utils.{CommandRunner, ToolHelper}
+import codacy.dockerApi.utils.{FileHelper, CommandRunner, ToolHelper}
 import play.api.libs.json.Json
 
 import scala.io.Source
@@ -73,7 +73,7 @@ object Bandit extends Tool {
       List.empty[Result]
     }
     else {
-      val toolResultPath = "/tmp/bandit-out.json"
+      val toolResultPath = FileHelper.createTmpFile("", "tool-out-", ".json").toString
       val command = List(pythonEngine, "-m", "bandit", "-f", "json", "-o", toolResultPath) ++ filesToLint
 
       CommandRunner.exec(command) match {
