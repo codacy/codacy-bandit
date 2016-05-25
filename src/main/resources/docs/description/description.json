@@ -1,0 +1,250 @@
+[
+  {
+    "patternId":"B101",
+    "title":"Assert used"
+  },
+  {
+    "patternId":"B102",
+    "title":"Exec used"
+  },
+  {
+    "patternId":"B103",
+    "title":"Set bad file permissions"
+  },
+  {
+    "patternId":"B104",
+    "title":"Hardcoded bind all interfaces"
+  },
+  {
+    "patternId":"B105",
+    "title":"Hardcoded password string"
+  },
+  {
+    "patternId":"B106",
+    "title":"Hardcoded password funcarg"
+  },
+  {
+    "patternId":"B107",
+    "title":"Hardcoded password default"
+  },
+  {
+    "patternId":"B108",
+    "title":"Hardcoded tmp directory"
+  },
+  {
+    "patternId":"B109",
+    "title":"Password config option not marked secret"
+  },
+  {
+    "patternId":"B110",
+    "title":"Try except pass"
+  },
+  {
+    "patternId":"B111",
+    "title":"Execute with run as root equals true"
+  },
+  {
+    "patternId":"B112",
+    "title":"Try except continue"
+  },
+  {
+    "patternId":"B201",
+    "title":"Flask debug true"
+  },
+  {
+    "patternId":"B301",
+    "title":"Pickle"
+  },
+  {
+    "patternId":"B302",
+    "title":"Marshal"
+  },
+  {
+    "patternId":"B303",
+    "title":"Md5"
+  },
+  {
+    "patternId":"B304",
+    "title":"Ciphers"
+  },
+  {
+    "patternId":"B305",
+    "title":"Cipher modes"
+  },
+  {
+    "patternId":"B306",
+    "title":"Mktemp q"
+  },
+  {
+    "patternId":"B307",
+    "title":"Eval"
+  },
+  {
+    "patternId":"B308",
+    "title":"Mark safe"
+  },
+  {
+    "patternId":"B309",
+    "title":"Httpsconnection"
+  },
+  {
+    "patternId":"B310",
+    "title":"Urllib urlopen"
+  },
+  {
+    "patternId":"B311",
+    "title":"Random"
+  },
+  {
+    "patternId":"B312",
+    "title":"Telnetlib"
+  },
+  {
+    "patternId":"B313",
+    "title":"Xml bad cElementTree"
+  },
+  {
+    "patternId":"B314",
+    "title":"Xml bad ElementTree"
+  },
+  {
+    "patternId":"B315",
+    "title":"Xml bad expatreader"
+  },
+  {
+    "patternId":"B316",
+    "title":"Xml bad expatbuilder"
+  },
+  {
+    "patternId":"B317",
+    "title":"Xml bad sax"
+  },
+  {
+    "patternId":"B318",
+    "title":"Xml bad minidom"
+  },
+  {
+    "patternId":"B319",
+    "title":"Xml bad pulldom"
+  },
+  {
+    "patternId":"B320",
+    "title":"Xml bad etree"
+  },
+  {
+    "patternId":"B321",
+    "title":"Ftplib"
+  },
+  {
+    "patternId":"B401",
+    "title":"Import telnetlib"
+  },
+  {
+    "patternId":"B402",
+    "title":"Import ftplib"
+  },
+  {
+    "patternId":"B403",
+    "title":"Import pickle"
+  },
+  {
+    "patternId":"B404",
+    "title":"Import subprocess"
+  },
+  {
+    "patternId":"B405",
+    "title":"Import xml etree"
+  },
+  {
+    "patternId":"B406",
+    "title":"Import xml sax"
+  },
+  {
+    "patternId":"B407",
+    "title":"Import xml expat"
+  },
+  {
+    "patternId":"B408",
+    "title":"Import xml minidom"
+  },
+  {
+    "patternId":"B409",
+    "title":"Import xml pulldom"
+  },
+  {
+    "patternId":"B410",
+    "title":"Import lxml"
+  },
+  {
+    "patternId":"B411",
+    "title":"Import xmlrpclib"
+  },
+  {
+    "patternId":"B501",
+    "title":"Request with no cert validation"
+  },
+  {
+    "patternId":"B502",
+    "title":"Ssl with bad version"
+  },
+  {
+    "patternId":"B503",
+    "title":"Ssl with bad defaults"
+  },
+  {
+    "patternId":"B504",
+    "title":"Ssl with no version"
+  },
+  {
+    "patternId":"B505",
+    "title":"Weak cryptographic key"
+  },
+  {
+    "patternId":"B506",
+    "title":"Yaml load"
+  },
+  {
+    "patternId":"B601",
+    "title":"Paramiko calls"
+  },
+  {
+    "patternId":"B602",
+    "title":"Subprocess popen with shell equals true"
+  },
+  {
+    "patternId":"B603",
+    "title":"Subprocess without shell equals true"
+  },
+  {
+    "patternId":"B604",
+    "title":"Any other function with shell equals true"
+  },
+  {
+    "patternId":"B605",
+    "title":"Start process with a shell"
+  },
+  {
+    "patternId":"B606",
+    "title":"Start process with no shell"
+  },
+  {
+    "patternId":"B607",
+    "title":"Start process with partial path"
+  },
+  {
+    "patternId":"B608",
+    "title":"Hardcoded sql expressions"
+  },
+  {
+    "patternId":"B609",
+    "title":"Linux commands wildcard injection"
+  },
+  {
+    "patternId":"B701",
+    "title":"Jinja2 autoescape false"
+  },
+  {
+    "patternId":"B702",
+    "title":"Use of mako templates"
+  }
+]
