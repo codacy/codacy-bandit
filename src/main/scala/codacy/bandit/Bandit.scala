@@ -3,11 +3,11 @@ package codacy.bandit
 import java.nio.file.Path
 
 import codacy.dockerApi._
-import codacy.dockerApi.utils.{FileHelper, CommandRunner, ToolHelper}
+import codacy.dockerApi.utils.{CommandRunner, FileHelper, ToolHelper}
 import play.api.libs.json.Json
 
 import scala.io.Source
-import scala.util.Try
+import scala.util.{Success, Try}
 
 private case class FilesByVersion(python2: List[String], python3: List[String])
 
@@ -23,15 +23,12 @@ object Bandit extends Tool {
           paths.map(_.toString).toList
       }
 
-      lazy val enabledPatterns = fullConfig.fold(Set.empty[PatternId]) {
-        patternDef =>
-          patternDef.map(_.patternId).toSet
-      }
+      lazy val enabledPatterns = fullConfig.map(_.map(_.patternId).to[Set])
 
       val filesByVersion = partitionFilesByPythonVersion(filesToLint)
 
-      runTool("python", filesByVersion.python2, enabledPatterns) ++
-        runTool("python3", filesByVersion.python3, enabledPatterns)
+      runTool(path, "python", filesByVersion.python2, enabledPatterns) ++
+        runTool(path, "python3", filesByVersion.python3, enabledPatterns)
     }
   }
 
@@ -68,13 +65,21 @@ object Bandit extends Tool {
     }
   }
 
-  private def runTool(pythonEngine: String, filesToLint: List[String], enabledPatterns: => Set[PatternId]): List[Result] = {
+  private lazy val nativeConfigFileNames = Set("bandit.yml")
+
+  private def runTool(rootPath:Path, pythonEngine: String, filesToLint: List[String], enabledPatterns: Option[Set[PatternId]]): List[Result] = {
+    lazy val nativeConfigFile = nativeConfigFileNames.map( filename => Try(new better.files.File(rootPath) / filename) )
+      .collectFirst{ case Success(file) if file.isRegularFile => file.toJava.getAbsolutePath }
+
     if (filesToLint.isEmpty) {
       List.empty[Result]
     }
     else {
       val toolResultPath = FileHelper.createTmpFile("", "tool-out-", ".json").toString
-      val command = List(pythonEngine, "-m", "bandit", "-f", "json", "-o", toolResultPath) ++ filesToLint
+      val nativeConfigParams:List[String] =
+        if(enabledPatterns.isEmpty) nativeConfigFile.to[List].flatMap( cfgFile => List("-c", cfgFile))
+        else List.empty
+      val command = List(pythonEngine, "-m", "bandit", "-f", "json", "-o", toolResultPath) ++ nativeConfigParams ++ filesToLint
 
       CommandRunner.exec(command) match {
         case Right(resultFromTool) if resultFromTool.exitCode <= 1 =>
@@ -94,10 +99,10 @@ object Bandit extends Tool {
     }
   }
 
-  private def resultFilter(result: Result, patternIds: Set[PatternId]): Boolean = {
+  private def resultFilter(result: Result, patternIds: Option[Set[PatternId]]): Boolean = {
     result match {
       case Issue(_, _, id, _) =>
-        patternIds.contains(id)
+        patternIds.forall(_.contains(id))
       case _ =>
         true
     }
