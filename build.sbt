@@ -25,20 +25,20 @@ enablePlugins(DockerPlugin)
 version in Docker := "1.0"
 
 val banditTag = "1.0.2.dev5-with-m"
-val banditPath = "/opt/docker/bandit"
 
 val installAll =
-  s"""apt-get update && apt-get install bash curl &&
-      |apt-get -y install python &&
-      |apt-get -y install python3 &&
-      |apt-get -y install wget ca-certificates &&
-      |wget "https://bootstrap.pypa.io/get-pip.py" -O /dev/stdout | python &&
-      |wget "https://bootstrap.pypa.io/get-pip.py" -O /dev/stdout | python3 &&
-      |git clone https://github.com/codacy/bandit.git &&
-      |(cd $banditPath && git checkout tags/$banditTag) &&
-      |python -m pip install --upgrade --ignore-installed --no-cache-dir -e $banditPath &&
-      |python3 -m pip install --upgrade --ignore-installed --no-cache-dir -e $banditPath
-      |""".stripMargin.replaceAll(System.lineSeparator(), " ")
+  s"""apk --no-cache add bash wget ca-certificates git &&
+     |apk add --update --no-cache python &&
+     |apk add --update --no-cache python3 &&
+     |wget "https://bootstrap.pypa.io/get-pip.py" -O /dev/stdout | python &&
+     |wget "https://bootstrap.pypa.io/get-pip.py" -O /dev/stdout | python3 &&
+     |python -m pip install git+https://github.com/codacy/bandit@$banditTag --upgrade --ignore-installed --no-cache-dir &&
+     |python3 -m pip install git+https://github.com/codacy/bandit@$banditTag --upgrade --ignore-installed --no-cache-dir &&
+     |python -m pip uninstall -y pip &&
+     |python3 -m pip uninstall -y pip &&
+     |apk del wget ca-certificates git &&
+     |rm -rf /tmp/* &&
+     |rm /var/cache/apk/*""".stripMargin.replaceAll(System.lineSeparator()," ")
 
 mappings in Universal <++= (resourceDirectory in Compile) map { (resourceDir: File) =>
   val src = resourceDir / "docs"
@@ -66,7 +66,7 @@ daemonUser in Docker := dockerUser
 
 daemonGroup in Docker := dockerGroup
 
-dockerBaseImage := "rtfpessoa/ubuntu-jdk8"
+dockerBaseImage := "develar/java"
 
 dockerCommands := dockerCommands.value.flatMap {
   case cmd@Cmd("WORKDIR", _) => List(cmd,
@@ -74,7 +74,7 @@ dockerCommands := dockerCommands.value.flatMap {
   )
   case cmd@(Cmd("ADD", "opt /opt")) => List(cmd,
     Cmd("RUN", "mv /opt/docker/docs /docs"),
-    Cmd("RUN", "adduser --uid 2004 --disabled-password --gecos \"\" docker"),
+    Cmd("RUN", s"adduser -u 2004 -D $dockerUser"),
     ExecCmd("RUN", Seq("chown", "-R", s"$dockerUser:$dockerGroup", "/docs"): _*)
   )
   case other => List(other)
