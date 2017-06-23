@@ -29,7 +29,8 @@
   },
   {
     "patternId":"B108",
-    "title":"Hardcoded tmp directory"
+    "title":"Hardcoded tmp directory",
+    "description":"Avoid hardcoding paths to temporary files"
   },
   {
     "patternId":"B109",
