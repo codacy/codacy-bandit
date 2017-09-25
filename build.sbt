@@ -1,8 +1,8 @@
 import com.typesafe.sbt.packager.docker.{Cmd, ExecCmd}
 
-name := """codacy-engine-bandit"""
+name := """codacy-bandit"""
 
-version := "1.0-SNAPSHOT"
+version := "1.0.0-SNAPSHOT"
 
 val languageVersion = "2.11.7"
 
@@ -22,9 +22,9 @@ enablePlugins(JavaAppPackaging)
 
 enablePlugins(DockerPlugin)
 
-version in Docker := "1.0"
+version in Docker := "1.0.0"
 
-val banditTag = "1.0.2.dev5-with-m"
+val banditTag = "1.4.0-codacy"
 
 val installAll =
   s"""apk --no-cache add bash wget ca-certificates git &&
