@@ -65,7 +65,7 @@ object Bandit extends Tool {
     }
   }
 
-  private lazy val nativeConfigFileNames = Set("bandit.yml")
+  private lazy val nativeConfigFileNames = Set("bandit.yml", ".bandit")
 
   private def runTool(rootPath:Path, pythonEngine: String, filesToLint: List[String], enabledPatterns: Option[Set[PatternId]]): List[Result] = {
     lazy val nativeConfigFile = nativeConfigFileNames.map( filename => Try(new better.files.File(rootPath) / filename) )
