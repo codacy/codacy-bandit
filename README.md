@@ -1,6 +1,6 @@
 # Codacy Bandit
 
-This is the docker engine we use at Codacy to have [Bandit](https://github.com/openstack/bandit) support.
+This is the docker engine we use at Codacy to have [Bandit](https://github.com/PyCQA/bandit) support.
 You can also create a docker to integrate the tool and language of your choice!
 Check the **Docs** section for more information.
 
