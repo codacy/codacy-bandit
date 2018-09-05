@@ -1,6 +1,7 @@
 {
-  "name":"Bandit",
-  "patterns":[
+  "name": "Bandit",
+  "version": "1.5.0",
+  "patterns": [
     {
       "patternId": "B101",
       "level": "Warning",
