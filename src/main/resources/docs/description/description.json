@@ -205,6 +205,10 @@
     "title":"Yaml load"
   },
   {
+    "patternId":"B507",
+    "title":"SSH no host key verification"
+  },
+  {
     "patternId":"B601",
     "title":"Paramiko calls"
   },

@@ -54,7 +54,7 @@ def installAll(toolVersion: String) =
      |python3 -m pip uninstall -y pip &&
      |apk del wget ca-certificates git &&
      |rm -rf /tmp/* &&
-     |rm /var/cache/apk/*""".stripMargin.replaceAll(System.lineSeparator(), " ")
+     |rm -rf /var/cache/apk/*""".stripMargin.replaceAll(System.lineSeparator(), " ")
 
 mappings.in(Universal) ++= resourceDirectory
   .in(Compile)

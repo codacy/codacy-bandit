@@ -1,6 +1,6 @@
 {
   "name": "Bandit",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "patterns": [
     {
       "patternId": "B101",
@@ -254,6 +254,11 @@
     },
     {
       "patternId": "B506",
+      "level": "Warning",
+      "category": "Security"
+    },
+    {
+      "patternId": "B507",
       "level": "Warning",
       "category": "Security"
     },
