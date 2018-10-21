@@ -21,6 +21,18 @@ The docker is ran with the following command:
 docker run -it -v $srcDir:/src  <DOCKER_NAME>:<DOCKER_VERSION>
 ```
 
+### Bump bandit version
+
+* Change the `banditVersion` on build.sbt
+* Run `sbt generateDocs`
+* Commit => Push
+
+## Docs
+
+[Tool Developer Guide](https://support.codacy.com/hc/en-us/articles/207994725-Tool-Developer-Guide)
+
+[Tool Developer Guide - Using Scala](https://support.codacy.com/hc/en-us/articles/207280379-Tool-Developer-Guide-Using-Scala)
+
 ## Test
 
 We use the [codacy-plugins-test](https://github.com/codacy/codacy-plugins-test) to test our external tools integration.
