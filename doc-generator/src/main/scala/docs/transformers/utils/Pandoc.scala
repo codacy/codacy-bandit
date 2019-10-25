@@ -6,27 +6,17 @@ import org.ccil.cowan.tagsoup.jaxp.SAXFactoryImpl
 import scala.sys.process._
 import scala.xml.Elem
 import scala.xml.parsing.NoBindingFactoryAdapter
+import scala.language.postfixOps
 
 object Pandoc {
 
   /** Build pandoc command */
   private def command(): String = {
-    val output_type = "markdown_mmd"
-    val output_options =
+    val outputType = "markdown_mmd"
+    val outputOptions =
       "-native_divs-native_spans-fenced_divs-bracketed_spans-mmd_link_attributes+escaped_line_breaks"
 
-    val sb = new StringBuilder()
-    sb.append("pandoc")
-    sb.append(" ")
-    sb.append("-f")
-    sb.append(" ")
-    sb.append("html")
-    sb.append(" ")
-    sb.append("-t")
-    sb.append(" ")
-    sb.append(output_type)
-    sb.append(output_options)
-    sb.result()
+    s"pandoc -f html -t ${outputType}${outputOptions}"
   }
 
   /** Run pandoc */

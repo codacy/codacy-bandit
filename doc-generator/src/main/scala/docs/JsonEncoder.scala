@@ -1,9 +1,9 @@
 package docs
 
-import better.files.Dsl.SymbolicOperations
-import better.files._
-import docs.transformers._
 import docs.model._
+import io.circe.syntax._
+import io.circe.generic.auto._
+import io.circe._
 
 object JsonEncoder {
 
@@ -13,7 +13,6 @@ object JsonEncoder {
     * Gets a list of Patterns, returns the encoded json string.
     */
   def patternsJsonEncoder(version: String, patterns: Seq[Pattern]): String = {
-    import io.circe._, io.circe.generic.auto._, io.circe.syntax._
     case class PatternFile(name: String,
                            version: String,
                            patterns: Seq[Pattern])
@@ -29,7 +28,6 @@ object JsonEncoder {
     * Gets a list of Patterns, returns the encoded json string.
     */
   def descriptionJsonEncoder(patterns: Seq[Pattern]): String = {
-    import io.circe._, io.circe.generic.auto._, io.circe.syntax._
     implicit val encodePattern: Encoder[Pattern] =
       Encoder.forProduct2("patternId", "title")(u => (u.patternId, u.title))
     patterns.asJson.toString()

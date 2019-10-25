@@ -4,6 +4,8 @@ import docs.transformers.utils.Pandoc
 import docs.model._
 import scala.xml.Node
 import better.files._
+import com.codacy.plugins.api.results.Pattern.Category
+import com.codacy.plugins.api.results.Result.Level
 
 object BlacklistDocTransformer extends IPatternDocTransformer {
   val patternIdIntervalRegex = "(b[\\d]{3}-b[\\d]{3}).*".r
@@ -63,7 +65,7 @@ object BlacklistDocTransformer extends IPatternDocTransformer {
       Pattern(patternId.capitalize,
               title,
               descriptionText,
-              Level.Warning,
+              Level.Warn,
               Category.Security)
   }
 }

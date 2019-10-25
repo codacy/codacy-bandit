@@ -201,7 +201,7 @@
   },
   {
     "patternId" : "B414",
-    "title" : "pycryptodome is a direct fork of pycrypto that has not fully addressed the issues inherent in PyCrypto"
+    "title" : "This import blacklist has been removed"
   },
   {
     "patternId" : "B501",

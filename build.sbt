@@ -1,16 +1,37 @@
 import com.typesafe.sbt.packager.docker.{Cmd, ExecCmd}
 
 name := "codacy-bandit"
-scalaVersion := "2.12.6"
+scalaVersion := "2.13.1"
 version := "1.0.0-SNAPSHOT"
-val banditVersion = "1.5.1"
+
+lazy val toolVersion = settingKey[String]("The tool version")
+toolVersion := scala.io.Source.fromFile("bandit-version").mkString.trim
+
+lazy val `doc-generator` = project
+  .settings(
+    libraryDependencies ++= Seq(
+      "org.scala-lang.modules" %% "scala-xml" % "1.2.0",
+      "com.github.tkqubo" % "html-to-markdown" % "0.3.0",
+      "org.ccil.cowan.tagsoup" % "tagsoup" % "1.2.1",
+      "com.github.pathikrit" %% "better-files" % "3.8.0",
+      "com.typesafe.play" %% "play-json" % "2.7.4",
+      "com.codacy" %% "codacy-plugins-api" % "3.0.80"
+    ) ++ Seq(
+      "io.circe" %% "circe-core",
+      "io.circe" %% "circe-generic",
+      "io.circe" %% "circe-parser"
+    ).map(_ % "0.12.3"),
+    scalaVersion := "2.13.1",
+    scalacOptions --= Seq("-Xlint"), // circe implicit val for encode
+    Compile / fork := true
+  )
 
 resolvers ++= Seq(
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/releases"
 )
 
 libraryDependencies ++= Seq(
-  "com.codacy" %% "codacy-engine-scala-seed" % "3.0.183",
+  "com.codacy" %% "codacy-engine-scala-seed" % "3.1.0",
 )
 
 enablePlugins(JavaAppPackaging)
@@ -39,21 +60,19 @@ mappings.in(Universal) ++= resourceDirectory
   .map { resourceDir: File =>
     val src = resourceDir / "docs"
     val dest = "/docs"
-    (for {
-      path <- better.files.File(src.toPath).listRecursively()
-      if !path.isDirectory
-    } yield path.toJava -> path.toString.replaceFirst(src.toString, dest)).toSeq
+
+    for {
+      path <- src.allPaths.get if !path.isDirectory
+    } yield path -> path.toString.replaceFirst(src.toString, dest)
   }
   .value ++
   baseDirectory
     .in(Compile)
     .map { baseDirectory: File =>
       val toolScriptsDir = baseDirectory / "tool-scripts"
-      (for {
-        path <- better.files.File(toolScriptsDir.toPath).listRecursively()
-        if !path.isDirectory
-      } yield
-        path.toJava -> path.toString.replaceFirst(toolScriptsDir.toString, "")).toSeq
+      for {
+        path <- toolScriptsDir.allPaths.get if !path.isDirectory
+      } yield path -> path.toString.replaceFirst(toolScriptsDir.toString, "")
     }
     .value
 
@@ -74,7 +93,7 @@ dockerCommands := {
       List(
         Cmd("RUN", s"adduser -u 2004 -D $dockerUser"),
         cmd,
-        Cmd("RUN", installAll(banditVersion)),
+        Cmd("RUN", installAll(toolVersion.value)),
         Cmd("RUN", "mv /opt/docker/docs /docs"),
         ExecCmd(
           "RUN",
@@ -84,18 +103,3 @@ dockerCommands := {
     case other => List(other)
   }
 }
-
-lazy val generateDocs = taskKey[Unit]("Generates Documentation'")
-import scala.sys.process._
-generateDocs := {
-  val baseDir = "bandit"
-  s"rm -rf ${baseDir}" !;
-  s"git clone -b ${banditVersion} --single-branch --depth 1 https://github.com/PyCQA/bandit.git ${baseDir}" !;
-  s"virtualenv ./${baseDir}/venv" !;
-  s"./${baseDir}/venv/bin/pip install -U -r ${baseDir}/requirements.txt" !;
-  s"./${baseDir}/venv/bin/pip install -r ${baseDir}/doc/requirements.txt" !;
-  s"./${baseDir}/venv/bin/sphinx-build ${baseDir}/doc/source/ ${baseDir}/doc/build/ -b html -a -D html_add_permalinks=" !;
-  docs.GenerateDocs.run(banditVersion, baseDir);
-  s"rm -rf ${baseDir}" !;
-}
-

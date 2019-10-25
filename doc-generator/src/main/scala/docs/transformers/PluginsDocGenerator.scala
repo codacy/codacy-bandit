@@ -4,6 +4,8 @@ import docs.transformers.utils.Pandoc
 import docs.model._
 import scala.xml.{Node, NodeSeq}
 import better.files._
+import com.codacy.plugins.api.results.Pattern.Category
+import com.codacy.plugins.api.results.Result.Level
 
 object PluginsDocTransformer extends IPatternDocTransformer {
 
@@ -57,7 +59,7 @@ object PluginsDocTransformer extends IPatternDocTransformer {
       Pattern(patternId.capitalize,
               title,
               descriptionText,
-              Level.Warning,
+              Level.Warn,
               Category.Security)
   }
 }

@@ -23,9 +23,8 @@ docker run -it -v $srcDir:/src  <DOCKER_NAME>:<DOCKER_VERSION>
 
 ### Bump bandit version
 
-* Change the `banditVersion` on build.sbt
-* Run `sbt generateDocs`
-* Commit => Push
+* Change the `bandit-version` file
+* Run `.scripts/generateDocs.sh`
 
 ## Docs
 
