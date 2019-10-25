@@ -30,7 +30,7 @@ object Bandit extends Tool {
         paths => paths.map(_.toString).toList
       }
 
-      lazy val enabledPatterns = fullConfig.map(_.map(_.patternId).to[Set])
+      lazy val enabledPatterns = fullConfig.map(_.map(_.patternId).to(Set))
 
       val filesByVersion = partitionFilesByPythonVersion(filesToLint)
 
@@ -94,7 +94,7 @@ object Bandit extends Tool {
         FileHelper.createTmpFile("", "tool-out-", ".json").toString
       val nativeConfigParams: List[String] =
         if (enabledPatterns.isEmpty) {
-          nativeConfigFile.to[List].flatMap(cfgFile => List("-c", cfgFile))
+          nativeConfigFile.to(List).flatMap(cfgFile => List("-c", cfgFile))
         } else { List.empty }
 
       val command = List(
