@@ -36,8 +36,7 @@ object PluginsDocTransformer extends IPatternDocTransformer {
       articleBody <- htmlPluginsDocs \\ "body" \\ "div"
       if (articleBody \ "@id").text.startsWith(patternId.toLowerCase())
     } yield articleBody
-
-    if (dd.isEmpty) articleBody else dd
+    if (dd.isEmpty) NodeSeq.fromSeq(articleBody) else dd
   }
 
   /** Get all Patterns on the html files

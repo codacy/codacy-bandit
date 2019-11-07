@@ -24,7 +24,7 @@ object Pandoc {
     val input = new java.io.ByteArrayInputStream(htmlString.getBytes("UTF-8"))
     val result: String =
       (Seq("pandoc", "-f", "html-native_divs-native_spans", "-t", "markdown") #< input).!!
-    result // Some(result).filter(_.nonEmpty)
+    result
   }
 
 }
