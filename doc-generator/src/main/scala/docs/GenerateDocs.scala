@@ -17,6 +17,10 @@ object GenerateDocs {
   *
   */
   def main(args: Array[String]): Unit = {
+    if(args.length != 2) {
+      println("You need to pass two arguments: version and bandit directory.")
+      System.exit(1)
+    }
     val version = args(0)
     val banditBaseDir = args(1)
 
@@ -29,7 +33,7 @@ object GenerateDocs {
     val pPatterns = PluginsDocTransformer.getPatterns(banditDocsDirectory)
     val bPatterns = BlacklistDocTransformer.getPatterns(banditDocsDirectory)
     val allPatterns =
-      (pPatterns ++ bPatterns).sortWith(_.patternId < _.patternId)
+      (pPatterns ++ bPatterns).sortBy(_.patternId)
     println(
       allPatterns.length + " patterns found:\n" + allPatterns
         .mkString("\n") + "\n")

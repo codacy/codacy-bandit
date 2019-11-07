@@ -10,20 +10,6 @@ import scala.language.postfixOps
 
 object Pandoc {
 
-  /** Build pandoc command */
-  private def command(): String = {
-    val outputType = "markdown_mmd"
-    val outputOptions =
-      "-native_divs-native_spans-fenced_divs-bracketed_spans-mmd_link_attributes+escaped_line_breaks"
-
-    s"pandoc -f html -t ${outputType}${outputOptions}"
-  }
-
-  /** Run pandoc */
-  private def runCommand(cmd: String, htmlString: String): String = {
-    Seq("echo", htmlString) #> cmd !!
-  }
-
   /** Get the elements of an html file */
   def loadHtml(file: File): Elem = {
     new scala.xml.factory.XMLLoader[scala.xml.Elem] {
@@ -34,10 +20,11 @@ object Pandoc {
   }
 
   /** Convert an html with pandoc */
-  def convert(htmlString: String): Option[String] = {
-    val cmd = command
-    val output = runCommand(cmd, htmlString)
-    Some(output).filter(_.nonEmpty)
+  def convert(htmlString: String): String = {
+    val input = new java.io.ByteArrayInputStream(htmlString.getBytes("UTF-8"))
+    val result: String =
+      (Seq("pandoc", "-f", "html-native_divs-native_spans", "-t", "markdown") #< input).!!
+    result // Some(result).filter(_.nonEmpty)
   }
 
 }

@@ -7,28 +7,23 @@ version := "1.0.0-SNAPSHOT"
 lazy val toolVersion = settingKey[String]("The tool version")
 toolVersion := scala.io.Source.fromFile("bandit-version").mkString.trim
 
+val circeVersion = "0.12.3"
+
 lazy val `doc-generator` = project
   .settings(
     libraryDependencies ++= Seq(
       "org.scala-lang.modules" %% "scala-xml" % "1.2.0",
-      "com.github.tkqubo" % "html-to-markdown" % "0.3.0",
-      "org.ccil.cowan.tagsoup" % "tagsoup" % "1.2.1",
+      "org.ccil.cowan.tagsoup" % "tagsoup"% "1.2.1",
       "com.github.pathikrit" %% "better-files" % "3.8.0",
-      "com.typesafe.play" %% "play-json" % "2.7.4",
-      "com.codacy" %% "codacy-plugins-api" % "3.0.80"
-    ) ++ Seq(
-      "io.circe" %% "circe-core",
-      "io.circe" %% "circe-generic",
-      "io.circe" %% "circe-parser"
-    ).map(_ % "0.12.3"),
+      "com.codacy" %% "codacy-plugins-api" % "3.1.0",
+      "io.circe" %% "circe-core" % circeVersion,
+      "io.circe" %% "circe-generic" % circeVersion,
+      "io.circe" %% "circe-parser" % circeVersion
+    ),
     scalaVersion := "2.13.1",
     scalacOptions --= Seq("-Xlint"), // circe implicit val for encode
     Compile / fork := true
   )
-
-resolvers ++= Seq(
-  "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/releases"
-)
 
 libraryDependencies ++= Seq(
   "com.codacy" %% "codacy-engine-scala-seed" % "3.1.0",
@@ -38,14 +33,15 @@ enablePlugins(JavaAppPackaging)
 
 enablePlugins(DockerPlugin)
 
-version in Docker := "1.0.0"
-
-def installAll(version: String) =
+def installAll(version: String) = {
+  val getPipFilename = "get-pip.py"
   s"""apk --no-cache add bash wget ca-certificates git &&
      |apk add --update --no-cache python &&
      |apk add --update --no-cache python3 &&
-     |wget "https://bootstrap.pypa.io/get-pip.py" -O /dev/stdout | python &&
-     |wget "https://bootstrap.pypa.io/get-pip.py" -O /dev/stdout | python3 &&
+     |export  &&
+     |wget "https://bootstrap.pypa.io/$getPipFilename" &&
+     |python $getPipFilename &&
+     |python3 $getPipFilename &&
      |python -m pip install bandit===${version} --upgrade --ignore-installed --no-cache-dir &&
      |python3 -m pip install bandit===${version} --upgrade --ignore-installed --no-cache-dir &&
      |python -m pip uninstall -y pip &&
@@ -54,6 +50,7 @@ def installAll(version: String) =
      |rm -rf /tmp/* &&
      |rm -rf /var/cache/apk/*""".stripMargin
     .replaceAll(System.lineSeparator(), " ")
+}
 
 mappings.in(Universal) ++= resourceDirectory
   .in(Compile)

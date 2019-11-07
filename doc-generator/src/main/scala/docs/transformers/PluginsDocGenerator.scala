@@ -14,10 +14,8 @@ object PluginsDocTransformer extends IPatternDocTransformer {
     val htmlTitle = (head \\ "title").text
     val patternIdRegex = "(B[\\d]{3}).*".r
     val titleRegex = "B[\\d]{3}: (.*)".r
-    val djangoRawSQLRegex = "(B[\\d]{3}).*django_rawsql_used.*".r
     for {
       patternId <- htmlTitle match {
-        case djangoRawSQLRegex(c) => Some("B611") // Hammer time. BUG on 1.5.1: https://github.com/PyCQA/bandit/pull/414
         case patternIdRegex(c) => Some(c)
         case _                 => None
       }
@@ -54,7 +52,7 @@ object PluginsDocTransformer extends IPatternDocTransformer {
       patternIdWithTitle <- stripPluginsTitle(head)
       (patternId, title) = patternIdWithTitle
       body = getBody(htmlPluginsDocs, patternId)
-      descriptionText <- Pandoc.convert(body.toString())
+      descriptionText = Pandoc.convert(body.toString())
     } yield
       Pattern(patternId.capitalize,
               title,
