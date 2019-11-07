@@ -13,12 +13,9 @@ object JsonEncoder {
     * Gets a list of Patterns, returns the encoded json string.
     */
   def patternsJsonEncoder(version: String, patterns: Seq[Pattern]): String = {
-    case class PatternFile(name: String,
-                           version: String,
-                           patterns: Seq[Pattern])
+    case class PatternFile(name: String, version: String, patterns: Seq[Pattern])
     implicit val encodePattern: Encoder[Pattern] =
-      Encoder.forProduct3("patternId", "level", "category")(u =>
-        (u.patternId, u.level.toString, u.category.toString))
+      Encoder.forProduct3("patternId", "level", "category")(u => (u.patternId, u.level.toString, u.category.toString))
     PatternFile("Bandit", version, patterns).asJson.toString()
   }
 

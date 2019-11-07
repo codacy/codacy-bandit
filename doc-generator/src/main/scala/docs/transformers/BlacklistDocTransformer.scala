@@ -43,9 +43,9 @@ object BlacklistDocTransformer extends IPatternDocTransformer {
 
   /** Get the pattern title from the first paragraph*/
   private def getTitle(body: Node, patternId: String) = {
-    val isB313B320 = 313.to(320).contains(patternId.tail.toInt) 
+    val isB313B320 = 313.to(320).contains(patternId.tail.toInt)
     val pNodes = (body \ "p")
-    val node = if(isB313B320) pNodes(1) else pNodes(0)
+    val node = if (isB313B320) pNodes(1) else pNodes(0)
     val bulk_title = node.text.replace("\n", " ")
     bulk_title.split("\\. ").head
   }

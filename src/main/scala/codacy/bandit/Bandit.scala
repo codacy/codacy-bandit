@@ -19,15 +19,15 @@ object Bandit extends Tool {
   private val ClassifiedLineRegex: Regex = """(.*)###(\d)""".r
 
   override def apply(
-    source: Source.Directory,
-    conf: Option[List[Pattern.Definition]],
-    files: Option[Set[Source.File]],
-    options: Map[Options.Key, Options.Value]
+      source: Source.Directory,
+      conf: Option[List[Pattern.Definition]],
+      files: Option[Set[Source.File]],
+      options: Map[Options.Key, Options.Value]
   )(implicit specification: Tool.Specification): Try[List[Result]] = {
     Try {
       val fullConfig = conf.withDefaultParameters
-      val filesToLint: List[String] = files.fold(List(source.path.toString)) {
-        paths => paths.map(_.toString).toList
+      val filesToLint: List[String] = files.fold(List(source.path.toString)) { paths =>
+        paths.map(_.toString).toList
       }
 
       lazy val enabledPatterns = fullConfig.map(_.map(_.patternId).to(Set))
@@ -46,9 +46,7 @@ object Bandit extends Tool {
     }
   }
 
-  private def partitionFilesByPythonVersion(
-    filesToLint: List[String]
-  ): FilesByVersion = {
+  private def partitionFilesByPythonVersion(filesToLint: List[String]): FilesByVersion = {
     /*
      * The classifyScript.py will return one line per file in fileName###PythonVersion format
      * Example: B104.py###2
@@ -76,10 +74,10 @@ object Bandit extends Tool {
   private lazy val nativeConfigFileNames = Set("bandit.yml", ".bandit")
 
   private def runTool(
-    rootPath: Source.Directory,
-    pythonEngine: String,
-    filesToLint: List[String],
-    enabledPatterns: Option[Set[Pattern.Id]]
+      rootPath: Source.Directory,
+      pythonEngine: String,
+      filesToLint: List[String],
+      enabledPatterns: Option[Set[Pattern.Id]]
   ): List[Result] = {
     lazy val nativeConfigFile = nativeConfigFileNames
       .map(filename => Try(better.files.File(rootPath.path) / filename))
@@ -97,15 +95,7 @@ object Bandit extends Tool {
           nativeConfigFile.to(List).flatMap(cfgFile => List("-c", cfgFile))
         } else { List.empty }
 
-      val command = List(
-        pythonEngine,
-        "-m",
-        "bandit",
-        "-f",
-        "json",
-        "-o",
-        toolResultPath
-      ) ++ nativeConfigParams ++ filesToLint
+      val command = List(pythonEngine, "-m", "bandit", "-f", "json", "-o", toolResultPath) ++ nativeConfigParams ++ filesToLint
 
       CommandRunner.exec(command) match {
         case Right(resultFromTool) if resultFromTool.exitCode <= 1 =>
@@ -126,8 +116,7 @@ object Bandit extends Tool {
     }
   }
 
-  private def resultFilter(result: Result,
-                           patternIds: Option[Set[Pattern.Id]]): Boolean = {
+  private def resultFilter(result: Result, patternIds: Option[Set[Pattern.Id]]): Boolean = {
     result match {
       case Issue(_, _, id, _) =>
         patternIds.forall(_.contains(id))

@@ -10,22 +10,19 @@ case class BanditFileError(filename: String, reason: String) {
     FileError(Source.File(filename), Some(ErrorMessage(reason)))
 }
 
-case class BanditWarning(test_id: String,
-                         filename: String,
-                         issue_text: String,
-                         line_number: Int,
-                         code: JsValue,
-                         issue_confidence: JsValue,
-                         issue_severity: JsValue,
-                         line_range: JsValue,
-                         test_name: JsValue) {
+case class BanditWarning(
+    test_id: String,
+    filename: String,
+    issue_text: String,
+    line_number: Int,
+    code: JsValue,
+    issue_confidence: JsValue,
+    issue_severity: JsValue,
+    line_range: JsValue,
+    test_name: JsValue
+) {
   lazy val issue =
-    Issue(
-      Source.File(filename),
-      Result.Message(issue_text),
-      Pattern.Id(test_id),
-      Source.Line(line_number)
-    )
+    Issue(Source.File(filename), Result.Message(issue_text), Pattern.Id(test_id), Source.Line(line_number))
 }
 
 object BanditFileError {

@@ -17,19 +17,19 @@ object PluginsDocTransformer extends IPatternDocTransformer {
     for {
       patternId <- htmlTitle match {
         case patternIdRegex(c) => Some(c)
-        case _                 => None
+        case _ => None
       }
       bulk_title <- htmlTitle match {
         case titleRegex(c) => Some(c)
-        case _             => None
+        case _ => None
       }
       title = bulk_title.replace(" — Bandit  documentation", "")
     } yield (patternId, title)
   }
 
   /** Find the html object with the details of the pattern.
-  * Usually in <body><dd> or <body><div id="b000">
-  */
+    * Usually in <body><dd> or <body><div id="b000">
+    */
   private def getBody(htmlPluginsDocs: Node, patternId: String) = {
     val dd = htmlPluginsDocs \\ "body" \\ "dd"
     val articleBody = for {
@@ -40,8 +40,8 @@ object PluginsDocTransformer extends IPatternDocTransformer {
   }
 
   /** Get all Patterns on the html files
-   * of the "bandit/doc/build/plugins/" docs directory
-   */
+    * of the "bandit/doc/build/plugins/" docs directory
+    */
   def getPatterns(originalDocsDir: File) = {
     val sourceDirectory = originalDocsDir / "plugins"
     for {
@@ -52,11 +52,6 @@ object PluginsDocTransformer extends IPatternDocTransformer {
       (patternId, title) = patternIdWithTitle
       body = getBody(htmlPluginsDocs, patternId)
       descriptionText = Pandoc.convert(body.toString())
-    } yield
-      Pattern(patternId.capitalize,
-              title,
-              descriptionText,
-              Level.Warn,
-              Category.Security)
+    } yield Pattern(patternId.capitalize, title, descriptionText, Level.Warn, Category.Security)
   }
 }
