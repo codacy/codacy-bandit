@@ -15,13 +15,12 @@ object BlacklistDocTransformer extends IPatternDocTransformer {
     * Find the body for each pattern on a given html doc.
     * Usually there is more than 1 pattern in a blacklist docs.
     */
-  private def patternsDocumentationBody(htmlPluginsDocs: Node) = {
+  private def patternsDocumentationBody(htmlPluginsDocs: Node) =
     for {
       div <- htmlPluginsDocs \\ "body" \\ "div"
-      patternId = (div \ "@id").text
+      patternId = (div \@ "id")
       if patternIdRegex.matches(patternId)
     } yield div
-  }
 
   /**
     * All the pattern ids from a given html node.
@@ -30,15 +29,13 @@ object BlacklistDocTransformer extends IPatternDocTransformer {
     * Example:
     * <div class="section" id="b304-b305-ciphers-and-modes">
     */
-  private def patternIds(body: Node): Seq[String] = {
-    (body \ "@id").text match {
-      case patternIdIntervalRegex(c) =>
-        val Array(firstPatternIdStr, lastPatternIdStr) = c.replace("b", "").split("-")
-        val pIds = firstPatternIdStr.toInt.to(lastPatternIdStr.toInt)
-        pIds.map("b" + _.toString)
-      case patternIdRegex(c) => Seq(c)
-      case _ => Seq.empty
-    }
+  private def patternIds(body: Node): Seq[String] = (body \@ "id") match {
+    case patternIdIntervalRegex(c) =>
+      val Array(firstPatternIdStr, lastPatternIdStr) = c.replace("b", "").split("-")
+      val pIds = firstPatternIdStr.toInt.to(lastPatternIdStr.toInt)
+      pIds.map("b" + _.toString)
+    case patternIdRegex(c) => Seq(c)
+    case _ => Seq.empty
   }
 
   /** Get the pattern title from the first paragraph*/
@@ -59,8 +56,8 @@ object BlacklistDocTransformer extends IPatternDocTransformer {
       htmlFiles <- sourceDirectory.listRecursively.toSeq
       htmlPluginsDocs <- Pandoc.loadHtml(htmlFiles)
       body <- patternsDocumentationBody(htmlPluginsDocs)
-      descriptionText = Pandoc.convert(body.toString())
       patternId <- patternIds(body)
+      descriptionText = Pandoc.convert(body.toString())
       title = getTitle(body, patternId)
     } yield Pattern(patternId.capitalize, title, descriptionText, Level.Warn, Category.Security)
   }

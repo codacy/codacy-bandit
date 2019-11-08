@@ -31,12 +31,17 @@ object PluginsDocTransformer extends IPatternDocTransformer {
     * Usually in <body><dd> or <body><div id="b000">
     */
   private def getBody(htmlPluginsDocs: Node, patternId: String) = {
-    val dd = htmlPluginsDocs \\ "body" \\ "dd"
+    val dd = htmlPluginsDocs \\ "dd"
     val articleBody = for {
-      articleBody <- htmlPluginsDocs \\ "body" \\ "div"
-      if (articleBody \ "@id").text.startsWith(patternId.toLowerCase())
-    } yield articleBody
-    if (dd.isEmpty) NodeSeq.fromSeq(articleBody) else dd
+      divs <- htmlPluginsDocs \\ "div"
+      if (divs \@ "id").startsWith(patternId.toLowerCase())
+      divsChildren <- divs.child.filter { node =>
+        val l = node.label
+        l == "h1" || l == "h2" || l == "p"
+      }
+    } yield divsChildren
+
+    if (dd.nonEmpty && dd.text.contains(patternId)) dd else NodeSeq.fromSeq(articleBody)
   }
 
   /** Get all Patterns on the html files
