@@ -1,321 +1,366 @@
 {
-  "name": "Bandit",
-  "version": "1.5.1",
-  "patterns": [
+  "name" : "Bandit",
+  "version" : "1.6.2",
+  "patterns" : [
     {
-      "patternId": "B101",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B101",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B102",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B102",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B103",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B103",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B104",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B104",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B105",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B105",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B106",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B106",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B107",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B107",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B108",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B108",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B109",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B109",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B110",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B110",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B111",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B111",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B112",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B112",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B201",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B201",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B301",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B301",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B302",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B302",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B303",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B303",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B304",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B304",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B305",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B305",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B306",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B306",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B307",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B307",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B308",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B308",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B309",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B309",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B310",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B310",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B311",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B311",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B312",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B312",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B313",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B313",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B314",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B314",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B315",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B315",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B316",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B316",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B317",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B317",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B318",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B318",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B319",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B319",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B320",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B320",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B321",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B321",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B401",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B322",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B402",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B323",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B403",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B325",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B404",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B401",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B405",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B402",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B406",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B403",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B407",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B404",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B408",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B405",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B409",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B406",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B410",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B407",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B411",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B408",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B501",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B409",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B502",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B410",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B503",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B411",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B504",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B412",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B505",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B413",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B506",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B414",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B507",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B501",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B601",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B502",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B602",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B503",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B603",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B504",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B604",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B505",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B605",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B506",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B606",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B507",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B607",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B601",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B608",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B602",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B609",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B603",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B701",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B604",
+      "level" : "Warning",
+      "category" : "Security"
     },
     {
-      "patternId": "B702",
-      "level": "Warning",
-      "category": "Security"
+      "patternId" : "B605",
+      "level" : "Warning",
+      "category" : "Security"
+    },
+    {
+      "patternId" : "B606",
+      "level" : "Warning",
+      "category" : "Security"
+    },
+    {
+      "patternId" : "B607",
+      "level" : "Warning",
+      "category" : "Security"
+    },
+    {
+      "patternId" : "B608",
+      "level" : "Warning",
+      "category" : "Security"
+    },
+    {
+      "patternId" : "B609",
+      "level" : "Warning",
+      "category" : "Security"
+    },
+    {
+      "patternId" : "B610",
+      "level" : "Warning",
+      "category" : "Security"
+    },
+    {
+      "patternId" : "B611",
+      "level" : "Warning",
+      "category" : "Security"
+    },
+    {
+      "patternId" : "B701",
+      "level" : "Warning",
+      "category" : "Security"
+    },
+    {
+      "patternId" : "B702",
+      "level" : "Warning",
+      "category" : "Security"
+    },
+    {
+      "patternId" : "B703",
+      "level" : "Warning",
+      "category" : "Security"
     }
   ]
 }

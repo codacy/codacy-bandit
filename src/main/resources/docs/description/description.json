@@ -1,255 +1,290 @@
 [
   {
-    "patternId":"B101",
-    "title":"Assert used"
+    "patternId" : "B101",
+    "title" : "assert_used"
   },
   {
-    "patternId":"B102",
-    "title":"Exec used"
+    "patternId" : "B102",
+    "title" : "exec_used"
   },
   {
-    "patternId":"B103",
-    "title":"Set bad file permissions"
+    "patternId" : "B103",
+    "title" : "set_bad_file_permissions"
   },
   {
-    "patternId":"B104",
-    "title":"Hardcoded bind all interfaces"
+    "patternId" : "B104",
+    "title" : "hardcoded_bind_all_interfaces"
   },
   {
-    "patternId":"B105",
-    "title":"Hardcoded password string"
+    "patternId" : "B105",
+    "title" : "hardcoded_password_string"
   },
   {
-    "patternId":"B106",
-    "title":"Hardcoded password funcarg"
+    "patternId" : "B106",
+    "title" : "hardcoded_password_funcarg"
   },
   {
-    "patternId":"B107",
-    "title":"Hardcoded password default"
+    "patternId" : "B107",
+    "title" : "hardcoded_password_default"
   },
   {
-    "patternId":"B108",
-    "title":"Hardcoded tmp directory",
-    "description":"Avoid hardcoding paths to temporary files"
+    "patternId" : "B108",
+    "title" : "hardcoded_tmp_directory"
   },
   {
-    "patternId":"B109",
-    "title":"Password config option not marked secret"
+    "patternId" : "B109",
+    "title" : "Test for a password based config option not marked secret"
   },
   {
-    "patternId":"B110",
-    "title":"Try except pass"
+    "patternId" : "B110",
+    "title" : "try_except_pass"
   },
   {
-    "patternId":"B111",
-    "title":"Execute with run as root equals true"
+    "patternId" : "B111",
+    "title" : "Test for the use of rootwrap running as root"
   },
   {
-    "patternId":"B112",
-    "title":"Try except continue"
+    "patternId" : "B112",
+    "title" : "try_except_continue"
   },
   {
-    "patternId":"B201",
-    "title":"Flask debug true"
+    "patternId" : "B201",
+    "title" : "flask_debug_true"
   },
   {
-    "patternId":"B301",
-    "title":"Pickle"
+    "patternId" : "B301",
+    "title" : "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue."
   },
   {
-    "patternId":"B302",
-    "title":"Marshal"
+    "patternId" : "B302",
+    "title" : "Deserialization with the marshal module is possibly dangerous."
   },
   {
-    "patternId":"B303",
-    "title":"Md5"
+    "patternId" : "B303",
+    "title" : "Use of insecure MD2, MD4, MD5, or SHA1 hash function."
   },
   {
-    "patternId":"B304",
-    "title":"Ciphers"
+    "patternId" : "B304",
+    "title" : "Use of insecure cipher or cipher mode"
   },
   {
-    "patternId":"B305",
-    "title":"Cipher modes"
+    "patternId" : "B305",
+    "title" : "Use of insecure cipher or cipher mode"
   },
   {
-    "patternId":"B306",
-    "title":"Mktemp q"
+    "patternId" : "B306",
+    "title" : "Use of insecure and deprecated function (mktemp)."
   },
   {
-    "patternId":"B307",
-    "title":"Eval"
+    "patternId" : "B307",
+    "title" : "Use of possibly insecure function - consider using safer ast.literal_eval."
   },
   {
-    "patternId":"B308",
-    "title":"Mark safe"
+    "patternId" : "B308",
+    "title" : "Use of mark_safe() may expose cross-site scripting vulnerabilities and should be reviewed."
   },
   {
-    "patternId":"B309",
-    "title":"Httpsconnection"
+    "patternId" : "B309",
+    "title" : "Use of HTTPSConnection on older versions of Python prior to 2.7.9 and 3.4.3 do not provide security, see https://wiki.openstack.org/wiki/OSSN/OSSN-0033"
   },
   {
-    "patternId":"B310",
-    "title":"Urllib urlopen"
+    "patternId" : "B310",
+    "title" : "Audit url open for permitted schemes"
   },
   {
-    "patternId":"B311",
-    "title":"Random"
+    "patternId" : "B311",
+    "title" : "Standard pseudo-random generators are not suitable for security/cryptographic purposes."
   },
   {
-    "patternId":"B312",
-    "title":"Telnetlib"
+    "patternId" : "B312",
+    "title" : "Telnet-related functions are being called"
   },
   {
-    "patternId":"B313",
-    "title":"Xml bad cElementTree"
+    "patternId" : "B313",
+    "title" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks"
   },
   {
-    "patternId":"B314",
-    "title":"Xml bad ElementTree"
+    "patternId" : "B314",
+    "title" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks"
   },
   {
-    "patternId":"B315",
-    "title":"Xml bad expatreader"
+    "patternId" : "B315",
+    "title" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks"
   },
   {
-    "patternId":"B316",
-    "title":"Xml bad expatbuilder"
+    "patternId" : "B316",
+    "title" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks"
   },
   {
-    "patternId":"B317",
-    "title":"Xml bad sax"
+    "patternId" : "B317",
+    "title" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks"
   },
   {
-    "patternId":"B318",
-    "title":"Xml bad minidom"
+    "patternId" : "B318",
+    "title" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks"
   },
   {
-    "patternId":"B319",
-    "title":"Xml bad pulldom"
+    "patternId" : "B319",
+    "title" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks"
   },
   {
-    "patternId":"B320",
-    "title":"Xml bad etree"
+    "patternId" : "B320",
+    "title" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks"
   },
   {
-    "patternId":"B321",
-    "title":"Ftplib"
+    "patternId" : "B321",
+    "title" : "FTP-related functions are being called"
   },
   {
-    "patternId":"B401",
-    "title":"Import telnetlib"
+    "patternId" : "B322",
+    "title" : "The input method in Python 2 will read from standard input, evaluate and run the resulting string as python source code"
   },
   {
-    "patternId":"B402",
-    "title":"Import ftplib"
+    "patternId" : "B323",
+    "title" : "By default, Python will create a secure, verified ssl context for use in such classes as HTTPSConnection"
   },
   {
-    "patternId":"B403",
-    "title":"Import pickle"
+    "patternId" : "B325",
+    "title" : "Use of os.tempnam() and os.tmpnam() is vulnerable to symlink attacks"
   },
   {
-    "patternId":"B404",
-    "title":"Import subprocess"
+    "patternId" : "B401",
+    "title" : "A telnet-related module is being imported"
   },
   {
-    "patternId":"B405",
-    "title":"Import xml etree"
+    "patternId" : "B402",
+    "title" : "A FTP-related module is being imported"
   },
   {
-    "patternId":"B406",
-    "title":"Import xml sax"
+    "patternId" : "B403",
+    "title" : "Consider possible security implications associated with these modules."
   },
   {
-    "patternId":"B407",
-    "title":"Import xml expat"
+    "patternId" : "B404",
+    "title" : "Consider possible security implications associated with these modules."
   },
   {
-    "patternId":"B408",
-    "title":"Import xml minidom"
+    "patternId" : "B405",
+    "title" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks"
   },
   {
-    "patternId":"B409",
-    "title":"Import xml pulldom"
+    "patternId" : "B406",
+    "title" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks"
   },
   {
-    "patternId":"B410",
-    "title":"Import lxml"
+    "patternId" : "B407",
+    "title" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks"
   },
   {
-    "patternId":"B411",
-    "title":"Import xmlrpclib"
+    "patternId" : "B408",
+    "title" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks"
   },
   {
-    "patternId":"B501",
-    "title":"Request with no cert validation"
+    "patternId" : "B409",
+    "title" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks"
   },
   {
-    "patternId":"B502",
-    "title":"Ssl with bad version"
+    "patternId" : "B410",
+    "title" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks"
   },
   {
-    "patternId":"B503",
-    "title":"Ssl with bad defaults"
+    "patternId" : "B411",
+    "title" : "XMLRPC is particularly dangerous as it is also concerned with communicating data over a network"
   },
   {
-    "patternId":"B504",
-    "title":"Ssl with no version"
+    "patternId" : "B412",
+    "title" : "httpoxy is a set of vulnerabilities that affect application code running in CGI, or CGI-like environments"
   },
   {
-    "patternId":"B505",
-    "title":"Weak cryptographic key"
+    "patternId" : "B413",
+    "title" : "pycrypto library is known to have publicly disclosed buffer overflow vulnerability https://github.com/dlitz/pycrypto/issues/176"
   },
   {
-    "patternId":"B506",
-    "title":"Yaml load"
+    "patternId" : "B414",
+    "title" : "This import blacklist has been removed"
   },
   {
-    "patternId":"B507",
-    "title":"SSH no host key verification"
+    "patternId" : "B501",
+    "title" : "request_with_no_cert_validation"
   },
   {
-    "patternId":"B601",
-    "title":"Paramiko calls"
+    "patternId" : "B502",
+    "title" : "ssl_with_bad_version"
   },
   {
-    "patternId":"B602",
-    "title":"Subprocess popen with shell equals true"
+    "patternId" : "B503",
+    "title" : "ssl_with_bad_defaults"
   },
   {
-    "patternId":"B603",
-    "title":"Subprocess without shell equals true"
+    "patternId" : "B504",
+    "title" : "ssl_with_no_version"
   },
   {
-    "patternId":"B604",
-    "title":"Any other function with shell equals true"
+    "patternId" : "B505",
+    "title" : "weak_cryptographic_key"
   },
   {
-    "patternId":"B605",
-    "title":"Start process with a shell"
+    "patternId" : "B506",
+    "title" : "yaml_load"
   },
   {
-    "patternId":"B606",
-    "title":"Start process with no shell"
+    "patternId" : "B507",
+    "title" : "ssh_no_host_key_verification"
   },
   {
-    "patternId":"B607",
-    "title":"Start process with partial path"
+    "patternId" : "B601",
+    "title" : "paramiko_calls"
   },
   {
-    "patternId":"B608",
-    "title":"Hardcoded sql expressions"
+    "patternId" : "B602",
+    "title" : "subprocess_popen_with_shell_equals_true"
   },
   {
-    "patternId":"B609",
-    "title":"Linux commands wildcard injection"
+    "patternId" : "B603",
+    "title" : "subprocess_without_shell_equals_true"
   },
   {
-    "patternId":"B701",
-    "title":"Jinja2 autoescape false"
+    "patternId" : "B604",
+    "title" : "any_other_function_with_shell_equals_true"
   },
   {
-    "patternId":"B702",
-    "title":"Use of mako templates"
+    "patternId" : "B605",
+    "title" : "start_process_with_a_shell"
+  },
+  {
+    "patternId" : "B606",
+    "title" : "start_process_with_no_shell"
+  },
+  {
+    "patternId" : "B607",
+    "title" : "start_process_with_partial_path"
+  },
+  {
+    "patternId" : "B608",
+    "title" : "hardcoded_sql_expressions"
+  },
+  {
+    "patternId" : "B609",
+    "title" : "linux_commands_wildcard_injection"
+  },
+  {
+    "patternId" : "B610",
+    "title" : "django_extra_used"
+  },
+  {
+    "patternId" : "B611",
+    "title" : "django_rawsql_used"
+  },
+  {
+    "patternId" : "B701",
+    "title" : "jinja2_autoescape_false"
+  },
+  {
+    "patternId" : "B702",
+    "title" : "use_of_mako_templates"
+  },
+  {
+    "patternId" : "B703",
+    "title" : "django_mark_safe"
   }
 ]

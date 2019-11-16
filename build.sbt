@@ -1,81 +1,75 @@
 import com.typesafe.sbt.packager.docker.{Cmd, ExecCmd}
 
 name := "codacy-bandit"
-
+scalaVersion := "2.13.1"
 version := "1.0.0-SNAPSHOT"
 
-val languageVersion = "2.12.6"
+lazy val toolVersion = settingKey[String]("The tool version")
+toolVersion := scala.io.Source.fromFile("bandit-version").mkString.trim
 
-scalaVersion := languageVersion
+val circeVersion = "0.12.3"
 
-resolvers ++= Seq(
-  "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/releases"
-)
+lazy val `doc-generator` = project
+  .settings(
+    libraryDependencies ++= Seq(
+      "org.scala-lang.modules" %% "scala-xml" % "1.2.0",
+      "org.ccil.cowan.tagsoup" % "tagsoup"% "1.2.1",
+      "com.github.pathikrit" %% "better-files" % "3.8.0",
+      "com.codacy" %% "codacy-plugins-api" % "3.1.0",
+      "io.circe" %% "circe-core" % circeVersion,
+      "io.circe" %% "circe-generic" % circeVersion,
+      "io.circe" %% "circe-parser" % circeVersion
+    ),
+    scalaVersion := "2.13.1",
+    scalacOptions --= Seq("-Xlint"), // circe implicit val for encode
+    Compile / fork := true
+  )
 
 libraryDependencies ++= Seq(
-  "com.codacy" %% "codacy-engine-scala-seed" % "3.0.183"
+  "com.codacy" %% "codacy-engine-scala-seed" % "3.1.0",
 )
 
 enablePlugins(JavaAppPackaging)
 
 enablePlugins(DockerPlugin)
 
-version in Docker := "1.0.0"
-
-lazy val toolVersion = taskKey[String](
-  "Retrieve the version of the underlying tool from patterns.json"
-)
-toolVersion := {
-  import better.files.File
-  import play.api.libs.json.{JsString, JsValue, Json}
-
-  val jsonFile = resourceDirectory.in(Compile).value / "docs" / "patterns.json"
-  val patternsJsonValues =
-    Json.parse(File(jsonFile.toPath).contentAsString).as[Map[String, JsValue]]
-
-  patternsJsonValues
-    .collectFirst {
-      case ("version", JsString(version)) => version
-    }
-    .getOrElse(
-      throw new Exception("Failed to retrieve version from docs/patterns.json")
-    )
-}
-
-def installAll(toolVersion: String) =
+def installAll(version: String) = {
+  val getPipFilename = "get-pip.py"
   s"""apk --no-cache add bash wget ca-certificates git &&
      |apk add --update --no-cache python &&
      |apk add --update --no-cache python3 &&
-     |wget "https://bootstrap.pypa.io/get-pip.py" -O /dev/stdout | python &&
-     |wget "https://bootstrap.pypa.io/get-pip.py" -O /dev/stdout | python3 &&
-     |python -m pip install bandit===${toolVersion} --upgrade --ignore-installed --no-cache-dir &&
-     |python3 -m pip install bandit===${toolVersion} --upgrade --ignore-installed --no-cache-dir &&
+     |export  &&
+     |wget "https://bootstrap.pypa.io/$getPipFilename" &&
+     |python $getPipFilename &&
+     |python3 $getPipFilename &&
+     |python -m pip install bandit===${version} --upgrade --ignore-installed --no-cache-dir &&
+     |python3 -m pip install bandit===${version} --upgrade --ignore-installed --no-cache-dir &&
      |python -m pip uninstall -y pip &&
      |python3 -m pip uninstall -y pip &&
      |apk del wget ca-certificates git &&
      |rm -rf /tmp/* &&
-     |rm -rf /var/cache/apk/*""".stripMargin.replaceAll(System.lineSeparator(), " ")
+     |rm -rf /var/cache/apk/*""".stripMargin
+    .replaceAll(System.lineSeparator(), " ")
+}
 
 mappings.in(Universal) ++= resourceDirectory
   .in(Compile)
   .map { resourceDir: File =>
     val src = resourceDir / "docs"
     val dest = "/docs"
-    (for {
-      path <- better.files.File(src.toPath).listRecursively()
-      if !path.isDirectory
-    } yield path.toJava -> path.toString.replaceFirst(src.toString, dest)).toSeq
+
+    for {
+      path <- src.allPaths.get if !path.isDirectory
+    } yield path -> path.toString.replaceFirst(src.toString, dest)
   }
   .value ++
   baseDirectory
     .in(Compile)
     .map { baseDirectory: File =>
       val toolScriptsDir = baseDirectory / "tool-scripts"
-      (for {
-        path <- better.files.File(toolScriptsDir.toPath).listRecursively()
-        if !path.isDirectory
-      } yield
-        path.toJava -> path.toString.replaceFirst(toolScriptsDir.toString, "")).toSeq
+      for {
+        path <- toolScriptsDir.allPaths.get if !path.isDirectory
+      } yield path -> path.toString.replaceFirst(toolScriptsDir.toString, "")
     }
     .value
 
@@ -88,8 +82,10 @@ daemonGroup in Docker := dockerGroup
 
 dockerBaseImage := "openjdk:8-jre-alpine"
 
+mainClass in Compile := Some("codacy.Engine")
+
 dockerCommands := {
-  dockerCommands.dependsOn(toolVersion).value.flatMap {
+  dockerCommands.value.flatMap {
     case cmd @ Cmd("ADD", _) =>
       List(
         Cmd("RUN", s"adduser -u 2004 -D $dockerUser"),
