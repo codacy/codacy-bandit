@@ -2,7 +2,6 @@
 
 <module name="root">
     <module name="BeforeExecutionExclusionFileFilter">
-        <!-- value can be a regex matching files to ignore -->
         <property name="fileNamePattern" value="bandit\.yml" />
     </module>
 </module>
