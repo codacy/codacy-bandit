@@ -2,32 +2,27 @@ import com.typesafe.sbt.packager.docker.{Cmd, ExecCmd}
 
 name := "codacy-bandit"
 scalaVersion := "2.13.1"
-version := "1.0.0-SNAPSHOT"
 
 lazy val toolVersion = settingKey[String]("The tool version")
 toolVersion := scala.io.Source.fromFile("bandit-version").mkString.trim
 
-val circeVersion = "0.12.3"
+val engineSeed = "com.codacy" %% "codacy-engine-scala-seed" % "4.0.0"
+
+libraryDependencies += engineSeed
 
 lazy val `doc-generator` = project
   .settings(
-    libraryDependencies ++= Seq(
-      "org.scala-lang.modules" %% "scala-xml" % "1.2.0",
-      "org.ccil.cowan.tagsoup" % "tagsoup"% "1.2.1",
-      "com.github.pathikrit" %% "better-files" % "3.8.0",
-      "com.codacy" %% "codacy-plugins-api" % "3.1.0",
-      "io.circe" %% "circe-core" % circeVersion,
-      "io.circe" %% "circe-generic" % circeVersion,
-      "io.circe" %% "circe-parser" % circeVersion
-    ),
+    libraryDependencies ++=
+      engineSeed +: Seq(
+        "org.scala-lang.modules" %% "scala-xml" % "1.2.0",
+        "org.ccil.cowan.tagsoup" % "tagsoup" % "1.2.1",
+        "com.github.pathikrit" %% "better-files" % "3.8.0",
+        "com.vladsch.flexmark" % "flexmark-all" % "0.50.44"
+      ),
     scalaVersion := "2.13.1",
-    scalacOptions --= Seq("-Xlint"), // circe implicit val for encode
-    Compile / fork := true
+    Compile / fork := true,
+    scalacOptions += "-Xlint:-stars-align"
   )
-
-libraryDependencies ++= Seq(
-  "com.codacy" %% "codacy-engine-scala-seed" % "3.1.0",
-)
 
 enablePlugins(JavaAppPackaging)
 
@@ -92,10 +87,7 @@ dockerCommands := {
         cmd,
         Cmd("RUN", installAll(toolVersion.value)),
         Cmd("RUN", "mv /opt/docker/docs /docs"),
-        ExecCmd(
-          "RUN",
-          Seq("chown", "-R", s"$dockerUser:$dockerGroup", "/docs"): _*
-        )
+        ExecCmd("RUN", Seq("chown", "-R", s"$dockerUser:$dockerGroup", "/docs"): _*)
       )
     case other => List(other)
   }

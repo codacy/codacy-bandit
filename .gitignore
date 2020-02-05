@@ -12,7 +12,7 @@
 
 .vscode
 
-bandit/
+/bandit/
 
 .bloop
 .metals
