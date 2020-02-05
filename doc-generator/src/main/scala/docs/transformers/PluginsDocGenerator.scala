@@ -1,16 +1,17 @@
 package docs.transformers
 
-import docs.transformers.utils.Pandoc
-import docs.model._
-import scala.xml.{Node, NodeSeq}
+import docs.transformers.utils.{HtmlLoader, HtmlToMarkdownConverter}
+import scala.xml._
 import better.files._
 import com.codacy.plugins.api.results.Pattern.Category
 import com.codacy.plugins.api.results.Result.Level
+import com.codacy.plugins.api.results.Pattern
+import docs.SecuritySubcategories
 
 object PluginsDocTransformer extends IPatternDocTransformer {
 
   /** Strips pattern ids and title from the <title> tag. */
-  private def stripPluginsTitle(head: NodeSeq): Option[(String, String)] = {
+  private def stripPluginsTitle(head: NodeSeq): Option[(Pattern.Id, Pattern.Title)] = {
     val htmlTitle = (head \\ "title").text
     val patternIdRegex = "(B[\\d]{3}).*".r
     val titleRegex = "B[\\d]{3}: (.*)".r
@@ -24,24 +25,24 @@ object PluginsDocTransformer extends IPatternDocTransformer {
         case _ => None
       }
       title = bulk_title.replace(" — Bandit  documentation", "")
-    } yield (patternId, title)
+    } yield (Pattern.Id(patternId), Pattern.Title(title))
   }
 
   /** Find the html object with the details of the pattern.
     * Usually in <body><dd> or <body><div id="b000">
     */
-  private def getBody(htmlPluginsDocs: Node, patternId: String) = {
+  private def getBody(htmlPluginsDocs: Node, patternId: Pattern.Id): NodeSeq = {
     val dd = htmlPluginsDocs \\ "dd"
     val articleBody = for {
       divs <- htmlPluginsDocs \\ "div"
-      if (divs \@ "id").startsWith(patternId.toLowerCase())
+      if (divs \@ "id").startsWith(patternId.value.toLowerCase())
       divsChildren <- divs.child.filter { node =>
         val l = node.label
         l == "h1" || l == "h2" || l == "p"
       }
     } yield divsChildren
 
-    if (dd.nonEmpty && dd.text.contains(patternId)) dd else NodeSeq.fromSeq(articleBody)
+    if (dd.nonEmpty && dd.text.contains(patternId.value)) dd else NodeSeq.fromSeq(articleBody)
   }
 
   /** Get all Patterns on the html files
@@ -51,12 +52,20 @@ object PluginsDocTransformer extends IPatternDocTransformer {
     val sourceDirectory = originalDocsDir / "plugins"
     for {
       htmlFiles <- sourceDirectory.listRecursively.toSeq
-      htmlPluginsDocs <- Pandoc.loadHtml(htmlFiles)
+      htmlPluginsDocs <- HtmlLoader.loadHtml(htmlFiles)
       head <- htmlPluginsDocs \\ "head"
-      patternIdWithTitle <- stripPluginsTitle(head)
-      (patternId, title) = patternIdWithTitle
+      (patternId, title) <- stripPluginsTitle(head)
+      patternIdCapitalized = Pattern.Id(patternId.value.capitalize)
       body = getBody(htmlPluginsDocs, patternId)
-      descriptionText = Pandoc.convert(body.toString())
-    } yield Pattern(patternId.capitalize, title, descriptionText, Level.Warn, Category.Security)
+      descriptionText = Some(Pattern.DescriptionText(HtmlToMarkdownConverter.convert(body.toString())))
+      specification = Pattern.Specification(
+        patternIdCapitalized,
+        Level.Warn,
+        Category.Security,
+        SecuritySubcategories.get(patternIdCapitalized),
+        None
+      )
+      description = Pattern.Description(patternIdCapitalized, title, descriptionText, None, None)
+    } yield (specification, description)
   }
 }

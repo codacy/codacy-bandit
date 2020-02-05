@@ -1,9 +1,11 @@
 package docs
 
-import better.files.Dsl.SymbolicOperations
 import better.files._
 import docs.transformers._
-import docs.model._
+import com.codacy.plugins.api.results.Pattern
+import com.codacy.plugins.api.results.Tool
+import play.api.libs.json.Json
+import com.codacy.plugins.api._
 
 object GenerateDocs {
   val docsRoot = ".." / "src" / "main" / "resources" / "docs"
@@ -38,24 +40,41 @@ object GenerateDocs {
     }
     val pPatterns = PluginsDocTransformer.getPatterns(banditDocsDirectory)
     val bPatterns = BlacklistDocTransformer.getPatterns(banditDocsDirectory)
-    val allPatterns =
-      (pPatterns ++ bPatterns).sortBy(_.patternId)
-    println(
-      allPatterns.length + " patterns found:\n" + allPatterns
-        .mkString("\n") + "\n"
-    )
-    createMarkdownFiles(allPatterns)
+    val specificationsAndDescriptions = (pPatterns ++ bPatterns).sortBy(_._1.patternId.value)
+    val specifications = specificationsAndDescriptions.map(_._1)
+    val descriptions = specificationsAndDescriptions.map(_._2)
+    createMarkdownFiles(specificationsAndDescriptions)
     println("Markdown files generated...")
-    patternsJsonFile < JsonEncoder.patternsJsonEncoder(version, allPatterns)
+    val specification =
+      Tool.Specification(Tool.Name("Bandit"), Some(Tool.Version(version)), specifications.toSet)
+    val specificationJson = Json.toJson(specification)
+    val specificationJsonString = Json.prettyPrint(specificationJson)
+    patternsJsonFile.writeText(specificationJsonString + System.lineSeparator)
     println("Patterns json files generated...")
-    descriptionsJsonFile < JsonEncoder.descriptionJsonEncoder(allPatterns)
+    val descriptionJson = Json.toJson(
+      descriptions.map(
+        d =>
+          d.copy(
+            description = d.description
+              .flatMap(
+                _.value
+                  .split(System.lineSeparator)
+                  .headOption // Some descriptions start with ugly characters
+                  .map(d => Pattern.DescriptionText(d.dropWhile(_ != 'B')))
+              )
+        )
+      )
+    )
+    val descriptionJsonString = Json.prettyPrint(descriptionJson)
+    descriptionsJsonFile.writeText(descriptionJsonString + System.lineSeparator)
     println("Description json files generated...")
   }
 
-  private def createMarkdownFiles(allPatterns: Seq[Pattern]) =
+  private def createMarkdownFiles(allPatterns: Seq[(Pattern.Specification, Pattern.Description)]) =
     for {
-      pattern <- allPatterns
-      patternDescriptionTextFile = descriptionsRoot / s"${pattern.patternId}.md"
-    } patternDescriptionTextFile.createFileIfNotExists().writeText(pattern.descriptionText)
+      (specification, description) <- allPatterns
+      patternDescriptionTextFile = descriptionsRoot / s"${specification.patternId}.md"
+      descriptionText <- description.description
+    } patternDescriptionTextFile.createFileIfNotExists().writeText(descriptionText.value)
 
 }

@@ -1,11 +1,11 @@
 package docs.transformers
 
-import docs.transformers.utils.Pandoc
-import docs.model._
+import docs.transformers.utils.{HtmlLoader, HtmlToMarkdownConverter}
 import scala.xml.Node
 import better.files._
-import com.codacy.plugins.api.results.Pattern.Category
+import com.codacy.plugins.api.results.Pattern
 import com.codacy.plugins.api.results.Result.Level
+import docs.SecuritySubcategories
 
 object BlacklistDocTransformer extends IPatternDocTransformer {
   val patternIdIntervalRegex = "(b[\\d]{3}-b[\\d]{3}).*".r
@@ -54,11 +54,22 @@ object BlacklistDocTransformer extends IPatternDocTransformer {
     val sourceDirectory = originalDocsDir / "blacklists"
     for {
       htmlFiles <- sourceDirectory.listRecursively.toSeq
-      htmlPluginsDocs <- Pandoc.loadHtml(htmlFiles)
+      htmlPluginsDocs <- HtmlLoader.loadHtml(htmlFiles)
       body <- patternsDocumentationBody(htmlPluginsDocs)
       patternId <- patternIds(body)
-      descriptionText = Pandoc.convert(body.toString())
-      title = getTitle(body, patternId)
-    } yield Pattern(patternId.capitalize, title, descriptionText, Level.Warn, Category.Security)
+      patternIdCapitalized = Pattern.Id(patternId.capitalize)
+      descriptionText = Some(Pattern.DescriptionText(HtmlToMarkdownConverter.convert(body.toString())))
+      title = Pattern.Title(getTitle(body, patternId))
+      specification = Pattern
+        .Specification(
+          patternIdCapitalized,
+          Level.Warn,
+          Pattern.Category.Security,
+          SecuritySubcategories.get(patternIdCapitalized),
+          None,
+          None
+        )
+      description = Pattern.Description(patternIdCapitalized, title, descriptionText, None, None)
+    } yield (specification, description)
   }
 }
