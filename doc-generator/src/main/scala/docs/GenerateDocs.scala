@@ -49,7 +49,7 @@ object GenerateDocs {
       Tool.Specification(Tool.Name("Bandit"), Some(Tool.Version(version)), specifications.toSet)
     val specificationJson = Json.toJson(specification)
     val specificationJsonString = Json.prettyPrint(specificationJson)
-    patternsJsonFile.writeText(specificationJsonString)
+    patternsJsonFile.writeText(specificationJsonString + System.lineSeparator)
     println("Patterns json files generated...")
     val descriptionJson = Json.toJson(
       descriptions.map(
@@ -59,14 +59,14 @@ object GenerateDocs {
               .flatMap(
                 _.value
                   .split(System.lineSeparator)
-                  .headOption
+                  .headOption // Some descriptions start with ugly characters
                   .map(d => Pattern.DescriptionText(d.dropWhile(_ != 'B')))
               )
         )
       )
     )
     val descriptionJsonString = Json.prettyPrint(descriptionJson)
-    descriptionsJsonFile.writeText(descriptionJsonString)
+    descriptionsJsonFile.writeText(descriptionJsonString + System.lineSeparator)
     println("Description json files generated...")
   }
 
