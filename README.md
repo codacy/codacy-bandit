@@ -4,7 +4,7 @@ This is the docker engine we use at Codacy to have [Bandit](https://github.com/P
 You can also create a docker to integrate the tool and language of your choice!
 See the [codacy-engine-scala-seed](https://github.com/codacy/codacy-engine-scala-seed) repository for more information.
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/22833b5348fb4fdf80ea370560648c0b)](https://www.codacy.com/app/Codacy/codacy-bandit?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=codacy/codacy-bandit&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/22833b5348fb4fdf80ea370560648c0b)](https://www.codacy.com/gh/codacy/codacy-bandit?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=codacy/codacy-bandit&amp;utm_campaign=Badge_Grade)
 [![Build Status](https://circleci.com/gh/codacy/codacy-bandit.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/codacy/codacy-bandit)
 
 ## Usage
