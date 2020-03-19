@@ -12,6 +12,7 @@ See the [codacy-engine-scala-seed](https://github.com/codacy/codacy-engine-scala
 You can create the docker by doing:
 
 ```bash
+docker build -t codacy-bandit-base .
 sbt docker:publishLocal
 ```
 
@@ -23,8 +24,8 @@ docker run -it -v $srcDir:/src  <DOCKER_NAME>:<DOCKER_VERSION>
 
 ### Bump bandit version
 
-* Change the `bandit-version` file
-* Run `.scripts/generateDocs.sh`
+* Change the `requirements.txt` file
+* Run `./scripts/generateDocs.sh`
 
 ## Docs
 
