@@ -3,9 +3,6 @@ import com.typesafe.sbt.packager.docker.{Cmd, ExecCmd}
 name := "codacy-bandit"
 scalaVersion := "2.13.1"
 
-lazy val toolVersion = settingKey[String]("The tool version")
-toolVersion := scala.io.Source.fromFile("bandit-version").mkString.trim
-
 val engineSeed = "com.codacy" %% "codacy-engine-scala-seed" % "4.0.0"
 
 libraryDependencies += engineSeed
@@ -27,25 +24,6 @@ lazy val `doc-generator` = project
 enablePlugins(JavaAppPackaging)
 
 enablePlugins(DockerPlugin)
-
-def installAll(version: String) = {
-  val getPipFilename = "get-pip.py"
-  s"""apk --no-cache add bash wget ca-certificates git &&
-     |apk add --update --no-cache python &&
-     |apk add --update --no-cache python3 &&
-     |export  &&
-     |wget "https://bootstrap.pypa.io/$getPipFilename" &&
-     |python $getPipFilename &&
-     |python3 $getPipFilename &&
-     |python -m pip install bandit===${version} --upgrade --ignore-installed --no-cache-dir &&
-     |python3 -m pip install bandit===${version} --upgrade --ignore-installed --no-cache-dir &&
-     |python -m pip uninstall -y pip &&
-     |python3 -m pip uninstall -y pip &&
-     |apk del wget ca-certificates git &&
-     |rm -rf /tmp/* &&
-     |rm -rf /var/cache/apk/*""".stripMargin
-    .replaceAll(System.lineSeparator(), " ")
-}
 
 mappings.in(Universal) ++= resourceDirectory
   .in(Compile)
@@ -75,7 +53,7 @@ daemonUser in Docker := dockerUser
 
 daemonGroup in Docker := dockerGroup
 
-dockerBaseImage := "openjdk:8-jre-alpine"
+dockerBaseImage := "codacy-bandit-base"
 
 mainClass in Compile := Some("codacy.Engine")
 
@@ -85,7 +63,6 @@ dockerCommands := {
       List(
         Cmd("RUN", s"adduser -u 2004 -D $dockerUser"),
         cmd,
-        Cmd("RUN", installAll(toolVersion.value)),
         Cmd("RUN", "mv /opt/docker/docs /docs"),
         ExecCmd("RUN", Seq("chown", "-R", s"$dockerUser:$dockerGroup", "/docs"): _*)
       )
