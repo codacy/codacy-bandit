@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+VERSION=$1
+BASE_DIR=$2
+
+rm -rf "$BASE_DIR"
+
+git clone -b "$VERSION" --single-branch --depth 1 "https://github.com/PyCQA/bandit.git" $BASE_DIR
+easy_install virtualenv
+virtualenv "./$BASE_DIR/venv"
+./"$BASE_DIR"/venv/bin/pip install -U -r "$BASE_DIR/requirements.txt"
+./"$BASE_DIR"/venv/bin/pip install -r "$BASE_DIR/doc/requirements.txt"
+./"$BASE_DIR"/venv/bin/sphinx-build "$BASE_DIR/doc/source/" "$BASE_DIR/doc/build/" -b html -a -D html_add_permalinks=
