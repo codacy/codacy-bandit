@@ -1,9 +1,13 @@
 package docs.transformers.utils
 
-import com.vladsch.flexmark.html2md.converter.FlexmarkHtmlConverter
+import scala.sys.process._
 
 object HtmlToMarkdownConverter {
 
-  def convert(htmlString: String): String =
-    FlexmarkHtmlConverter.builder().build().convert(htmlString).replaceAll("<br />", "")
+  def convert(htmlString: String): String = {
+    val input = new java.io.ByteArrayInputStream(htmlString.getBytes("UTF-8"))
+    val result: String =
+      (Seq("pandoc", "-f", "html-native_divs-native_spans", "-t", "commonmark") #< input).!!
+    result
+  }
 }

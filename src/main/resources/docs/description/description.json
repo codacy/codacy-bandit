@@ -53,155 +53,155 @@
 }, {
   "patternId" : "B301",
   "title" : "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
-  "description" : "B301: pickle {#b301-pickle}"
+  "description" : "B301: pickle"
 }, {
   "patternId" : "B302",
   "title" : "Deserialization with the marshal module is possibly dangerous.",
-  "description" : "B302: marshal {#b302-marshal}"
+  "description" : "B302: marshal"
 }, {
   "patternId" : "B303",
   "title" : "Use of insecure MD2, MD4, MD5, or SHA1 hash function.",
-  "description" : "B303: md5 {#b303-md5}"
+  "description" : "B303: md5"
 }, {
   "patternId" : "B304",
   "title" : "Use of insecure cipher or cipher mode",
-  "description" : "B304 - B305: ciphers and modes {#b304-b305-ciphers-and-modes}"
+  "description" : "B304 - B305: ciphers and modes"
 }, {
   "patternId" : "B305",
   "title" : "Use of insecure cipher or cipher mode",
-  "description" : "B304 - B305: ciphers and modes {#b304-b305-ciphers-and-modes}"
+  "description" : "B304 - B305: ciphers and modes"
 }, {
   "patternId" : "B306",
   "title" : "Use of insecure and deprecated function (mktemp).",
-  "description" : "B306: mktemp_q {#b306-mktemp-q}"
+  "description" : "B306: mktemp\\_q"
 }, {
   "patternId" : "B307",
   "title" : "Use of possibly insecure function - consider using safer ast.literal_eval.",
-  "description" : "B307: eval {#b307-eval}"
+  "description" : "B307: eval"
 }, {
   "patternId" : "B308",
   "title" : "Use of mark_safe() may expose cross-site scripting vulnerabilities and should be reviewed.",
-  "description" : "B308: mark_safe {#b308-mark-safe}"
+  "description" : "B308: mark\\_safe"
 }, {
   "patternId" : "B309",
   "title" : "Use of HTTPSConnection on older versions of Python prior to 2.7.9 and 3.4.3 do not provide security, see https://wiki.openstack.org/wiki/OSSN/OSSN-0033",
-  "description" : "B309: httpsconnection {#b309-httpsconnection}"
+  "description" : "B309: httpsconnection"
 }, {
   "patternId" : "B310",
   "title" : "Audit url open for permitted schemes",
-  "description" : "B310: urllib_urlopen {#b310-urllib-urlopen}"
+  "description" : "B310: urllib\\_urlopen"
 }, {
   "patternId" : "B311",
   "title" : "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
-  "description" : "B311: random {#b311-random}"
+  "description" : "B311: random"
 }, {
   "patternId" : "B312",
   "title" : "Telnet-related functions are being called",
-  "description" : "B312: telnetlib {#b312-telnetlib}"
+  "description" : "B312: telnetlib"
 }, {
   "patternId" : "B313",
   "title" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "description" : "B313 - B320: XML {#b313-b320-xml}"
+  "description" : "B313 - B320: XML"
 }, {
   "patternId" : "B314",
   "title" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "description" : "B313 - B320: XML {#b313-b320-xml}"
+  "description" : "B313 - B320: XML"
 }, {
   "patternId" : "B315",
   "title" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "description" : "B313 - B320: XML {#b313-b320-xml}"
+  "description" : "B313 - B320: XML"
 }, {
   "patternId" : "B316",
   "title" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "description" : "B313 - B320: XML {#b313-b320-xml}"
+  "description" : "B313 - B320: XML"
 }, {
   "patternId" : "B317",
   "title" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "description" : "B313 - B320: XML {#b313-b320-xml}"
+  "description" : "B313 - B320: XML"
 }, {
   "patternId" : "B318",
   "title" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "description" : "B313 - B320: XML {#b313-b320-xml}"
+  "description" : "B313 - B320: XML"
 }, {
   "patternId" : "B319",
   "title" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "description" : "B313 - B320: XML {#b313-b320-xml}"
+  "description" : "B313 - B320: XML"
 }, {
   "patternId" : "B320",
   "title" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "description" : "B313 - B320: XML {#b313-b320-xml}"
+  "description" : "B313 - B320: XML"
 }, {
   "patternId" : "B321",
   "title" : "FTP-related functions are being called",
-  "description" : "B321: ftplib {#b321-ftplib}"
+  "description" : "B321: ftplib"
 }, {
   "patternId" : "B322",
   "title" : "The input method in Python 2 will read from standard input, evaluate and run the resulting string as python source code",
-  "description" : "B322: input {#b322-input}"
+  "description" : "B322: input"
 }, {
   "patternId" : "B323",
   "title" : "By default, Python will create a secure, verified ssl context for use in such classes as HTTPSConnection",
-  "description" : "B323: unverified_context {#b323-unverified-context}"
+  "description" : "B323: unverified\\_context"
 }, {
   "patternId" : "B325",
   "title" : "Use of os.tempnam() and os.tmpnam() is vulnerable to symlink attacks",
-  "description" : "B325: tempnam {#b325-tempnam}"
+  "description" : "B325: tempnam"
 }, {
   "patternId" : "B401",
   "title" : "A telnet-related module is being imported",
-  "description" : "B401: import_telnetlib {#b401-import-telnetlib}"
+  "description" : "B401: import\\_telnetlib"
 }, {
   "patternId" : "B402",
   "title" : "A FTP-related module is being imported",
-  "description" : "B402: import_ftplib {#b402-import-ftplib}"
+  "description" : "B402: import\\_ftplib"
 }, {
   "patternId" : "B403",
   "title" : "Consider possible security implications associated with these modules.",
-  "description" : "B403: import_pickle {#b403-import-pickle}"
+  "description" : "B403: import\\_pickle"
 }, {
   "patternId" : "B404",
   "title" : "Consider possible security implications associated with these modules.",
-  "description" : "B404: import_subprocess {#b404-import-subprocess}"
+  "description" : "B404: import\\_subprocess"
 }, {
   "patternId" : "B405",
   "title" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "description" : "B405: import_xml_etree {#b405-import-xml-etree}"
+  "description" : "B405: import\\_xml\\_etree"
 }, {
   "patternId" : "B406",
   "title" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "description" : "B406: import_xml_sax {#b406-import-xml-sax}"
+  "description" : "B406: import\\_xml\\_sax"
 }, {
   "patternId" : "B407",
   "title" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "description" : "B407: import_xml_expat {#b407-import-xml-expat}"
+  "description" : "B407: import\\_xml\\_expat"
 }, {
   "patternId" : "B408",
   "title" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "description" : "B408: import_xml_minidom {#b408-import-xml-minidom}"
+  "description" : "B408: import\\_xml\\_minidom"
 }, {
   "patternId" : "B409",
   "title" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "description" : "B409: import_xml_pulldom {#b409-import-xml-pulldom}"
+  "description" : "B409: import\\_xml\\_pulldom"
 }, {
   "patternId" : "B410",
   "title" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "description" : "B410: import_lxml {#b410-import-lxml}"
+  "description" : "B410: import\\_lxml"
 }, {
   "patternId" : "B411",
   "title" : "XMLRPC is particularly dangerous as it is also concerned with communicating data over a network",
-  "description" : "B411: import_xmlrpclib {#b411-import-xmlrpclib}"
+  "description" : "B411: import\\_xmlrpclib"
 }, {
   "patternId" : "B412",
   "title" : "httpoxy is a set of vulnerabilities that affect application code running in CGI, or CGI-like environments",
-  "description" : "B412: import_httpoxy {#b412-import-httpoxy}"
+  "description" : "B412: import\\_httpoxy"
 }, {
   "patternId" : "B413",
   "title" : "pycrypto library is known to have publicly disclosed buffer overflow vulnerability https://github.com/dlitz/pycrypto/issues/176",
-  "description" : "B413: import_pycrypto {#b413-import-pycrypto}"
+  "description" : "B413: import\\_pycrypto"
 }, {
   "patternId" : "B414",
   "title" : "This import blacklist has been removed",
-  "description" : "B414: import_pycryptodome {#b414-import-pycryptodome}"
+  "description" : "B414: import\\_pycryptodome"
 }, {
   "patternId" : "B501",
   "title" : "request_with_no_cert_validation",
@@ -269,11 +269,11 @@
 }, {
   "patternId" : "B610",
   "title" : "django_extra_used",
-  "description" : "B610: django_extra_used"
+  "description" : "B610: django\\_extra\\_used"
 }, {
   "patternId" : "B611",
   "title" : "django_rawsql_used",
-  "description" : "B611: django_rawsql_used"
+  "description" : "B611: django\\_rawsql\\_used"
 }, {
   "patternId" : "B701",
   "title" : "jinja2_autoescape_false",
@@ -285,5 +285,5 @@
 }, {
   "patternId" : "B703",
   "title" : "django_mark_safe",
-  "description" : "B703: django_mark_safe"
+  "description" : "B703: django\\_mark\\_safe"
 } ]
