@@ -13,6 +13,8 @@ workflows:
       - codacy/sbt:
           name: generate_tool_documentation
           cmd: |
+            sudo apt-get update
+            sudo apt-get install pandoc
             ./scripts/generateDocs.sh
           persist_to_workspace: true
           requires:

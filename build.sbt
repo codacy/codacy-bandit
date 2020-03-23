@@ -13,8 +13,7 @@ lazy val `doc-generator` = project
       engineSeed +: Seq(
         "org.scala-lang.modules" %% "scala-xml" % "1.2.0",
         "org.ccil.cowan.tagsoup" % "tagsoup" % "1.2.1",
-        "com.github.pathikrit" %% "better-files" % "3.8.0",
-        "com.vladsch.flexmark" % "flexmark-all" % "0.50.44"
+        "com.github.pathikrit" %% "better-files" % "3.8.0"
       ),
     scalaVersion := "2.13.1",
     Compile / fork := true,
