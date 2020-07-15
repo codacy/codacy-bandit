@@ -1,5 +1,5 @@
 {
-  "name" : "Bandit",
+  "name" : "bandit",
   "version" : "1.6.2",
   "patterns" : [ {
     "patternId" : "B101",
