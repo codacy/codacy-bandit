@@ -46,7 +46,7 @@ object GenerateDocs {
     createMarkdownFiles(specificationsAndDescriptions)
     println("Markdown files generated...")
     val specification =
-      Tool.Specification(Tool.Name("Bandit"), Some(Tool.Version(version)), specifications.toSet)
+      Tool.Specification(Tool.Name("bandit"), Some(Tool.Version(version)), specifications.toSet)
     val specificationJson = Json.toJson(specification)
     val specificationJsonString = Json.prettyPrint(specificationJson)
     patternsJsonFile.writeText(specificationJsonString + System.lineSeparator)
