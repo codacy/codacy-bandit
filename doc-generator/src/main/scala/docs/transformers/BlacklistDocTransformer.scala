@@ -1,11 +1,12 @@
 package docs.transformers
 
 import docs.transformers.utils.{HtmlLoader, HtmlToMarkdownConverter}
+
 import scala.xml.Node
 import better.files._
 import com.codacy.plugins.api.results.Pattern
 import com.codacy.plugins.api.results.Result.Level
-import docs.SecuritySubcategories
+import docs.{DefaultPatterns, SecuritySubcategories}
 
 object BlacklistDocTransformer extends IPatternDocTransformer {
   val patternIdIntervalRegex = "(b[\\d]{3}-b[\\d]{3}).*".r
@@ -66,10 +67,11 @@ object BlacklistDocTransformer extends IPatternDocTransformer {
           Level.Warn,
           Pattern.Category.Security,
           SecuritySubcategories.get(patternIdCapitalized),
-          None,
-          None
+          Set.empty,
+          Set.empty,
+          enabled = DefaultPatterns.list.contains(patternIdCapitalized.value)
         )
-      description = Pattern.Description(patternIdCapitalized, title, descriptionText, None, None)
+      description = Pattern.Description(patternIdCapitalized, title, descriptionText, None, Set.empty)
     } yield (specification, description)
   }
 }

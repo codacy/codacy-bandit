@@ -3,7 +3,7 @@ import com.typesafe.sbt.packager.docker.{Cmd, ExecCmd}
 name := "codacy-bandit"
 scalaVersion := "2.13.1"
 
-val engineSeed = "com.codacy" %% "codacy-engine-scala-seed" % "4.0.0"
+val engineSeed = "com.codacy" %% "codacy-engine-scala-seed" % "5.0.0"
 
 libraryDependencies += engineSeed
 
