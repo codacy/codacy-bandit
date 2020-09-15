@@ -1,12 +1,13 @@
 package docs.transformers
 
 import docs.transformers.utils.{HtmlLoader, HtmlToMarkdownConverter}
+
 import scala.xml._
 import better.files._
 import com.codacy.plugins.api.results.Pattern.Category
 import com.codacy.plugins.api.results.Result.Level
 import com.codacy.plugins.api.results.Pattern
-import docs.SecuritySubcategories
+import docs.{DefaultPatterns, SecuritySubcategories}
 
 object PluginsDocTransformer extends IPatternDocTransformer {
 
@@ -63,9 +64,10 @@ object PluginsDocTransformer extends IPatternDocTransformer {
         Level.Warn,
         Category.Security,
         SecuritySubcategories.get(patternIdCapitalized),
-        None
+        Set.empty,
+        enabled = DefaultPatterns.list.contains(patternIdCapitalized.value)
       )
-      description = Pattern.Description(patternIdCapitalized, title, descriptionText, None, None)
+      description = Pattern.Description(patternIdCapitalized, title, descriptionText, None, Set.empty)
     } yield (specification, description)
   }
 }
