@@ -1,0 +1,11 @@
+# Ignore everything
+**
+
+# Allow files and directories
+!/requirements.txt
+!/target/universal/stage
+!/docs
+
+# Ignore unnecessary files inside allowed directories
+# This should go after the allowed directories
+**/.DS_Store

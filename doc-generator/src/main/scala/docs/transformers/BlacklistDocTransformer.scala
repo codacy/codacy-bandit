@@ -1,12 +1,13 @@
 package docs.transformers
 
-import docs.transformers.utils.{HtmlLoader, HtmlToMarkdownConverter}
-
-import scala.xml.Node
 import better.files._
 import com.codacy.plugins.api.results.Pattern
 import com.codacy.plugins.api.results.Result.Level
 import docs.{DefaultPatterns, SecuritySubcategories}
+import docs.transformers.utils.{HtmlLoader, HtmlToMarkdownConverter}
+
+import scala.annotation.nowarn
+import scala.xml.Node
 
 object BlacklistDocTransformer extends IPatternDocTransformer {
   val patternIdIntervalRegex = "(b[\\d]{3}-b[\\d]{3}).*".r
@@ -30,6 +31,7 @@ object BlacklistDocTransformer extends IPatternDocTransformer {
     * Example:
     * <div class="section" id="b304-b305-ciphers-and-modes">
     */
+  @nowarn
   private def patternIds(body: Node): Seq[String] = (body \@ "id") match {
     case patternIdIntervalRegex(c) =>
       val Array(firstPatternIdStr, lastPatternIdStr) = c.replace("b", "").split("-")

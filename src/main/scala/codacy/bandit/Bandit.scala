@@ -7,7 +7,6 @@ import com.codacy.tools.scala.seed.utils.ToolHelper._
 import com.codacy.tools.scala.seed.utils.{CommandRunner, FileHelper}
 import play.api.libs.json.Json
 
-import scala.util.matching.Regex
 import scala.util.{Success, Try}
 
 private case class FilesByVersion(python2: List[String], python3: List[String])
@@ -15,9 +14,6 @@ private case class FilesByVersion(python2: List[String], python3: List[String])
 private case class ClassifiedLine(filename: String, pythonVersion: Int)
 
 object Bandit extends Tool {
-
-  private val ClassifiedLineRegex: Regex = """(.*)###(\d)""".r
-
   override def apply(
       source: Source.Directory,
       conf: Option[List[Pattern.Definition]],
@@ -32,42 +28,7 @@ object Bandit extends Tool {
 
       lazy val enabledPatterns = fullConfig.map(_.map(_.patternId).to(Set))
 
-      val filesByVersion = partitionFilesByPythonVersion(filesToLint)
-
-      runTool(source, "python", filesByVersion.python2, enabledPatterns) ++
-        runTool(source, "python3", filesByVersion.python3, enabledPatterns)
-    }
-  }
-
-  private def toClassifiedLine(line: String): ClassifiedLine = {
-    line match {
-      case ClassifiedLineRegex(filename, pythonVersion) =>
-        ClassifiedLine(filename, pythonVersion.toInt)
-    }
-  }
-
-  private def partitionFilesByPythonVersion(filesToLint: List[String]): FilesByVersion = {
-    /*
-     * The classifyScript.py will return one line per file in fileName###PythonVersion format
-     * Example: B104.py###2
-     */
-    val command = List("python", "classifyScript.py") ++ filesToLint
-
-    CommandRunner.exec(command) match {
-      case Right(res) if res.exitCode == 0 =>
-        val (python2, python3) =
-          res.stdout.map(toClassifiedLine).partition(_.pythonVersion == 2)
-        FilesByVersion(python2.map(_.filename), python3.map(_.filename))
-
-      case Right(resultFromTool) if resultFromTool.exitCode > 0 =>
-        throw new scala.Exception(
-          s"[ClassifyScript]\n" +
-            s"Exit code: ${resultFromTool.exitCode}\n" +
-            s"stdout: ${resultFromTool.stdout}\n" +
-            s"sterr: ${resultFromTool.stdout}\n"
-        )
-      case Left(failure) =>
-        throw failure
+      runTool(source, "python3", filesToLint, enabledPatterns)
     }
   }
 
@@ -112,6 +73,7 @@ object Bandit extends Tool {
           )
         case Left(failure) =>
           throw failure
+        case Right(_) => throw new IllegalStateException
       }
     }
   }
