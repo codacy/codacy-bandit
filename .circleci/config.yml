@@ -1,8 +1,8 @@
 version: 2.1
 
 orbs:
-  codacy: codacy/base@2.9.1
-  codacy_plugins_test: codacy/plugins-test@0.14.5
+  codacy: codacy/base@5.1.3
+  codacy_plugins_test: codacy/plugins-test@0.14.6
 
 workflows:
   version: 2
@@ -22,13 +22,13 @@ workflows:
       - codacy/sbt:
           name: publish_docker_local
           cmd: |
-            docker build -t codacy-bandit-base .
             sbt "set scalafmtUseIvy in ThisBuild := false;
                  scalafmt::test;
                  test:scalafmt::test;
                  sbt:scalafmt::test;
                  set version in Docker := \"latest\";
-                 docker:publishLocal"
+                 universal:stage"
+            docker build -t $CIRCLE_PROJECT_REPONAME .
             docker save --output docker-image.tar $CIRCLE_PROJECT_REPONAME:latest
           persist_to_workspace: true
           requires:

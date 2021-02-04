@@ -13,6 +13,6 @@ done)
 
 BASE_DIR="bandit"
 
-docker run -v $(pwd):/src -w /src python bash scripts/generatePythonDocs.sh $VERSION $BASE_DIR
+docker run -v "$PWD":/src -w /src python:3.8 bash scripts/generatePythonDocs.sh "$VERSION" "$BASE_DIR"
 
-sbt "doc-generator/run $VERSION $(pwd)/$BASE_DIR"
+sbt "doc-generator/run $VERSION $PWD/$BASE_DIR"

@@ -1,15 +1,13 @@
-FROM alpine:3.11
+FROM alpine:3.13
 
-RUN apk --no-cache add bash wget ca-certificates git && apk add --update --no-cache python python3 openjdk8-jre
-RUN wget "https://bootstrap.pypa.io/get-pip.py"
-RUN python get-pip.py
-RUN python3 get-pip.py
+COPY requirements.txt requirements.txt
+RUN apk add --no-cache --update bash python3 py3-pip openjdk11-jre && \
+    python3 -m pip install --upgrade --ignore-installed --no-cache-dir -r requirements.txt
 
-ADD requirements.txt requirements.txt
-RUN python -m pip install --upgrade --ignore-installed --no-cache-dir -r requirements.txt
-RUN python3 -m pip install --upgrade --ignore-installed --no-cache-dir -r requirements.txt
-
-RUN python -m pip uninstall -y pip
-RUN python3 -m pip uninstall -y pip
-RUN apk del wget ca-certificates git
-RUN rm -rf /tmp/* && rm -rf /var/cache/apk/*
+COPY docs /docs
+RUN adduser --uid 2004 --disabled-password --gecos "" docker
+COPY target/universal/stage/ /workdir/
+RUN chmod +x /workdir/bin/codacy-bandit
+USER docker
+WORKDIR /workdir
+ENTRYPOINT ["bin/codacy-bandit"]

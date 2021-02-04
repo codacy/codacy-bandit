@@ -8,7 +8,7 @@ import play.api.libs.json.Json
 import com.codacy.plugins.api._
 
 object GenerateDocs {
-  val docsRoot = ".." / "src" / "main" / "resources" / "docs"
+  val docsRoot = ".." / "docs"
   val descriptionsRoot = docsRoot / "description"
   val descriptionsJsonFile = docsRoot / "description" / "description.json"
   val patternsJsonFile = docsRoot / "patterns.json"
