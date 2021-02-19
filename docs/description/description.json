@@ -170,7 +170,7 @@
   "parameters" : [ ]
 }, {
   "patternId" : "B322",
-  "title" : "The input method in Python 2 will read from standard input, evaluate and run the resulting string as python source code",
+  "title" : "The check for this call has been removed.",
   "description" : "B322: input",
   "parameters" : [ ]
 }, {
@@ -301,7 +301,7 @@
 }, {
   "patternId" : "B603",
   "title" : "subprocess_without_shell_equals_true",
-  "description" : "B603: Test for use of subprocess with shell equals true**",
+  "description" : "B603: Test for use of subprocess without shell equals true**",
   "parameters" : [ ]
 }, {
   "patternId" : "B604",
@@ -336,12 +336,12 @@
 }, {
   "patternId" : "B610",
   "title" : "django_extra_used",
-  "description" : "B610: django\\_extra\\_used",
+  "description" : "B610: Potential SQL injection on extra function**",
   "parameters" : [ ]
 }, {
   "patternId" : "B611",
   "title" : "django_rawsql_used",
-  "description" : "B611: django\\_rawsql\\_used",
+  "description" : "B611: Potential SQL injection on RawSQL function**",
   "parameters" : [ ]
 }, {
   "patternId" : "B701",
@@ -356,6 +356,6 @@
 }, {
   "patternId" : "B703",
   "title" : "django_mark_safe",
-  "description" : "B703: django\\_mark\\_safe",
+  "description" : "B703: Potential XSS on mark\\_safe function**",
   "parameters" : [ ]
 } ]

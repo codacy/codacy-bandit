@@ -60,7 +60,7 @@ object GenerateDocs {
                 _.value
                   .split(System.lineSeparator)
                   .headOption // Some descriptions start with ugly characters
-                  .map(d => Pattern.DescriptionText(d.dropWhile(_ != 'B')))
+                  .map(d => Pattern.DescriptionText(d.dropWhile(_ != 'B').takeWhile(_ != '<')))
               )
         )
       )
