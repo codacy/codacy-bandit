@@ -29,6 +29,20 @@ object PluginsDocTransformer extends IPatternDocTransformer {
     } yield (Pattern.Id(patternId), Pattern.Title(title))
   }
 
+  private def stripSeverity(head: NodeSeq): Level.Value = {
+    val text = (for {
+      highlightDivs <- head \\ "div" if (highlightDivs \@ "class").startsWith("highlight")
+      node <- highlightDivs \\ "pre" if node.text.contains("Severity: ")
+    } yield node.text).headOption
+
+    val severityRegex = "(\n|.)*Severity: (High|Medium|Low)(\n|.)*".r
+    text.getOrElse("") match {
+      case severityRegex(_, "High", _) => Level.Err
+      case severityRegex(_, "Medium" | "Low", _) => Level.Warn
+      case _ => Level.Warn
+    }
+  }
+
   /** Find the html object with the details of the pattern.
     * Usually in <body><dd> or <body><div id="b000">
     */
@@ -59,9 +73,10 @@ object PluginsDocTransformer extends IPatternDocTransformer {
       patternIdCapitalized = Pattern.Id(patternId.value.capitalize)
       body = getBody(htmlPluginsDocs, patternId)
       descriptionText = Some(Pattern.DescriptionText(HtmlToMarkdownConverter.convert(body.toString())))
+      severity = stripSeverity(htmlPluginsDocs)
       specification = Pattern.Specification(
         patternIdCapitalized,
-        Level.Warn,
+        severity,
         Category.Security,
         SecuritySubcategories.get(patternIdCapitalized),
         Set.empty,

@@ -1,6 +1,6 @@
 {
   "name" : "bandit",
-  "version" : "1.6.2",
+  "version" : "1.7.0",
   "patterns" : [ {
     "patternId" : "B101",
     "level" : "Warning",
@@ -18,7 +18,7 @@
     "enabled" : true
   }, {
     "patternId" : "B103",
-    "level" : "Warning",
+    "level" : "Error",
     "category" : "Security",
     "subcategory" : "FileAccess",
     "parameters" : [ ],
@@ -95,7 +95,7 @@
     "enabled" : true
   }, {
     "patternId" : "B201",
-    "level" : "Warning",
+    "level" : "Error",
     "category" : "Security",
     "parameters" : [ ],
     "languages" : [ ],
@@ -400,7 +400,7 @@
     "enabled" : false
   }, {
     "patternId" : "B501",
-    "level" : "Warning",
+    "level" : "Error",
     "category" : "Security",
     "subcategory" : "SSL",
     "parameters" : [ ],
@@ -408,7 +408,7 @@
     "enabled" : true
   }, {
     "patternId" : "B502",
-    "level" : "Warning",
+    "level" : "Error",
     "category" : "Security",
     "subcategory" : "SSL",
     "parameters" : [ ],
@@ -432,7 +432,7 @@
     "enabled" : true
   }, {
     "patternId" : "B505",
-    "level" : "Warning",
+    "level" : "Error",
     "category" : "Security",
     "subcategory" : "Cryptography",
     "parameters" : [ ],
@@ -448,7 +448,7 @@
     "enabled" : true
   }, {
     "patternId" : "B507",
-    "level" : "Warning",
+    "level" : "Error",
     "category" : "Security",
     "parameters" : [ ],
     "languages" : [ ],
@@ -463,7 +463,7 @@
     "enabled" : true
   }, {
     "patternId" : "B602",
-    "level" : "Warning",
+    "level" : "Error",
     "category" : "Security",
     "subcategory" : "CommandInjection",
     "parameters" : [ ],
@@ -541,7 +541,7 @@
     "enabled" : false
   }, {
     "patternId" : "B701",
-    "level" : "Warning",
+    "level" : "Error",
     "category" : "Security",
     "subcategory" : "XSS",
     "parameters" : [ ],
