@@ -4,7 +4,7 @@ import better.files._
 import com.codacy.plugins.api.results.Pattern
 import com.codacy.plugins.api.results.Result.Level
 import docs.{DefaultPatterns, SecuritySubcategories}
-import docs.transformers.utils.{HtmlLoader, HtmlToMarkdownConverter}
+import docs.transformers.utils.HtmlLoader
 
 import scala.annotation.nowarn
 import scala.xml.Node
@@ -61,7 +61,8 @@ object BlacklistDocTransformer extends IPatternDocTransformer {
       body <- patternsDocumentationBody(htmlPluginsDocs)
       patternId <- patternIds(body)
       patternIdCapitalized = Pattern.Id(patternId.capitalize)
-      descriptionText = Some(Pattern.DescriptionText(HtmlToMarkdownConverter.convert(body.toString())))
+      descriptionText = Some(Pattern.DescriptionText(body.head.text))
+      html = body.toString
       title = Pattern.Title(getTitle(body, patternId))
       specification = Pattern
         .Specification(
@@ -74,6 +75,6 @@ object BlacklistDocTransformer extends IPatternDocTransformer {
           enabled = DefaultPatterns.list.contains(patternIdCapitalized.value)
         )
       description = Pattern.Description(patternIdCapitalized, title, descriptionText, None, Set.empty)
-    } yield (specification, description)
+    } yield (specification, description, html)
   }
 }
