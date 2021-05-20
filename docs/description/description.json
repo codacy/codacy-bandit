@@ -21,17 +21,17 @@
 }, {
   "patternId" : "B105",
   "title" : "hardcoded_password_string",
-  "description" : "B105: Test for use of hard-coded password strings**",
+  "description" : "B105: Test for use of hard-coded password strings",
   "parameters" : [ ]
 }, {
   "patternId" : "B106",
   "title" : "hardcoded_password_funcarg",
-  "description" : "B106: Test for use of hard-coded password function arguments**",
+  "description" : "B106: Test for use of hard-coded password function arguments",
   "parameters" : [ ]
 }, {
   "patternId" : "B107",
   "title" : "hardcoded_password_default",
-  "description" : "B107: Test for use of hard-coded password argument defaults**",
+  "description" : "B107: Test for use of hard-coded password argument defaults",
   "parameters" : [ ]
 }, {
   "patternId" : "B108",
@@ -91,7 +91,7 @@
 }, {
   "patternId" : "B306",
   "title" : "Use of insecure and deprecated function (mktemp).",
-  "description" : "B306: mktemp\\_q",
+  "description" : "B306: mktemp_q",
   "parameters" : [ ]
 }, {
   "patternId" : "B307",
@@ -101,7 +101,7 @@
 }, {
   "patternId" : "B308",
   "title" : "Use of mark_safe() may expose cross-site scripting vulnerabilities and should be reviewed.",
-  "description" : "B308: mark\\_safe",
+  "description" : "B308: mark_safe",
   "parameters" : [ ]
 }, {
   "patternId" : "B309",
@@ -111,7 +111,7 @@
 }, {
   "patternId" : "B310",
   "title" : "Audit url open for permitted schemes",
-  "description" : "B310: urllib\\_urlopen",
+  "description" : "B310: urllib_urlopen",
   "parameters" : [ ]
 }, {
   "patternId" : "B311",
@@ -176,7 +176,7 @@
 }, {
   "patternId" : "B323",
   "title" : "By default, Python will create a secure, verified ssl context for use in such classes as HTTPSConnection",
-  "description" : "B323: unverified\\_context",
+  "description" : "B323: unverified_context",
   "parameters" : [ ]
 }, {
   "patternId" : "B325",
@@ -186,72 +186,72 @@
 }, {
   "patternId" : "B401",
   "title" : "A telnet-related module is being imported",
-  "description" : "B401: import\\_telnetlib",
+  "description" : "B401: import_telnetlib",
   "parameters" : [ ]
 }, {
   "patternId" : "B402",
   "title" : "A FTP-related module is being imported",
-  "description" : "B402: import\\_ftplib",
+  "description" : "B402: import_ftplib",
   "parameters" : [ ]
 }, {
   "patternId" : "B403",
   "title" : "Consider possible security implications associated with these modules.",
-  "description" : "B403: import\\_pickle",
+  "description" : "B403: import_pickle",
   "parameters" : [ ]
 }, {
   "patternId" : "B404",
   "title" : "Consider possible security implications associated with these modules.",
-  "description" : "B404: import\\_subprocess",
+  "description" : "B404: import_subprocess",
   "parameters" : [ ]
 }, {
   "patternId" : "B405",
   "title" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "description" : "B405: import\\_xml\\_etree",
+  "description" : "B405: import_xml_etree",
   "parameters" : [ ]
 }, {
   "patternId" : "B406",
   "title" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "description" : "B406: import\\_xml\\_sax",
+  "description" : "B406: import_xml_sax",
   "parameters" : [ ]
 }, {
   "patternId" : "B407",
   "title" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "description" : "B407: import\\_xml\\_expat",
+  "description" : "B407: import_xml_expat",
   "parameters" : [ ]
 }, {
   "patternId" : "B408",
   "title" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "description" : "B408: import\\_xml\\_minidom",
+  "description" : "B408: import_xml_minidom",
   "parameters" : [ ]
 }, {
   "patternId" : "B409",
   "title" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "description" : "B409: import\\_xml\\_pulldom",
+  "description" : "B409: import_xml_pulldom",
   "parameters" : [ ]
 }, {
   "patternId" : "B410",
   "title" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "description" : "B410: import\\_lxml",
+  "description" : "B410: import_lxml",
   "parameters" : [ ]
 }, {
   "patternId" : "B411",
   "title" : "XMLRPC is particularly dangerous as it is also concerned with communicating data over a network",
-  "description" : "B411: import\\_xmlrpclib",
+  "description" : "B411: import_xmlrpclib",
   "parameters" : [ ]
 }, {
   "patternId" : "B412",
   "title" : "httpoxy is a set of vulnerabilities that affect application code running in CGI, or CGI-like environments",
-  "description" : "B412: import\\_httpoxy",
+  "description" : "B412: import_httpoxy",
   "parameters" : [ ]
 }, {
   "patternId" : "B413",
   "title" : "pycrypto library is known to have publicly disclosed buffer overflow vulnerability https://github.com/dlitz/pycrypto/issues/176",
-  "description" : "B413: import\\_pycrypto",
+  "description" : "B413: import_pycrypto",
   "parameters" : [ ]
 }, {
   "patternId" : "B414",
   "title" : "This import blacklist has been removed",
-  "description" : "B414: import\\_pycryptodome",
+  "description" : "B414: import_pycryptodome",
   "parameters" : [ ]
 }, {
   "patternId" : "B501",
@@ -261,17 +261,17 @@
 }, {
   "patternId" : "B502",
   "title" : "ssl_with_bad_version",
-  "description" : "B502: Test for SSL use with bad version used**",
+  "description" : "B502: Test for SSL use with bad version used",
   "parameters" : [ ]
 }, {
   "patternId" : "B503",
   "title" : "ssl_with_bad_defaults",
-  "description" : "B503: Test for SSL use with bad defaults specified**",
+  "description" : "B503: Test for SSL use with bad defaults specified",
   "parameters" : [ ]
 }, {
   "patternId" : "B504",
   "title" : "ssl_with_no_version",
-  "description" : "B504: Test for SSL use with no version specified**",
+  "description" : "B504: Test for SSL use with no version specified",
   "parameters" : [ ]
 }, {
   "patternId" : "B505",
@@ -296,32 +296,32 @@
 }, {
   "patternId" : "B602",
   "title" : "subprocess_popen_with_shell_equals_true",
-  "description" : "B602: Test for use of popen with shell equals true**",
+  "description" : "B602: Test for use of popen with shell equals true",
   "parameters" : [ ]
 }, {
   "patternId" : "B603",
   "title" : "subprocess_without_shell_equals_true",
-  "description" : "B603: Test for use of subprocess without shell equals true**",
+  "description" : "B603: Test for use of subprocess without shell equals true",
   "parameters" : [ ]
 }, {
   "patternId" : "B604",
   "title" : "any_other_function_with_shell_equals_true",
-  "description" : "B604: Test for any function with shell equals true**",
+  "description" : "B604: Test for any function with shell equals true",
   "parameters" : [ ]
 }, {
   "patternId" : "B605",
   "title" : "start_process_with_a_shell",
-  "description" : "B605: Test for starting a process with a shell**",
+  "description" : "B605: Test for starting a process with a shell",
   "parameters" : [ ]
 }, {
   "patternId" : "B606",
   "title" : "start_process_with_no_shell",
-  "description" : "B606: Test for starting a process with no shell**",
+  "description" : "B606: Test for starting a process with no shell",
   "parameters" : [ ]
 }, {
   "patternId" : "B607",
   "title" : "start_process_with_partial_path",
-  "description" : "B607: Test for starting a process with a partial path**",
+  "description" : "B607: Test for starting a process with a partial path",
   "parameters" : [ ]
 }, {
   "patternId" : "B608",
@@ -336,12 +336,12 @@
 }, {
   "patternId" : "B610",
   "title" : "django_extra_used",
-  "description" : "B610: Potential SQL injection on extra function**",
+  "description" : "B610: Potential SQL injection on extra function",
   "parameters" : [ ]
 }, {
   "patternId" : "B611",
   "title" : "django_rawsql_used",
-  "description" : "B611: Potential SQL injection on RawSQL function**",
+  "description" : "B611: Potential SQL injection on RawSQL function",
   "parameters" : [ ]
 }, {
   "patternId" : "B701",
@@ -356,6 +356,6 @@
 }, {
   "patternId" : "B703",
   "title" : "django_mark_safe",
-  "description" : "B703: Potential XSS on mark\\_safe function**",
+  "description" : "B703: Potential XSS on mark_safe function",
   "parameters" : [ ]
 } ]

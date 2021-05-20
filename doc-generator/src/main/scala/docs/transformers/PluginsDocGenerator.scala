@@ -1,6 +1,6 @@
 package docs.transformers
 
-import docs.transformers.utils.{HtmlLoader, HtmlToMarkdownConverter}
+import docs.transformers.utils.HtmlLoader
 
 import scala.xml._
 import better.files._
@@ -72,7 +72,8 @@ object PluginsDocTransformer extends IPatternDocTransformer {
       (patternId, title) <- stripPluginsTitle(head)
       patternIdCapitalized = Pattern.Id(patternId.value.capitalize)
       body = getBody(htmlPluginsDocs, patternId)
-      descriptionText = Some(Pattern.DescriptionText(HtmlToMarkdownConverter.convert(body.toString())))
+      descriptionText = Some(Pattern.DescriptionText(body.head.text))
+      html = body.toString
       severity = stripSeverity(htmlPluginsDocs)
       specification = Pattern.Specification(
         patternIdCapitalized,
@@ -83,6 +84,6 @@ object PluginsDocTransformer extends IPatternDocTransformer {
         enabled = DefaultPatterns.list.contains(patternIdCapitalized.value)
       )
       description = Pattern.Description(patternIdCapitalized, title, descriptionText, None, Set.empty)
-    } yield (specification, description)
+    } yield (specification, description, html)
   }
 }

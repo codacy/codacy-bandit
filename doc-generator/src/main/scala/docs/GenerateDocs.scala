@@ -2,6 +2,7 @@ package docs
 
 import better.files._
 import docs.transformers._
+import docs.transformers.utils.HtmlToMarkdownConverter
 import com.codacy.plugins.api.results.Pattern
 import com.codacy.plugins.api.results.Tool
 import play.api.libs.json.Json
@@ -57,7 +58,7 @@ object GenerateDocs {
           d.copy(
             description = d.description
               .flatMap(
-                _.value
+                _.value.trim
                   .split(System.lineSeparator)
                   .headOption // Some descriptions start with ugly characters
                   .map(d => Pattern.DescriptionText(d.dropWhile(_ != 'B').takeWhile(_ != '<')))
@@ -70,11 +71,11 @@ object GenerateDocs {
     println("Description json files generated...")
   }
 
-  private def createMarkdownFiles(allPatterns: Seq[(Pattern.Specification, Pattern.Description)]) =
+  private def createMarkdownFiles(allPatterns: Seq[(Pattern.Specification, Pattern.Description, String)]) =
     for {
-      (specification, description) <- allPatterns
+      (specification, description, html) <- allPatterns
       patternDescriptionTextFile = descriptionsRoot / s"${specification.patternId}.md"
-      descriptionText <- description.description
-    } patternDescriptionTextFile.createFileIfNotExists().writeText(descriptionText.value)
+      markdown = HtmlToMarkdownConverter.convert(html)
+    } patternDescriptionTextFile.createFileIfNotExists().writeText(markdown)
 
 }
