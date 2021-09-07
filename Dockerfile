@@ -1,7 +1,9 @@
-FROM alpine:3.13
+# Until this issue is fixed https://github.com/PyCQA/bandit/issues/658
+# we cannot bump python's verion
+FROM python:3.7-alpine3.13
 
 COPY requirements.txt requirements.txt
-RUN apk add --no-cache --update bash python3 py3-pip openjdk11-jre && \
+RUN apk add --no-cache --update bash openjdk11-jre && \
     python3 -m pip install --upgrade --ignore-installed --no-cache-dir -r requirements.txt
 
 COPY docs /docs
