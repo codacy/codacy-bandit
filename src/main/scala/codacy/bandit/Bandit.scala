@@ -9,10 +9,6 @@ import play.api.libs.json.Json
 
 import scala.util.{Success, Try}
 
-private case class FilesByVersion(python2: List[String], python3: List[String])
-
-private case class ClassifiedLine(filename: String, pythonVersion: Int)
-
 object Bandit extends Tool {
   override def apply(
       source: Source.Directory,
