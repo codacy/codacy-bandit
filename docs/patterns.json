@@ -149,13 +149,6 @@
     "languages" : [ ],
     "enabled" : true
   }, {
-    "patternId" : "B507",
-    "level" : "Error",
-    "category" : "Security",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : false
-  }, {
     "patternId" : "B508",
     "level" : "Warning",
     "category" : "Security",

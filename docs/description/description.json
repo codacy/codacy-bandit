@@ -94,11 +94,6 @@
   "description" : "Buffer()",
   "parameters" : [ ]
 }, {
-  "patternId" : "B507",
-  "title" : "ssh_no_host_key_verification",
-  "description" : "Buffer()",
-  "parameters" : [ ]
-}, {
   "patternId" : "B508",
   "title" : "snmp_insecure_version",
   "description" : "B508: Checking for insecure SNMP versions",
