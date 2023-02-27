@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -ex
 
 VERSION=$(cat requirements.txt | while read line; do
   version=$(echo $line | sed "s/^bandit==\(.*\)$/\1/")

@@ -72,7 +72,7 @@ object PluginsDocTransformer extends IPatternDocTransformer {
       (patternId, title) <- stripPluginsTitle(head)
       patternIdCapitalized = Pattern.Id(patternId.value.capitalize)
       body = getBody(htmlPluginsDocs, patternId)
-      descriptionText = Some(Pattern.DescriptionText(body.head.text))
+      descriptionText = Some(Pattern.DescriptionText(body.headOption.getOrElse(new NodeBuffer).toString))
       html = body.toString
       severity = stripSeverity(htmlPluginsDocs)
       specification = Pattern.Specification(
