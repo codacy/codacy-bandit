@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <checkstyle version="4.3">
     <file name="B104.py"></file>
-    <file name="B304.py">
-        <error source="B304" line="21" message="Use of insecure cipher Crypto.Cipher.ARC2.new. Replace with a known secure cipher such as AES." severity="warning" />
-        <error source="B304" line="28" message="Use of insecure cipher Crypto.Cipher.ARC4.new. Replace with a known secure cipher such as AES." severity="warning" />
-        <error source="B304" line="35" message="Use of insecure cipher Crypto.Cipher.Blowfish.new. Replace with a known secure cipher such as AES." severity="warning" />
-        <error source="B304" line="46" message="Use of insecure cipher Crypto.Cipher.DES.new. Replace with a known secure cipher such as AES." severity="warning" />
-        <error source="B304" line="52" message="Use of insecure cipher Crypto.Cipher.XOR.new. Replace with a known secure cipher such as AES." severity="warning" />
-        <error source="B304" line="57" message="Use of insecure cipher cryptography.hazmat.primitives.ciphers.algorithms.ARC4. Replace with a known secure cipher such as AES." severity="warning" />
-        <error source="B304" line="62" message="Use of insecure cipher cryptography.hazmat.primitives.ciphers.algorithms.Blowfish. Replace with a known secure cipher such as AES." severity="warning" />
-        <error source="B304" line="67" message="Use of insecure cipher cryptography.hazmat.primitives.ciphers.algorithms.IDEA. Replace with a known secure cipher such as AES." severity="warning" />
-    </file>
+    <file name="B304.py"></file>
 </checkstyle>
