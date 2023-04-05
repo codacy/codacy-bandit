@@ -1,6 +1,6 @@
 # Until this issue is fixed https://github.com/PyCQA/bandit/issues/658
 # we cannot bump python's verion
-FROM python:3.7-alpine3.13
+FROM python:3.7-alpine3.17
 
 COPY requirements.txt requirements.txt
 RUN apk add --no-cache --update bash openjdk11-jre && \
