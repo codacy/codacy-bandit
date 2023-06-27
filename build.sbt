@@ -1,17 +1,18 @@
 name := "codacy-bandit"
-ThisBuild / scalaVersion := "2.13.7"
+ThisBuild / scalaVersion := "2.13.11"
 
-val engineSeed = "com.codacy" %% "codacy-engine-scala-seed" % "5.0.3"
+val engineSeed = "com.codacy" %% "codacy-engine-scala-seed" % "6.1.0"
+val betterFiles = "com.github.pathikrit" %% "better-files" % "3.9.2"
 
-libraryDependencies += engineSeed
+libraryDependencies ++= Seq(engineSeed, betterFiles)
 
 lazy val `doc-generator` = project
   .settings(
     libraryDependencies ++= Seq(
       engineSeed,
-      "org.scala-lang.modules" %% "scala-xml" % "1.2.0",
-      "org.ccil.cowan.tagsoup" % "tagsoup" % "1.2.1",
-      "com.github.pathikrit" %% "better-files" % "3.8.0"
+      betterFiles,
+      "org.scala-lang.modules" %% "scala-xml" % "2.1.0",
+      "org.ccil.cowan.tagsoup" % "tagsoup" % "1.2.1"
     ),
     Compile / fork := true
   )

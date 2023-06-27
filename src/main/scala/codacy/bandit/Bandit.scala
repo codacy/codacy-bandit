@@ -1,5 +1,6 @@
 package codacy.bandit
 
+import better.files._
 import com.codacy.plugins.api.results.Result.Issue
 import com.codacy.plugins.api.results.{Pattern, Result, Tool}
 import com.codacy.plugins.api.{Options, Source}
@@ -37,7 +38,7 @@ object Bandit extends Tool {
       enabledPatterns: Option[Set[Pattern.Id]]
   ): List[Result] = {
     lazy val nativeConfigFile = nativeConfigFileNames
-      .map(filename => Try(better.files.File(rootPath.path) / filename))
+      .map(filename => Try(File(rootPath.path) / filename))
       .collectFirst {
         case Success(file) if file.isRegularFile => file.toJava.getAbsolutePath
       }
@@ -76,8 +77,8 @@ object Bandit extends Tool {
 
   private def resultFilter(result: Result, patternIds: Option[Set[Pattern.Id]]): Boolean = {
     result match {
-      case Issue(_, _, id, _) =>
-        patternIds.forall(_.contains(id))
+      case issue: Issue =>
+        patternIds.forall(_.contains(issue.patternId))
       case _ =>
         true
     }
