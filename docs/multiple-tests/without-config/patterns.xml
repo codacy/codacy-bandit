@@ -4,5 +4,4 @@
     <module name="BeforeExecutionExclusionFileFilter">
         <property name="fileNamePattern" value="bandit\.yml" />
     </module>
-    <module name="B304" />
 </module>
