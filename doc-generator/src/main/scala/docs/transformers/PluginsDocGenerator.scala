@@ -73,7 +73,6 @@ object PluginsDocTransformer extends IPatternDocTransformer {
       patternIdCapitalized = Pattern.Id(patternId.value.capitalize)
       body = getBody(htmlPluginsDocs, patternId)
       descriptionText = Some(Pattern.DescriptionText(body.head.text))
-      //descriptionText = Some(Pattern.DescriptionText(body.headOption.map(_.text).getOrElse("")))
       html = body.toString
       severity = stripSeverity(htmlPluginsDocs)
       specification = Pattern.Specification(
