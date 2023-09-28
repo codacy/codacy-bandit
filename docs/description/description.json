@@ -75,198 +75,198 @@
   "parameters" : [ ]
 }, {
   "patternId" : "B301",
-  "title" : "B301: pickle",
-  "description" : "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+  "title" : "pickle",
+  "description" : "B301: Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
   "parameters" : [ ]
 }, {
   "patternId" : "B302",
-  "title" : "B302: marshal",
-  "description" : "Deserialization with the marshal module is possibly dangerous.",
+  "title" : "marshal",
+  "description" : "B302: Deserialization with the marshal module is possibly dangerous.",
   "parameters" : [ ]
 }, {
   "patternId" : "B303",
-  "title" : "B303: md5",
-  "description" : "Use of insecure MD2, MD4, MD5, or SHA1 hash function.",
+  "title" : "md5",
+  "description" : "B303: Use of insecure MD2, MD4, MD5, or SHA1 hash function.",
   "parameters" : [ ]
 }, {
   "patternId" : "B304",
   "title" : "B304: ciphers and modes",
-  "description" : "Use of insecure cipher or cipher mode",
+  "description" : "B304: Use of insecure cipher or cipher mode",
   "parameters" : [ ]
 }, {
   "patternId" : "B305",
   "title" : "B305: ciphers and modes",
-  "description" : "Use of insecure cipher or cipher mode",
+  "description" : "B305: Use of insecure cipher or cipher mode",
   "parameters" : [ ]
 }, {
   "patternId" : "B306",
-  "title" : "B306: mktemp_q",
-  "description" : "Use of insecure and deprecated function (mktemp).",
+  "title" : "mktemp_q",
+  "description" : "B306: Use of insecure and deprecated function (mktemp).",
   "parameters" : [ ]
 }, {
   "patternId" : "B307",
-  "title" : "B307: eval",
-  "description" : "Use of possibly insecure function - consider using safer ast.literal_eval.",
+  "title" : "eval",
+  "description" : "B307: Use of possibly insecure function - consider using safer ast.literal_eval.",
   "parameters" : [ ]
 }, {
   "patternId" : "B308",
-  "title" : "B308: mark_safe",
-  "description" : "Use of mark_safe() may expose cross-site scripting vulnerabilities and should be reviewed.",
+  "title" : "mark_safe",
+  "description" : "B308: Use of mark_safe() may expose cross-site scripting vulnerabilities and should be reviewed.",
   "parameters" : [ ]
 }, {
   "patternId" : "B309",
-  "title" : "B309: httpsconnection",
-  "description" : "Use of HTTPSConnection on older versions of Python prior to 2.7.9 and 3.4.3 do not provide security, see https://wiki.openstack.org/wiki/OSSN/OSSN-0033",
+  "title" : "httpsconnection",
+  "description" : "B309: Use of HTTPSConnection on older versions of Python prior to 2.7.9 and 3.4.3 do not provide security, see https://wiki.openstack.org/wiki/OSSN/OSSN-0033",
   "parameters" : [ ]
 }, {
   "patternId" : "B310",
-  "title" : "B310: urllib_urlopen",
-  "description" : "Audit url open for permitted schemes",
+  "title" : "urllib_urlopen",
+  "description" : "B310: Audit url open for permitted schemes",
   "parameters" : [ ]
 }, {
   "patternId" : "B311",
-  "title" : "B311: random",
-  "description" : "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+  "title" : "random",
+  "description" : "B311: Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
   "parameters" : [ ]
 }, {
   "patternId" : "B312",
-  "title" : "B312: telnetlib",
-  "description" : "Telnet-related functions are being called",
+  "title" : "telnetlib",
+  "description" : "B312: Telnet-related functions are being called",
   "parameters" : [ ]
 }, {
   "patternId" : "B313",
-  "title" : "B313 - B320: XML",
-  "description" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
+  "title" : "B313: XML",
+  "description" : "B313: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
   "parameters" : [ ]
 }, {
   "patternId" : "B314",
-  "title" : "B313 - B320: XML",
-  "description" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
+  "title" : "B314: XML",
+  "description" : "B314: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
   "parameters" : [ ]
 }, {
   "patternId" : "B315",
-  "title" : "B313 - B320: XML",
-  "description" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
+  "title" : "B315: XML",
+  "description" : "B315: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
   "parameters" : [ ]
 }, {
   "patternId" : "B316",
-  "title" : "B313 - B320: XML",
-  "description" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
+  "title" : "B316: XML",
+  "description" : "B316: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
   "parameters" : [ ]
 }, {
   "patternId" : "B317",
-  "title" : "B313 - B320: XML",
-  "description" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
+  "title" : "B317: XML",
+  "description" : "B317: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
   "parameters" : [ ]
 }, {
   "patternId" : "B318",
-  "title" : "B313 - B320: XML",
-  "description" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
+  "title" : "B318: XML",
+  "description" : "B318: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
   "parameters" : [ ]
 }, {
   "patternId" : "B319",
-  "title" : "B313 - B320: XML",
-  "description" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
+  "title" : "B319: XML",
+  "description" : "B319: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
   "parameters" : [ ]
 }, {
   "patternId" : "B320",
-  "title" : "B313 - B320: XML",
-  "description" : "Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
+  "title" : "B320: XML",
+  "description" : "B320: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
   "parameters" : [ ]
 }, {
   "patternId" : "B321",
-  "title" : "B321: ftplib",
-  "description" : "FTP-related functions are being called",
+  "title" : "ftplib",
+  "description" : "B321: FTP-related functions are being called",
   "parameters" : [ ]
 }, {
   "patternId" : "B322",
-  "title" : "B322: input",
-  "description" : "The check for this call has been removed.",
+  "title" : "input",
+  "description" : "B322: The check for this call has been removed.",
   "parameters" : [ ]
 }, {
   "patternId" : "B323",
-  "title" : "B323: unverified_context",
-  "description" : "By default, Python will create a secure, verified ssl context for use in such classes as HTTPSConnection",
+  "title" : "unverified_context",
+  "description" : "B323: By default, Python will create a secure, verified ssl context for use in such classes as HTTPSConnection",
   "parameters" : [ ]
 }, {
   "patternId" : "B324",
-  "title" : "B324: hashlib",
-  "description" : "Test use of insecure md4, md5, or sha1 hash functions in hashlib",
+  "title" : "hashlib",
+  "description" : "B324: Test use of insecure md4, md5, or sha1 hash functions in hashlib",
   "parameters" : [ ]
 }, {
   "patternId" : "B325",
-  "title" : "B325: tempnam",
-  "description" : "Use of os.tempnam() and os.tmpnam() is vulnerable to symlink attacks",
+  "title" : "tempnam",
+  "description" : "B325: Use of os.tempnam() and os.tmpnam() is vulnerable to symlink attacks",
   "parameters" : [ ]
 }, {
   "patternId" : "B401",
-  "title" : "B401: import_telnetlib",
-  "description" : "A telnet-related module is being imported",
+  "title" : "import_telnetlib",
+  "description" : "B401: A telnet-related module is being imported",
   "parameters" : [ ]
 }, {
   "patternId" : "B402",
-  "title" : "B402: import_ftplib",
-  "description" : "A FTP-related module is being imported",
+  "title" : "import_ftplib",
+  "description" : "B402: A FTP-related module is being imported",
   "parameters" : [ ]
 }, {
   "patternId" : "B403",
-  "title" : "B403: import_pickle",
-  "description" : "Consider possible security implications associated with these modules.",
+  "title" : "import_pickle",
+  "description" : "B403: Consider possible security implications associated with these modules.",
   "parameters" : [ ]
 }, {
   "patternId" : "B404",
-  "title" : "B404: import_subprocess",
-  "description" : "Consider possible security implications associated with these modules.",
+  "title" : "import_subprocess",
+  "description" : "B404: Consider possible security implications associated with these modules.",
   "parameters" : [ ]
 }, {
   "patternId" : "B405",
-  "title" : "B405: import_xml_etree",
-  "description" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
+  "title" : "import_xml_etree",
+  "description" : "B405: Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
   "parameters" : [ ]
 }, {
   "patternId" : "B406",
-  "title" : "B406: import_xml_sax",
-  "description" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
+  "title" : "import_xml_sax",
+  "description" : "B406: Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
   "parameters" : [ ]
 }, {
   "patternId" : "B407",
-  "title" : "B407: import_xml_expat",
-  "description" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
+  "title" : "import_xml_expat",
+  "description" : "B407: Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
   "parameters" : [ ]
 }, {
   "patternId" : "B408",
-  "title" : "B408: import_xml_minidom",
-  "description" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
+  "title" : "import_xml_minidom",
+  "description" : "B408: Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
   "parameters" : [ ]
 }, {
   "patternId" : "B409",
-  "title" : "B409: import_xml_pulldom",
-  "description" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
+  "title" : "import_xml_pulldom",
+  "description" : "B409: Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
   "parameters" : [ ]
 }, {
   "patternId" : "B410",
-  "title" : "B410: import_lxml",
-  "description" : "Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
+  "title" : "import_lxml",
+  "description" : "B410: Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
   "parameters" : [ ]
 }, {
   "patternId" : "B411",
-  "title" : "B411: import_xmlrpclib",
-  "description" : "XMLRPC is particularly dangerous as it is also concerned with communicating data over a network",
+  "title" : "import_xmlrpclib",
+  "description" : "B411: XMLRPC is particularly dangerous as it is also concerned with communicating data over a network",
   "parameters" : [ ]
 }, {
   "patternId" : "B412",
-  "title" : "B412: import_httpoxy",
-  "description" : "httpoxy is a set of vulnerabilities that affect application code running in CGI, or CGI-like environments",
+  "title" : "import_httpoxy",
+  "description" : "B412: httpoxy is a set of vulnerabilities that affect application code running in CGI, or CGI-like environments",
   "parameters" : [ ]
 }, {
   "patternId" : "B413",
-  "title" : "B413: import_pycrypto",
-  "description" : "pycrypto library is known to have publicly disclosed buffer overflow vulnerability https://github.com/dlitz/pycrypto/issues/176",
+  "title" : "import_pycrypto",
+  "description" : "B413: pycrypto library is known to have publicly disclosed buffer overflow vulnerability https://github.com/dlitz/pycrypto/issues/176",
   "parameters" : [ ]
 }, {
   "patternId" : "B414",
-  "title" : "B414: import_pycryptodome",
-  "description" : "This import blacklist has been removed",
+  "title" : "import_pycryptodome",
+  "description" : "B414: This import blacklist has been removed",
   "parameters" : [ ]
 }, {
   "patternId" : "B501",
