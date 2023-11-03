@@ -1,7 +1,7 @@
 name := "codacy-bandit"
 ThisBuild / scalaVersion := "2.13.4"
 
-val engineSeed = "com.codacy" %% "codacy-engine-scala-seed" % "5.0.3"
+val engineSeed = "com.codacy" %% "codacy-engine-scala-seed" % "6.1.2"
 
 libraryDependencies += engineSeed
 
