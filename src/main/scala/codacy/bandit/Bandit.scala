@@ -32,7 +32,9 @@ object Bandit extends Tool {
     }
   }
 
-  private lazy val nativeConfigFileNames = Set("bandit.yml", ".bandit")
+  // https://bandit.readthedocs.io/en/latest/config.html
+  private lazy val nativeIniFileNames = Set(".bandit", "bandit.ini")
+  private lazy val nativeConfigFileNames = Set("bandit.yml", "bandit.yaml", "bandit.toml")
 
   private def runTool(
       rootPath: Source.Directory,
@@ -40,6 +42,11 @@ object Bandit extends Tool {
       filesToLint: List[String],
       enabledPatterns: Option[Set[Pattern.Id]]
   ): List[Result] = {
+    lazy val nativeIniFile = nativeIniFileNames
+      .map(filename => Try(better.files.File(rootPath.path) / filename))
+      .collectFirst {
+        case Success(file) if file.isRegularFile => file.toJava.getAbsolutePath
+      }
     lazy val nativeConfigFile = nativeConfigFileNames
       .map(filename => Try(better.files.File(rootPath.path) / filename))
       .collectFirst {
@@ -53,10 +60,15 @@ object Bandit extends Tool {
         FileHelper.createTmpFile("", "tool-out-", ".json").toString
       val nativeConfigParams: List[String] =
         if (enabledPatterns.isEmpty) {
-          nativeConfigFile.to(List).flatMap(cfgFile => List("-c", cfgFile))
+          if (! nativeIniFile.isEmpty) {
+            nativeIniFile.to(List).flatMap(iniFile => List("--ini", iniFile))
+          } else {
+            nativeConfigFile.to(List).flatMap(cfgFile => List("-c", cfgFile))
+          }
         } else { List.empty }
 
       val command = List(pythonEngine, "-m", "bandit", "-f", "json", "-o", toolResultPath) ++ nativeConfigParams ++ filesToLint
+      // println(command mkString "\n")
 
       CommandRunner.exec(command) match {
         case Right(resultFromTool) if resultFromTool.exitCode <= 1 =>
