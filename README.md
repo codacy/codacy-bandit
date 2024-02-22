@@ -25,6 +25,8 @@ docker run -it -v $srcDir:/src  <DOCKER_NAME>:<DOCKER_VERSION>
 ### Bump bandit version
 
 * Change the `requirements.txt` file
+
+### Generating documentation is obsolete
 * Run `./scripts/generateDocs.sh`
 
 ## Docs
