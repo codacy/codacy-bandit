@@ -59,7 +59,7 @@ object Bandit extends Tool {
         FileHelper.createTmpFile("", "tool-out-", ".json").toString
       val nativeConfigParams: List[String] =
         if (enabledPatterns.isEmpty) {
-          if (! nativeIniFile.isEmpty) {
+          if (!nativeIniFile.isEmpty) {
             nativeIniFile.to(List).flatMap(iniFile => List("--ini", iniFile))
           } else {
             nativeConfigFile.to(List).flatMap(cfgFile => List("-c", cfgFile))
