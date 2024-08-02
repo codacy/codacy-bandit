@@ -1,7 +1,4 @@
-# Until this issue is fixed https://github.com/PyCQA/bandit/issues/658
-# we cannot bump python's version
-# alpine3.19 is available only from python 3.8 onwards
-FROM python:3.8-alpine3.19
+FROM python:3.12-alpine3.20
 
 COPY requirements.txt requirements.txt
 RUN apk add --no-cache --update bash openjdk11-jre && \
