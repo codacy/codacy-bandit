@@ -6,6 +6,7 @@ import com.codacy.plugins.api.{Options, Source}
 import com.codacy.tools.scala.seed.utils.ToolHelper._
 import com.codacy.tools.scala.seed.utils.{CommandRunner, FileHelper}
 import play.api.libs.json.Json
+import better.files._
 
 import scala.util.{Success, Try}
 

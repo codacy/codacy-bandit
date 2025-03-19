@@ -11,7 +11,7 @@ lazy val `doc-generator` = project
       engineSeed,
       "org.scala-lang.modules" %% "scala-xml" % "1.2.0",
       "org.ccil.cowan.tagsoup" % "tagsoup" % "1.2.1",
-      "com.github.pathikrit" %% "better-files" % "3.8.0"
+      "com.github.pathikrit" %% "better-files" % "3.9.2"
     ),
     Compile / fork := true
   )
