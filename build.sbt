@@ -1,5 +1,5 @@
 name := "codacy-bandit"
-ThisBuild / scalaVersion := "2.13.4"
+ThisBuild / scalaVersion := "2.13.12"
 
 val engineSeed = "com.codacy" %% "codacy-engine-scala-seed" % "6.1.3"
 
