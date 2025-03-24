@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  codacy: codacy/base@12.1.2
+  codacy: codacy/base@12.1.5
   codacy_plugins_test: codacy/plugins-test@2.0.11
 
 workflows:
@@ -13,10 +13,11 @@ workflows:
       - codacy/sbt:
           name: publish_docker_local
           cmd: |
-            sbt "set scalafmtUseIvy in ThisBuild := false;
-                 scalafmt::test;
-                 test:scalafmt::test;
-                 sbt:scalafmt::test;
+            sbt "clean;
+                 set scalafmtUseIvy in ThisBuild := false;
+                 scalafmtCheckAll;
+                 Test / scalafmtCheck;
+                 scalafmtCheck;
                  set version in Docker := \"latest\";
                  universal:stage"
             docker build -t $CIRCLE_PROJECT_REPONAME .

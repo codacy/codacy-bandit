@@ -47,12 +47,12 @@ object PluginsDocTransformer extends IPatternDocTransformer {
     * Usually in <body><dd> or <body><div id="b000">
     */
   private def getBody(htmlPluginsDocs: Node, patternId: Pattern.Id): NodeSeq = {
-    val dd = htmlPluginsDocs \\ "dd"
+    val dd = htmlPluginsDocs
     val articleBody = for {
-      divs <- htmlPluginsDocs \\ "div"
+      divs <- htmlPluginsDocs
       if (divs \@ "id").startsWith(patternId.value.toLowerCase())
       divsChildren <- divs.child.filter { node =>
-        val l = node.label
+        val l = node.labels
         l == "h1" || l == "h2" || l == "p"
       }
     } yield divsChildren
@@ -68,7 +68,7 @@ object PluginsDocTransformer extends IPatternDocTransformer {
     for {
       htmlFiles <- sourceDirectory.listRecursively.toSeq
       htmlPluginsDocs <- HtmlLoader.loadHtml(htmlFiles)
-      head <- htmlPluginsDocs \\ "head"
+      head <- htmlPluginsDocs
       (patternId, title) <- stripPluginsTitle(head)
       patternIdCapitalized = Pattern.Id(patternId.value.capitalize)
       body = getBody(htmlPluginsDocs, patternId)

@@ -90,7 +90,7 @@ object Bandit extends Tool {
 
   private def resultFilter(result: Result, patternIds: Option[Set[Pattern.Id]]): Boolean = {
     result match {
-      case Issue(_, _, id, _) =>
+      case Issue(_, _, id, _, _) =>
         patternIds.forall(_.contains(id))
       case _ =>
         true
