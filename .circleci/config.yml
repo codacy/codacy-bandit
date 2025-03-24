@@ -17,7 +17,7 @@ workflows:
                  set scalafmtUseIvy in ThisBuild := false;
                  scalafmtCheckAll;
                  Test / scalafmtCheck;
-                 sbt:scalafmtCheck;
+                 scalafmtCheck;
                  set version in Docker := \"latest\";
                  universal:stage"
             docker build -t $CIRCLE_PROJECT_REPONAME .
