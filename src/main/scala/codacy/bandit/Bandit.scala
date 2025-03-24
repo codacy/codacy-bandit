@@ -6,7 +6,6 @@ import com.codacy.plugins.api.{Options, Source}
 import com.codacy.tools.scala.seed.utils.ToolHelper._
 import com.codacy.tools.scala.seed.utils.{CommandRunner, FileHelper}
 import play.api.libs.json.Json
-import better.files._
 
 import scala.util.{Success, Try}
 
@@ -91,7 +90,7 @@ object Bandit extends Tool {
 
   private def resultFilter(result: Result, patternIds: Option[Set[Pattern.Id]]): Boolean = {
     result match {
-      case Issue(_, _, id, _) =>
+      case Issue(_, _, id, _, _) =>
         patternIds.forall(_.contains(id))
       case _ =>
         true
