@@ -13,13 +13,13 @@ workflows:
       - codacy/sbt:
           name: publish_docker_local
           cmd: |
-              sbt "clean;
-                set ThisBuild / scalafmtUseIvy := false;
-                scalafmtCheckAll;
-                Test / scalafmtCheck;
-                sbt:scalafmtCheck;
-                set Docker / version := \"latest\";
-            universal:stage"
+            sbt "clean;
+                 set scalafmtUseIvy in ThisBuild := false;
+                 scalafmtCheckAll;
+                 Test / scalafmtCheck;
+                 sbt:scalafmtCheck;
+                 set version in Docker := \"latest\";
+                 universal:stage"
             docker build -t $CIRCLE_PROJECT_REPONAME .
             docker save --output docker-image.tar $CIRCLE_PROJECT_REPONAME:latest
           persist_to_workspace: true
