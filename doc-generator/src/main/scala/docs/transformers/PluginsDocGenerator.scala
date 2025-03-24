@@ -47,17 +47,14 @@ object PluginsDocTransformer extends IPatternDocTransformer {
     * Usually in <body><dd> or <body><div id="b000">
     */
   private def getBody(htmlPluginsDocs: Node, patternId: Pattern.Id): NodeSeq = {
-    val dd = htmlPluginsDocs \\ "dd"
-    println(s"dd: $dd")
+    val dd = htmlPluginsDocs
     val articleBody = for {
-      divs <- htmlPluginsDocs \\ "div"
-      _ = println(s"divs: $divs")
+      divs <- htmlPluginsDocs
       if (divs \@ "id").startsWith(patternId.value.toLowerCase())
       divsChildren <- divs.child.filter { node =>
         val l = node.labels
         l == "h1" || l == "h2" || l == "p"
       }
-      _ = println(s"divsChildren: $divsChildren")
     } yield divsChildren
 
     if (dd.nonEmpty && dd.text.contains(patternId.value)) dd else NodeSeq.fromSeq(articleBody)
@@ -68,20 +65,13 @@ object PluginsDocTransformer extends IPatternDocTransformer {
     */
   def getPatterns(originalDocsDir: File) = {
     val sourceDirectory = originalDocsDir / "plugins"
-    println(s"$originalDocsDir")
-    println(s"Source Directory: $sourceDirectory") // Print source directory
     for {
       htmlFiles <- sourceDirectory.listRecursively.toSeq
       htmlPluginsDocs <- HtmlLoader.loadHtml(htmlFiles)
-      head <- htmlPluginsDocs \\ "head"
-      _ = println(s"Head: $head")
+      head <- htmlPluginsDocs
       (patternId, title) <- stripPluginsTitle(head)
-      _ = println(s"patternId: $patternId")
-      _ = println(s"title: $title")
       patternIdCapitalized = Pattern.Id(patternId.value.capitalize)
-      _ = println(s"patternIdCapitalized: $patternIdCapitalized")
       body = getBody(htmlPluginsDocs, patternId)
-      _ = println(s"body: $body")
       descriptionText = Some(Pattern.DescriptionText(body.head.text))
       html = body.toString
       severity = stripSeverity(htmlPluginsDocs)
