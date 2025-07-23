@@ -70,6 +70,7 @@ object BlacklistDocTransformer extends IPatternDocTransformer {
           Level.Warn,
           Pattern.Category.Security,
           SecuritySubcategories.get(patternIdCapitalized),
+          Some(Pattern.ScanType.SAST),
           Set.empty,
           Set.empty,
           enabled = DefaultPatterns.list.contains(patternIdCapitalized.value)

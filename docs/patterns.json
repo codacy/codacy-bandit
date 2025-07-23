@@ -1,10 +1,11 @@
 {
   "name" : "bandit",
-  "version" : "1.8.3",
+  "version" : "1.8.6",
   "patterns" : [ {
     "patternId" : "B101",
     "level" : "Warning",
     "category" : "Security",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : false
@@ -13,14 +14,16 @@
     "level" : "Warning",
     "category" : "Security",
     "subcategory" : "InputValidation",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
   }, {
     "patternId" : "B103",
-    "level" : "Error",
+    "level" : "Warning",
     "category" : "Security",
     "subcategory" : "FileAccess",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
@@ -28,6 +31,7 @@
     "patternId" : "B104",
     "level" : "Warning",
     "category" : "Security",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
@@ -36,6 +40,7 @@
     "level" : "Warning",
     "category" : "Security",
     "subcategory" : "Auth",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
@@ -44,6 +49,7 @@
     "level" : "Warning",
     "category" : "Security",
     "subcategory" : "Auth",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : false
@@ -52,6 +58,7 @@
     "level" : "Warning",
     "category" : "Security",
     "subcategory" : "Auth",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
@@ -60,6 +67,7 @@
     "level" : "Warning",
     "category" : "Security",
     "subcategory" : "FileAccess",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
@@ -68,6 +76,7 @@
     "level" : "Warning",
     "category" : "Security",
     "subcategory" : "Auth",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
@@ -75,6 +84,7 @@
     "patternId" : "B110",
     "level" : "Warning",
     "category" : "Security",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
@@ -83,6 +93,7 @@
     "level" : "Warning",
     "category" : "Security",
     "subcategory" : "Auth",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
@@ -90,348 +101,58 @@
     "patternId" : "B112",
     "level" : "Warning",
     "category" : "Security",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
   }, {
-      "patternId" : "B113",
-      "level" : "Warning",
-      "category" : "Security",
-      "parameters" : [ ],
-      "languages" : [ ],
-      "enabled" : true
-    }, {
-    "patternId" : "B201",
-    "level" : "Error",
+    "patternId" : "B113",
+    "level" : "Warning",
     "category" : "Security",
+    "scanType" : "SAST",
+    "parameters" : [ ],
+    "languages" : [ ],
+    "enabled" : false
+  }, {
+    "patternId" : "B201",
+    "level" : "Warning",
+    "category" : "Security",
+    "subcategory" : "UnexpectedBehaviour",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
   }, {
     "patternId" : "B202",
-    "level" : "Error",
-    "category" : "Security",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B301",
     "level" : "Warning",
     "category" : "Security",
-    "subcategory" : "InsecureModulesLibraries",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B302",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InsecureModulesLibraries",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B303",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "Cryptography",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B304",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "Cryptography",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B305",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "Cryptography",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B306",
-    "level" : "Warning",
-    "category" : "Security",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B307",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InputValidation",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B308",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "XSS",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B309",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "SSL",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B310",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "HTTP",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B311",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "Cryptography",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B312",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InsecureModulesLibraries",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B313",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InputValidation",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B314",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InputValidation",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B315",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InputValidation",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B316",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InputValidation",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B317",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InputValidation",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B318",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InputValidation",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B319",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InputValidation",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B320",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InputValidation",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B321",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InsecureModulesLibraries",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B322",
-    "level" : "Warning",
-    "category" : "Security",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : false
   }, {
-    "patternId" : "B323",
+    "patternId" : "B324",
     "level" : "Warning",
     "category" : "Security",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : false
-  }, {
-      "patternId" : "B324",
-      "level" : "Error",
-      "category" : "Security",
-      "parameters" : [ ],
-      "languages" : [ ],
-      "enabled" : false
-  }, {
-    "patternId" : "B325",
-    "level" : "Warning",
-    "category" : "Security",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : false
-  }, {
-    "patternId" : "B401",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InsecureModulesLibraries",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B402",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InsecureModulesLibraries",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B403",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InsecureModulesLibraries",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B404",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InsecureModulesLibraries",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B405",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InsecureModulesLibraries",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B406",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InsecureModulesLibraries",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B407",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InsecureModulesLibraries",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B408",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InsecureModulesLibraries",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B409",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InsecureModulesLibraries",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B410",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InsecureModulesLibraries",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B411",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InsecureModulesLibraries",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B412",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InsecureModulesLibraries",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : false
-  }, {
-    "patternId" : "B413",
-    "level" : "Warning",
-    "category" : "Security",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : false
-  }, {
-    "patternId" : "B414",
-    "level" : "Warning",
-    "category" : "Security",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : false
   }, {
     "patternId" : "B501",
-    "level" : "Error",
+    "level" : "Warning",
     "category" : "Security",
     "subcategory" : "SSL",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
   }, {
     "patternId" : "B502",
-    "level" : "Error",
+    "level" : "Warning",
     "category" : "Security",
     "subcategory" : "SSL",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
@@ -440,6 +161,7 @@
     "level" : "Warning",
     "category" : "Security",
     "subcategory" : "SSL",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
@@ -448,14 +170,16 @@
     "level" : "Warning",
     "category" : "Security",
     "subcategory" : "SSL",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
   }, {
     "patternId" : "B505",
-    "level" : "Error",
+    "level" : "Warning",
     "category" : "Security",
     "subcategory" : "Cryptography",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
@@ -464,27 +188,32 @@
     "level" : "Warning",
     "category" : "Security",
     "subcategory" : "InputValidation",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
   }, {
     "patternId" : "B507",
-    "level" : "Error",
+    "level" : "Warning",
     "category" : "Security",
+    "subcategory" : "Auth",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : false
   }, {
-      "patternId" : "B508",
-      "level" : "Error",
-      "category" : "Security",
-      "parameters" : [ ],
-      "languages" : [ ],
-      "enabled" : false
+    "patternId" : "B508",
+    "level" : "Warning",
+    "category" : "Security",
+    "scanType" : "SAST",
+    "parameters" : [ ],
+    "languages" : [ ],
+    "enabled" : false
   }, {
     "patternId" : "B509",
-    "level" : "Error",
+    "level" : "Warning",
     "category" : "Security",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : false
@@ -493,14 +222,16 @@
     "level" : "Warning",
     "category" : "Security",
     "subcategory" : "CommandInjection",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
   }, {
     "patternId" : "B602",
-    "level" : "Error",
+    "level" : "Warning",
     "category" : "Security",
     "subcategory" : "CommandInjection",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
@@ -509,6 +240,7 @@
     "level" : "Warning",
     "category" : "Security",
     "subcategory" : "CommandInjection",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
@@ -517,6 +249,7 @@
     "level" : "Warning",
     "category" : "Security",
     "subcategory" : "CommandInjection",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
@@ -525,6 +258,7 @@
     "level" : "Warning",
     "category" : "Security",
     "subcategory" : "CommandInjection",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : false
@@ -533,6 +267,7 @@
     "level" : "Warning",
     "category" : "Security",
     "subcategory" : "CommandInjection",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
@@ -541,6 +276,7 @@
     "level" : "Warning",
     "category" : "Security",
     "subcategory" : "CommandInjection",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : false
@@ -549,6 +285,7 @@
     "level" : "Warning",
     "category" : "Security",
     "subcategory" : "SQLInjection",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
@@ -557,6 +294,7 @@
     "level" : "Warning",
     "category" : "Security",
     "subcategory" : "InputValidation",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
@@ -564,6 +302,7 @@
     "patternId" : "B610",
     "level" : "Warning",
     "category" : "Security",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : false
@@ -571,6 +310,8 @@
     "patternId" : "B611",
     "level" : "Warning",
     "category" : "Security",
+    "subcategory" : "SQLInjection",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : false
@@ -578,14 +319,40 @@
     "patternId" : "B612",
     "level" : "Warning",
     "category" : "Security",
+    "scanType" : "SAST",
+    "parameters" : [ ],
+    "languages" : [ ],
+    "enabled" : false
+  }, {
+    "patternId" : "B613",
+    "level" : "Warning",
+    "category" : "Security",
+    "scanType" : "SAST",
+    "parameters" : [ ],
+    "languages" : [ ],
+    "enabled" : false
+  }, {
+    "patternId" : "B614",
+    "level" : "Warning",
+    "category" : "Security",
+    "scanType" : "SAST",
+    "parameters" : [ ],
+    "languages" : [ ],
+    "enabled" : false
+  }, {
+    "patternId" : "B615",
+    "level" : "Warning",
+    "category" : "Security",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : false
   }, {
     "patternId" : "B701",
-    "level" : "Error",
+    "level" : "Warning",
     "category" : "Security",
     "subcategory" : "XSS",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
@@ -594,6 +361,7 @@
     "level" : "Warning",
     "category" : "Security",
     "subcategory" : "XSS",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
@@ -601,6 +369,16 @@
     "patternId" : "B703",
     "level" : "Warning",
     "category" : "Security",
+    "subcategory" : "XSS",
+    "scanType" : "SAST",
+    "parameters" : [ ],
+    "languages" : [ ],
+    "enabled" : false
+  }, {
+    "patternId" : "B704",
+    "level" : "Warning",
+    "category" : "Security",
+    "scanType" : "SAST",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : false

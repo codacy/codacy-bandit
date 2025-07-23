@@ -1,391 +1,221 @@
 [ {
   "patternId" : "B101",
   "title" : "assert_used",
-  "description" : "B101: Test for use of assert",
+  "description" : "B101: assert_used — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B102",
   "title" : "exec_used",
-  "description" : "B102: Test for the use of exec",
+  "description" : "B102: exec_used — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B103",
   "title" : "set_bad_file_permissions",
-  "description" : "B103: Test for setting permissive file permissions",
+  "description" : "B103: set_bad_file_permissions — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B104",
   "title" : "hardcoded_bind_all_interfaces",
-  "description" : "B104: Test for binding to all interfaces",
+  "description" : "B104: hardcoded_bind_all_interfaces — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B105",
   "title" : "hardcoded_password_string",
-  "description" : "B105: Test for use of hard-coded password strings",
+  "description" : "B105: hardcoded_password_string — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B106",
   "title" : "hardcoded_password_funcarg",
-  "description" : "B106: Test for use of hard-coded password function arguments",
+  "description" : "B106: hardcoded_password_funcarg — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B107",
   "title" : "hardcoded_password_default",
-  "description" : "B107: Test for use of hard-coded password argument defaults",
+  "description" : "B107: hardcoded_password_default — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B108",
   "title" : "hardcoded_tmp_directory",
-  "description" : "B108: Test for insecure usage of tmp file/directory",
+  "description" : "B108: hardcoded_tmp_directory — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B109",
-  "title" : "Test for a password based config option not marked secret",
-  "description" : "B109: Test for a password based config option not marked secret",
+  "title" : "password_config_option_not_marked_secret",
+  "description" : "B109: password_config_option_not_marked_secret — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B110",
   "title" : "try_except_pass",
-  "description" : "B110: Test for a pass in the except block",
+  "description" : "B110: try_except_pass — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B111",
-  "title" : "Test for the use of rootwrap running as root",
-  "description" : "B111: Test for the use of rootwrap running as root",
+  "title" : "execute_with_run_as_root_equals_true",
+  "description" : "B111: execute_with_run_as_root_equals_true — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B112",
   "title" : "try_except_continue",
-  "description" : "B112: Test for a continue in the except block",
+  "description" : "B112: try_except_continue — Bandit  documentation ",
   "parameters" : [ ]
-},{
+}, {
   "patternId" : "B113",
   "title" : "request_without_timeout",
-  "description" : "B113: Test for missing requests timeout",
+  "description" : "B113: request_without_timeout — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B201",
   "title" : "flask_debug_true",
-  "description" : "B201: Test for use of flask app with debug set to true",
+  "description" : "B201: flask_debug_true — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B202",
   "title" : "tarfile_unsafe_members",
-  "description" : "B202: Test for tarfile.extractall",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B301",
-  "title" : "pickle",
-  "description" : "B301: Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B302",
-  "title" : "marshal",
-  "description" : "B302: Deserialization with the marshal module is possibly dangerous.",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B303",
-  "title" : "md5",
-  "description" : "B303: Use of insecure MD2, MD4, MD5, or SHA1 hash function.",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B304",
-  "title" : "B304: ciphers and modes",
-  "description" : "B304: Use of insecure cipher or cipher mode",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B305",
-  "title" : "B305: ciphers and modes",
-  "description" : "B305: Use of insecure cipher or cipher mode",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B306",
-  "title" : "mktemp_q",
-  "description" : "B306: Use of insecure and deprecated function (mktemp).",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B307",
-  "title" : "eval",
-  "description" : "B307: Use of possibly insecure function - consider using safer ast.literal_eval.",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B308",
-  "title" : "mark_safe",
-  "description" : "B308: Use of mark_safe() may expose cross-site scripting vulnerabilities and should be reviewed.",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B309",
-  "title" : "httpsconnection",
-  "description" : "B309: Use of HTTPSConnection on older versions of Python prior to 2.7.9 and 3.4.3 do not provide security, see https://wiki.openstack.org/wiki/OSSN/OSSN-0033",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B310",
-  "title" : "urllib_urlopen",
-  "description" : "B310: Audit url open for permitted schemes",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B311",
-  "title" : "random",
-  "description" : "B311: Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B312",
-  "title" : "telnetlib",
-  "description" : "B312: Telnet-related functions are being called",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B313",
-  "title" : "B313: XML",
-  "description" : "B313: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B314",
-  "title" : "B314: XML",
-  "description" : "B314: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B315",
-  "title" : "B315: XML",
-  "description" : "B315: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B316",
-  "title" : "B316: XML",
-  "description" : "B316: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B317",
-  "title" : "B317: XML",
-  "description" : "B317: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B318",
-  "title" : "B318: XML",
-  "description" : "B318: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B319",
-  "title" : "B319: XML",
-  "description" : "B319: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B320",
-  "title" : "B320: XML",
-  "description" : "B320: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B321",
-  "title" : "ftplib",
-  "description" : "B321: FTP-related functions are being called",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B322",
-  "title" : "input",
-  "description" : "B322: The check for this call has been removed.",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B323",
-  "title" : "unverified_context",
-  "description" : "B323: By default, Python will create a secure, verified ssl context for use in such classes as HTTPSConnection",
+  "description" : "B202: tarfile_unsafe_members — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B324",
   "title" : "hashlib",
-  "description" : "B324: Test use of insecure md4, md5, or sha1 hash functions in hashlib",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B325",
-  "title" : "tempnam",
-  "description" : "B325: Use of os.tempnam() and os.tmpnam() is vulnerable to symlink attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B401",
-  "title" : "import_telnetlib",
-  "description" : "B401: A telnet-related module is being imported",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B402",
-  "title" : "import_ftplib",
-  "description" : "B402: A FTP-related module is being imported",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B403",
-  "title" : "import_pickle",
-  "description" : "B403: Consider possible security implications associated with these modules.",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B404",
-  "title" : "import_subprocess",
-  "description" : "B404: Consider possible security implications associated with these modules.",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B405",
-  "title" : "import_xml_etree",
-  "description" : "B405: Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B406",
-  "title" : "import_xml_sax",
-  "description" : "B406: Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B407",
-  "title" : "import_xml_expat",
-  "description" : "B407: Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B408",
-  "title" : "import_xml_minidom",
-  "description" : "B408: Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B409",
-  "title" : "import_xml_pulldom",
-  "description" : "B409: Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B410",
-  "title" : "import_lxml",
-  "description" : "B410: Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B411",
-  "title" : "import_xmlrpclib",
-  "description" : "B411: XMLRPC is particularly dangerous as it is also concerned with communicating data over a network",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B412",
-  "title" : "import_httpoxy",
-  "description" : "B412: httpoxy is a set of vulnerabilities that affect application code running in CGI, or CGI-like environments",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B413",
-  "title" : "import_pycrypto",
-  "description" : "B413: pycrypto library is known to have publicly disclosed buffer overflow vulnerability https://github.com/dlitz/pycrypto/issues/176",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B414",
-  "title" : "import_pycryptodome",
-  "description" : "B414: This import blacklist has been removed",
+  "description" : "B324: hashlib — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B501",
   "title" : "request_with_no_cert_validation",
-  "description" : "B501: Test for missing certificate validation",
+  "description" : "B501: request_with_no_cert_validation — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B502",
   "title" : "ssl_with_bad_version",
-  "description" : "B502: Test for SSL use with bad version used",
+  "description" : "B502: ssl_with_bad_version — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B503",
   "title" : "ssl_with_bad_defaults",
-  "description" : "B503: Test for SSL use with bad defaults specified",
+  "description" : "B503: ssl_with_bad_defaults — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B504",
   "title" : "ssl_with_no_version",
-  "description" : "B504: Test for SSL use with no version specified",
+  "description" : "B504: ssl_with_no_version — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B505",
   "title" : "weak_cryptographic_key",
-  "description" : "B505: Test for weak cryptographic key use",
+  "description" : "B505: weak_cryptographic_key — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B506",
   "title" : "yaml_load",
-  "description" : "B506: Test for use of yaml load",
+  "description" : "B506: yaml_load — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B507",
   "title" : "ssh_no_host_key_verification",
-  "description" : "B507: Test for missing host key validation",
+  "description" : "B507: ssh_no_host_key_verification — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B508",
   "title" : "snmp_insecure_version",
-  "description" : "B508: Checking for insecure SNMP versions",
+  "description" : "B508: snmp_insecure_version — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B509",
   "title" : "snmp_weak_cryptography",
-  "description" : "B509: Checking for weak cryptography",
+  "description" : "B509: snmp_weak_cryptography — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B601",
   "title" : "paramiko_calls",
-  "description" : "B601: Test for shell injection within Paramiko",
+  "description" : "B601: paramiko_calls — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B602",
   "title" : "subprocess_popen_with_shell_equals_true",
-  "description" : "B602: Test for use of popen with shell equals true",
+  "description" : "B602: subprocess_popen_with_shell_equals_true — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B603",
   "title" : "subprocess_without_shell_equals_true",
-  "description" : "B603: Test for use of subprocess without shell equals true",
+  "description" : "B603: subprocess_without_shell_equals_true — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B604",
   "title" : "any_other_function_with_shell_equals_true",
-  "description" : "B604: Test for any function with shell equals true",
+  "description" : "B604: any_other_function_with_shell_equals_true — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B605",
   "title" : "start_process_with_a_shell",
-  "description" : "B605: Test for starting a process with a shell",
+  "description" : "B605: start_process_with_a_shell — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B606",
   "title" : "start_process_with_no_shell",
-  "description" : "B606: Test for starting a process with no shell",
+  "description" : "B606: start_process_with_no_shell — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B607",
   "title" : "start_process_with_partial_path",
-  "description" : "B607: Test for starting a process with a partial path",
+  "description" : "B607: start_process_with_partial_path — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B608",
   "title" : "hardcoded_sql_expressions",
-  "description" : "B608: Test for SQL injection",
+  "description" : "B608: hardcoded_sql_expressions — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B609",
   "title" : "linux_commands_wildcard_injection",
-  "description" : "B609: Test for use of wildcard injection",
+  "description" : "B609: linux_commands_wildcard_injection — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B610",
   "title" : "django_extra_used",
-  "description" : "B610: Potential SQL injection on extra function",
+  "description" : "B610: django_extra_used — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B611",
   "title" : "django_rawsql_used",
-  "description" : "B611: Potential SQL injection on RawSQL function",
+  "description" : "B611: django_rawsql_used — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B612",
   "title" : "logging_config_insecure_listen",
-  "description" : "B612: Test for insecure use of logging.config.listen",
+  "description" : "B612: logging_config_insecure_listen — Bandit  documentation ",
+  "parameters" : [ ]
+}, {
+  "patternId" : "B613",
+  "title" : "trojansource",
+  "description" : "B613: trojansource — Bandit  documentation ",
+  "parameters" : [ ]
+}, {
+  "patternId" : "B614",
+  "title" : "pytorch_load",
+  "description" : "B614: pytorch_load — Bandit  documentation ",
+  "parameters" : [ ]
+}, {
+  "patternId" : "B615",
+  "title" : "huggingface_unsafe_download",
+  "description" : "B615: huggingface_unsafe_download — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B701",
   "title" : "jinja2_autoescape_false",
-  "description" : "B701: Test for not auto escaping in jinja2",
+  "description" : "B701: jinja2_autoescape_false — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B702",
   "title" : "use_of_mako_templates",
-  "description" : "B702: Test for use of mako templates",
+  "description" : "B702: use_of_mako_templates — Bandit  documentation ",
   "parameters" : [ ]
 }, {
   "patternId" : "B703",
   "title" : "django_mark_safe",
-  "description" : "B703: Potential XSS on mark_safe function",
+  "description" : "B703: django_mark_safe — Bandit  documentation ",
+  "parameters" : [ ]
+}, {
+  "patternId" : "B704",
+  "title" : "markupsafe_markup_xss",
+  "description" : "B704: markupsafe_markup_xss — Bandit  documentation ",
   "parameters" : [ ]
 } ]
