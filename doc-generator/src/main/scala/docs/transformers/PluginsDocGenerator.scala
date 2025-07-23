@@ -52,7 +52,7 @@ object PluginsDocTransformer extends IPatternDocTransformer {
       divs <- htmlPluginsDocs
       if (divs \@ "id").startsWith(patternId.value.toLowerCase())
       divsChildren <- divs.child.filter { node =>
-        val l = node.labels
+        val l = node.label
         l == "h1" || l == "h2" || l == "p"
       }
     } yield divsChildren
