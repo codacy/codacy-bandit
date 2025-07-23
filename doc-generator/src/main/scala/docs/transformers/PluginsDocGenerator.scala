@@ -4,7 +4,7 @@ import docs.transformers.utils.HtmlLoader
 
 import scala.xml._
 import better.files._
-import com.codacy.plugins.api.results.Pattern.Category
+import com.codacy.plugins.api.results.Pattern.{Category,Scantype}
 import com.codacy.plugins.api.results.Result.Level
 import com.codacy.plugins.api.results.Pattern
 import docs.{DefaultPatterns, SecuritySubcategories}
@@ -80,6 +80,8 @@ object PluginsDocTransformer extends IPatternDocTransformer {
         severity,
         Category.Security,
         SecuritySubcategories.get(patternIdCapitalized),
+        Some(ScanType.SAST),
+        Set.empty,
         Set.empty,
         enabled = DefaultPatterns.list.contains(patternIdCapitalized.value)
       )
