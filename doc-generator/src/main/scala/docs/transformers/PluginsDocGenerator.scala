@@ -4,7 +4,7 @@ import docs.transformers.utils.HtmlLoader
 
 import scala.xml._
 import better.files._
-import com.codacy.plugins.api.results.Pattern.{Category,Scantype}
+import com.codacy.plugins.api.results.Pattern.{Category, Scantype}
 import com.codacy.plugins.api.results.Result.Level
 import com.codacy.plugins.api.results.Pattern
 import docs.{DefaultPatterns, SecuritySubcategories}
