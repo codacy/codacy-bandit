@@ -4,7 +4,7 @@ import docs.transformers.utils.HtmlLoader
 
 import scala.xml._
 import better.files._
-import com.codacy.plugins.api.results.Pattern.{Category, ScanType}
+import com.codacy.plugins.api.results.Pattern.Category
 import com.codacy.plugins.api.results.Result.Level
 import com.codacy.plugins.api.results.Pattern
 import docs.{DefaultPatterns, SecuritySubcategories}
@@ -52,7 +52,7 @@ object PluginsDocTransformer extends IPatternDocTransformer {
       divs <- htmlPluginsDocs
       if (divs \@ "id").startsWith(patternId.value.toLowerCase())
       divsChildren <- divs.child.filter { node =>
-        val l = node.label
+        val l = node.labels
         l == "h1" || l == "h2" || l == "p"
       }
     } yield divsChildren
@@ -80,8 +80,6 @@ object PluginsDocTransformer extends IPatternDocTransformer {
         severity,
         Category.Security,
         SecuritySubcategories.get(patternIdCapitalized),
-        Some(ScanType.SAST),
-        Set.empty,
         Set.empty,
         enabled = DefaultPatterns.list.contains(patternIdCapitalized.value)
       )

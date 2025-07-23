@@ -17,7 +17,3 @@
 .bloop
 .metals
 .bsp/
-
-
-#Ignore vscode AI rules
-.github/copilot-instructions.md
