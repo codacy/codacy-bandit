@@ -33,7 +33,7 @@ object Bandit extends Tool {
   }
   // https://bandit.readthedocs.io/en/latest/config.html
   private lazy val nativeIniFileNames = Set(".bandit", "bandit.ini")
-  private lazy val nativeConfigFileNames = Set("bandit.yml", "bandit.yaml", "bandit.toml")
+  private lazy val nativeConfigFileNames = Set("bandit.yml", "bandit.yaml", "bandit.toml", "pyproject.toml")
 
   private def runTool(
       rootPath: Source.Directory,
