@@ -1,12 +1,14 @@
 version: 2
 updates:
-- package-ecosystem: pip
-  directory: "/"
-  schedule:
-    interval: daily
-    timezone: Europe/Lisbon
-  open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: bandit
-    versions:
-    - 1.7.0
+  - package-ecosystem: pip
+    directory: "/"
+    schedule:
+      interval: daily
+      timezone: Europe/Lisbon
+    open-pull-requests-limit: 10
+    ignore:
+      - dependency-name: bandit
+        versions:
+          - 1.7.0
+    cooldown:
+      default-days: 7
