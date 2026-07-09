@@ -1,6 +1,6 @@
 {
   "name" : "bandit",
-  "version" : "1.8.3",
+  "version" : "1.9.4",
   "patterns" : [ {
     "patternId" : "B101",
     "level" : "Warning",
@@ -64,25 +64,9 @@
     "languages" : [ ],
     "enabled" : true
   }, {
-    "patternId" : "B109",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "Auth",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
     "patternId" : "B110",
     "level" : "Warning",
     "category" : "Security",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B111",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "Auth",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
@@ -94,13 +78,13 @@
     "languages" : [ ],
     "enabled" : true
   }, {
-      "patternId" : "B113",
-      "level" : "Warning",
-      "category" : "Security",
-      "parameters" : [ ],
-      "languages" : [ ],
-      "enabled" : true
-    }, {
+    "patternId" : "B113",
+    "level" : "Warning",
+    "category" : "Security",
+    "parameters" : [ ],
+    "languages" : [ ],
+    "enabled" : true
+  }, {
     "patternId" : "B201",
     "level" : "Error",
     "category" : "Security",
@@ -174,14 +158,6 @@
     "level" : "Warning",
     "category" : "Security",
     "subcategory" : "XSS",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
-    "patternId" : "B309",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "SSL",
     "parameters" : [ ],
     "languages" : [ ],
     "enabled" : true
@@ -266,14 +242,6 @@
     "languages" : [ ],
     "enabled" : true
   }, {
-    "patternId" : "B320",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InputValidation",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
     "patternId" : "B321",
     "level" : "Warning",
     "category" : "Security",
@@ -282,13 +250,6 @@
     "languages" : [ ],
     "enabled" : true
   }, {
-    "patternId" : "B322",
-    "level" : "Warning",
-    "category" : "Security",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : false
-  }, {
     "patternId" : "B323",
     "level" : "Warning",
     "category" : "Security",
@@ -296,15 +257,8 @@
     "languages" : [ ],
     "enabled" : false
   }, {
-      "patternId" : "B324",
-      "level" : "Error",
-      "category" : "Security",
-      "parameters" : [ ],
-      "languages" : [ ],
-      "enabled" : false
-  }, {
-    "patternId" : "B325",
-    "level" : "Warning",
+    "patternId" : "B324",
+    "level" : "Error",
     "category" : "Security",
     "parameters" : [ ],
     "languages" : [ ],
@@ -382,14 +336,6 @@
     "languages" : [ ],
     "enabled" : true
   }, {
-    "patternId" : "B410",
-    "level" : "Warning",
-    "category" : "Security",
-    "subcategory" : "InsecureModulesLibraries",
-    "parameters" : [ ],
-    "languages" : [ ],
-    "enabled" : true
-  }, {
     "patternId" : "B411",
     "level" : "Warning",
     "category" : "Security",
@@ -413,7 +359,7 @@
     "languages" : [ ],
     "enabled" : false
   }, {
-    "patternId" : "B414",
+    "patternId" : "B415",
     "level" : "Warning",
     "category" : "Security",
     "parameters" : [ ],
@@ -475,12 +421,12 @@
     "languages" : [ ],
     "enabled" : false
   }, {
-      "patternId" : "B508",
-      "level" : "Error",
-      "category" : "Security",
-      "parameters" : [ ],
-      "languages" : [ ],
-      "enabled" : false
+    "patternId" : "B508",
+    "level" : "Error",
+    "category" : "Security",
+    "parameters" : [ ],
+    "languages" : [ ],
+    "enabled" : false
   }, {
     "patternId" : "B509",
     "level" : "Error",
@@ -582,6 +528,27 @@
     "languages" : [ ],
     "enabled" : false
   }, {
+    "patternId" : "B613",
+    "level" : "Error",
+    "category" : "Security",
+    "parameters" : [ ],
+    "languages" : [ ],
+    "enabled" : false
+  }, {
+    "patternId" : "B614",
+    "level" : "Warning",
+    "category" : "Security",
+    "parameters" : [ ],
+    "languages" : [ ],
+    "enabled" : false
+  }, {
+    "patternId" : "B615",
+    "level" : "Warning",
+    "category" : "Security",
+    "parameters" : [ ],
+    "languages" : [ ],
+    "enabled" : false
+  }, {
     "patternId" : "B701",
     "level" : "Error",
     "category" : "Security",
@@ -599,6 +566,13 @@
     "enabled" : true
   }, {
     "patternId" : "B703",
+    "level" : "Warning",
+    "category" : "Security",
+    "parameters" : [ ],
+    "languages" : [ ],
+    "enabled" : false
+  }, {
+    "patternId" : "B704",
     "level" : "Warning",
     "category" : "Security",
     "parameters" : [ ],
