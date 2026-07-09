@@ -39,26 +39,16 @@
   "description" : "B108: Test for insecure usage of tmp file/directory",
   "parameters" : [ ]
 }, {
-  "patternId" : "B109",
-  "title" : "Test for a password based config option not marked secret",
-  "description" : "B109: Test for a password based config option not marked secret",
-  "parameters" : [ ]
-}, {
   "patternId" : "B110",
   "title" : "try_except_pass",
   "description" : "B110: Test for a pass in the except block",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B111",
-  "title" : "Test for the use of rootwrap running as root",
-  "description" : "B111: Test for the use of rootwrap running as root",
   "parameters" : [ ]
 }, {
   "patternId" : "B112",
   "title" : "try_except_continue",
   "description" : "B112: Test for a continue in the except block",
   "parameters" : [ ]
-},{
+}, {
   "patternId" : "B113",
   "title" : "request_without_timeout",
   "description" : "B113: Test for missing requests timeout",
@@ -114,11 +104,6 @@
   "description" : "B308: Use of mark_safe() may expose cross-site scripting vulnerabilities and should be reviewed.",
   "parameters" : [ ]
 }, {
-  "patternId" : "B309",
-  "title" : "httpsconnection",
-  "description" : "B309: Use of HTTPSConnection on older versions of Python prior to 2.7.9 and 3.4.3 do not provide security, see https://wiki.openstack.org/wiki/OSSN/OSSN-0033",
-  "parameters" : [ ]
-}, {
   "patternId" : "B310",
   "title" : "urllib_urlopen",
   "description" : "B310: Audit url open for permitted schemes",
@@ -169,19 +154,9 @@
   "description" : "B319: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
   "parameters" : [ ]
 }, {
-  "patternId" : "B320",
-  "title" : "B320: XML",
-  "description" : "B320: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
   "patternId" : "B321",
   "title" : "ftplib",
   "description" : "B321: FTP-related functions are being called",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B322",
-  "title" : "input",
-  "description" : "B322: The check for this call has been removed.",
   "parameters" : [ ]
 }, {
   "patternId" : "B323",
@@ -192,11 +167,6 @@
   "patternId" : "B324",
   "title" : "hashlib",
   "description" : "B324: Test use of insecure md4, md5, or sha1 hash functions in hashlib",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B325",
-  "title" : "tempnam",
-  "description" : "B325: Use of os.tempnam() and os.tmpnam() is vulnerable to symlink attacks",
   "parameters" : [ ]
 }, {
   "patternId" : "B401",
@@ -244,11 +214,6 @@
   "description" : "B409: Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
   "parameters" : [ ]
 }, {
-  "patternId" : "B410",
-  "title" : "import_lxml",
-  "description" : "B410: Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
   "patternId" : "B411",
   "title" : "import_xmlrpclib",
   "description" : "B411: XMLRPC is particularly dangerous as it is also concerned with communicating data over a network",
@@ -264,9 +229,9 @@
   "description" : "B413: pycrypto library is known to have publicly disclosed buffer overflow vulnerability https://github.com/dlitz/pycrypto/issues/176",
   "parameters" : [ ]
 }, {
-  "patternId" : "B414",
-  "title" : "import_pycryptodome",
-  "description" : "B414: This import blacklist has been removed",
+  "patternId" : "B415",
+  "title" : "import_pyghmi",
+  "description" : "B415: An IPMI-related module is being imported",
   "parameters" : [ ]
 }, {
   "patternId" : "B501",
@@ -374,6 +339,21 @@
   "description" : "B612: Test for insecure use of logging.config.listen",
   "parameters" : [ ]
 }, {
+  "patternId" : "B613",
+  "title" : "trojansource",
+  "description" : "B613: TrojanSource - Bidirectional control characters",
+  "parameters" : [ ]
+}, {
+  "patternId" : "B614",
+  "title" : "pytorch_load",
+  "description" : "B614: Test for unsafe PyTorch load",
+  "parameters" : [ ]
+}, {
+  "patternId" : "B615",
+  "title" : "huggingface_unsafe_download",
+  "description" : "B615: Test for unsafe Hugging Face Hub downloads",
+  "parameters" : [ ]
+}, {
   "patternId" : "B701",
   "title" : "jinja2_autoescape_false",
   "description" : "B701: Test for not auto escaping in jinja2",
@@ -387,5 +367,10 @@
   "patternId" : "B703",
   "title" : "django_mark_safe",
   "description" : "B703: Potential XSS on mark_safe function",
+  "parameters" : [ ]
+}, {
+  "patternId" : "B704",
+  "title" : "markupsafe_markup_xss",
+  "description" : "B704: Potential XSS on markupsafe.Markup use",
   "parameters" : [ ]
 } ]
