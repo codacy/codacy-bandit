@@ -455,13 +455,34 @@ def generate_patterns_json(patterns: List[PatternInfo], output_file: Path, versi
     print(f"Generated {output_file.name} with {len(pattern_specs)} patterns")
 
 
+def _truncate_description(description: str, max_length: int = 500) -> str:
+    """Truncate description to max length, breaking at word boundary."""
+    if len(description) <= max_length:
+        return description
+
+    # Truncate at max_length
+    truncated = description[:max_length]
+
+    # Find last space to avoid cutting mid-word
+    last_space = truncated.rfind(' ')
+    if last_space > max_length * 0.8:  # Only use space break if it's not too far back
+        truncated = truncated[:last_space]
+
+    # Clean up trailing punctuation artifacts
+    truncated = truncated.rstrip('.,;:-')
+    return truncated + '.'
+
+
 def generate_description_json(patterns: List[PatternInfo], output_file: Path) -> None:
-    """Generate description.json file with rich descriptions."""
+    """Generate description.json file with rich descriptions (max 500 chars)."""
     descriptions = []
 
     for pattern in sorted(patterns, key=lambda p: p.pattern_id):
         # Use rich description for JSON if available, otherwise use markdown description
         json_description = pattern.description_for_json if pattern.description_for_json else pattern.description
+        # Truncate to 500 characters
+        json_description = _truncate_description(json_description, 500)
+
         desc = {
             "patternId": pattern.pattern_id,
             "title": pattern.title,

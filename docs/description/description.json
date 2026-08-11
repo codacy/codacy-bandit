@@ -2,7 +2,7 @@
   {
     "patternId": "B101",
     "title": "Test for use of assert",
-    "description": "This plugin test checks for the use of the Python ``assert`` keyword. It was discovered that some projects used assert to enforce interface constraints. However, assert is removed with compiling to optimised byte code (`python -O` producing \\*.opt-1.pyc files). This caused various protections to be removed. Consider raising a semantically meaningful error or ``AssertionError`` instead. Please see https://docs.python.org/3/reference/simple_stmts.html#the-assert-statement for more info on ``assert``.",
+    "description": "This plugin test checks for the use of the Python ``assert`` keyword. It was discovered that some projects used assert to enforce interface constraints. However, assert is removed with compiling to optimised byte code (`python -O` producing \\*.opt-1.pyc files). This caused various protections to be removed. Consider raising a semantically meaningful error or ``AssertionError`` instead. Please see https://docs.python.org/3/reference/simple_stmts.html#the-assert-statement for more info on.",
     "parameters": []
   },
   {
@@ -14,7 +14,7 @@
   {
     "patternId": "B103",
     "title": "Test for setting permissive file permissions",
-    "description": "POSIX based operating systems utilize a permissions model to protect access to parts of the file system. This model supports three roles \"owner\", \"group\" and \"world\" each role may have a combination of \"read\", \"write\" or \"execute\" flags sets. Python provides ``chmod`` to manipulate POSIX style permissions. This plugin test looks for the use of ``chmod`` and will alert when it is used to set particularly permissive control flags. A MEDIUM warning is generated if a file is set to group write or executable and a HIGH warning is reported if a file is set world write or executable. Warnings are given with HIGH confidence.",
+    "description": "POSIX based operating systems utilize a permissions model to protect access to parts of the file system. This model supports three roles \"owner\", \"group\" and \"world\" each role may have a combination of \"read\", \"write\" or \"execute\" flags sets. Python provides ``chmod`` to manipulate POSIX style permissions. This plugin test looks for the use of ``chmod`` and will alert when it is used to set particularly permissive control flags. A MEDIUM warning is generated if a file is set to group write or.",
     "parameters": []
   },
   {
@@ -26,7 +26,7 @@
   {
     "patternId": "B105",
     "title": "Test for use of hard-coded password strings",
-    "description": "The use of hard-coded passwords increases the possibility of password guessing tremendously. This plugin test looks for all string literals and checks the following conditions: - assigned to a variable that looks like a password - assigned to a dict key that looks like a password - assigned to a class attribute that looks like a password - used in a comparison with a variable that looks like a password Variables are considered to look like a password if they have match any one of: - \"password\" - \"pass\" - \"passwd\" - \"pwd\" - \"secret\" - \"token\" - \"secrete\" Note: this can be noisy and may generate false positives.",
+    "description": "The use of hard-coded passwords increases the possibility of password guessing tremendously. This plugin test looks for all string literals and checks the following conditions: - assigned to a variable that looks like a password - assigned to a dict key that looks like a password - assigned to a class attribute that looks like a password - used in a comparison with a variable that looks like a password Variables are considered to look like a password if they have match any one of: - \"password\".",
     "parameters": []
   },
   {
@@ -38,7 +38,7 @@
   {
     "patternId": "B107",
     "title": "Test for use of hard-coded password argument defaults",
-    "description": "The use of hard-coded passwords increases the possibility of password guessing tremendously. This plugin test looks for all function definitions that specify a default string literal for some argument. It checks that the argument does not look like a password. Variables are considered to look like a password if they have match any one of: - \"password\" - \"pass\" - \"passwd\" - \"pwd\" - \"secret\" - \"token\" - \"secrete\" Note: this can be noisy and may generate false positives.  We do not report on None values which can be legitimately used as a default value, when initializing a function or class.",
+    "description": "The use of hard-coded passwords increases the possibility of password guessing tremendously. This plugin test looks for all function definitions that specify a default string literal for some argument. It checks that the argument does not look like a password. Variables are considered to look like a password if they have match any one of: - \"password\" - \"pass\" - \"passwd\" - \"pwd\" - \"secret\" - \"token\" - \"secrete\" Note: this can be noisy and may generate false positives.  We do not report on None.",
     "parameters": []
   },
   {
@@ -74,7 +74,7 @@
   {
     "patternId": "B202",
     "title": "Test for tarfile.extractall",
-    "description": "This plugin will look for usage of ``tarfile.extractall()`` Severity are set as follows: * ``tarfile.extractall(members=function(tarfile))`` - LOW * ``tarfile.extractall(members=?)`` - member is not a function - MEDIUM * ``tarfile.extractall()`` - members from the archive is trusted - HIGH Use ``tarfile.extractall(members=function_name)`` and define a function that will inspect each member. Discard files that contain a directory traversal sequences such as ``../`` or ``\\..`` along with all special filetypes unless you explicitly need them.",
+    "description": "This plugin will look for usage of ``tarfile.extractall()`` Severity are set as follows: * ``tarfile.extractall(members=function(tarfile))`` - LOW * ``tarfile.extractall(members=?)`` - member is not a function - MEDIUM * ``tarfile.extractall()`` - members from the archive is trusted - HIGH Use ``tarfile.extractall(members=function_name)`` and define a function that will inspect each member. Discard files that contain a directory traversal sequences such as ``../`` or ``\\..`` along with all.",
     "parameters": []
   },
   {
@@ -218,7 +218,7 @@
   {
     "patternId": "B324",
     "title": "Test use of insecure md4, md5, or sha1 hash functions in hashlib",
-    "description": "This plugin checks for the usage of the insecure MD4, MD5, or SHA1 hash functions in ``hashlib`` and ``crypt``. The ``hashlib.new`` function provides the ability to construct a new hashing object using the named algorithm. This can be used to create insecure hash functions like MD4 and MD5 if they are passed as algorithm names to this function. This check does additional checking for usage of keyword usedforsecurity on all function variations of hashlib. Similar to ``hashlib``, this plugin also checks for usage of one of the ``crypt`` module's weak hashes. ``crypt`` also permits MD5 among other weak hash variants.",
+    "description": "This plugin checks for the usage of the insecure MD4, MD5, or SHA1 hash functions in ``hashlib`` and ``crypt``. The ``hashlib.new`` function provides the ability to construct a new hashing object using the named algorithm. This can be used to create insecure hash functions like MD4 and MD5 if they are passed as algorithm names to this function. This check does additional checking for usage of keyword usedforsecurity on all function variations of hashlib. Similar to ``hashlib``, this plugin also.",
     "parameters": []
   },
   {
@@ -320,31 +320,31 @@
   {
     "patternId": "B501",
     "title": "Test for missing certificate validation",
-    "description": "Encryption in general is typically critical to the security of many applications.  Using TLS can greatly increase security by guaranteeing the identity of the party you are communicating with.  This is accomplished by one or both parties presenting trusted certificates during the connection initialization phase of TLS. When HTTPS request methods are used, certificates are validated automatically which is the desired behavior.  If certificate validation is explicitly turned off Bandit will return a HIGH severity error.",
+    "description": "Encryption in general is typically critical to the security of many applications.  Using TLS can greatly increase security by guaranteeing the identity of the party you are communicating with.  This is accomplished by one or both parties presenting trusted certificates during the connection initialization phase of TLS. When HTTPS request methods are used, certificates are validated automatically which is the desired behavior.  If certificate validation is explicitly turned off Bandit will.",
     "parameters": []
   },
   {
     "patternId": "B502",
     "title": "Test for SSL use with bad version used",
-    "description": "Several highly publicized exploitable flaws have been discovered in all versions of SSL and early versions of TLS. It is strongly recommended that use of the following known broken protocol versions be avoided: - SSL v2 - SSL v3 - TLS v1 - TLS v1.1 This plugin test scans for calls to Python methods with parameters that indicate the used broken SSL/TLS protocol versions. Currently, detection supports methods using Python's native SSL/TLS support and the pyOpenSSL module. A HIGH severity warning will be reported whenever known broken protocol versions are detected. It is worth noting that native support for TLS 1.2 is only available in more recent Python versions, specifically 2.7.9 and up, and 3.x A note on 'SSLv23': Amongst the available SSL/TLS versions provided by Python/pyOpenSSL there exists the option to use SSLv23. This very poorly named option actually means \"use the highest version of SSL/TLS supported by both the server and client\". This may (and should be) a version well in advance of SSL v2 or v3. Bandit can scan for the use of SSLv23 if desired, but its detection does not necessarily indicate a problem. When using SSLv23 it is important to also provide flags to explicitly exclude bad versions of SSL/TLS from the protocol versions considered. Both the Python native and pyOpenSSL modules provide the ``OP_NO_SSLv2`` and ``OP_NO_SSLv3`` flags for this purpose.",
+    "description": "Several highly publicized exploitable flaws have been discovered in all versions of SSL and early versions of TLS. It is strongly recommended that use of the following known broken protocol versions be avoided: - SSL v2 - SSL v3 - TLS v1 - TLS v1.1 This plugin test scans for calls to Python methods with parameters that indicate the used broken SSL/TLS protocol versions. Currently, detection supports methods using Python's native SSL/TLS support and the pyOpenSSL module. A HIGH severity warning.",
     "parameters": []
   },
   {
     "patternId": "B503",
     "title": "Test for SSL use with bad defaults specified",
-    "description": "This plugin is part of a family of tests that detect the use of known bad versions of SSL/TLS, please see :doc:`../plugins/ssl_with_bad_version` for a complete discussion. Specifically, this plugin test scans for Python methods with default parameter values that specify the use of broken SSL/TLS protocol versions. Currently, detection supports methods using Python's native SSL/TLS support and the pyOpenSSL module. A MEDIUM severity warning will be reported whenever known broken protocol versions are detected.",
+    "description": "This plugin is part of a family of tests that detect the use of known bad versions of SSL/TLS, please see :doc:`../plugins/ssl_with_bad_version` for a complete discussion. Specifically, this plugin test scans for Python methods with default parameter values that specify the use of broken SSL/TLS protocol versions. Currently, detection supports methods using Python's native SSL/TLS support and the pyOpenSSL module. A MEDIUM severity warning will be reported whenever known broken protocol.",
     "parameters": []
   },
   {
     "patternId": "B504",
     "title": "Test for SSL use with no version specified",
-    "description": "This plugin is part of a family of tests that detect the use of known bad versions of SSL/TLS, please see :doc:`../plugins/ssl_with_bad_version` for a complete discussion. Specifically, This plugin test scans for specific methods in Python's native SSL/TLS support and the pyOpenSSL module that configure the version of SSL/TLS protocol to use. These methods are known to provide default value that maximize compatibility, but permit use of the aforementioned broken protocol versions. A LOW severity warning will be reported whenever this is detected.",
+    "description": "This plugin is part of a family of tests that detect the use of known bad versions of SSL/TLS, please see :doc:`../plugins/ssl_with_bad_version` for a complete discussion. Specifically, This plugin test scans for specific methods in Python's native SSL/TLS support and the pyOpenSSL module that configure the version of SSL/TLS protocol to use. These methods are known to provide default value that maximize compatibility, but permit use of the aforementioned broken protocol versions. A LOW.",
     "parameters": []
   },
   {
     "patternId": "B505",
     "title": "Test for weak cryptographic key use",
-    "description": "As computational power increases, so does the ability to break ciphers with smaller key lengths. The recommended key length size for RSA and DSA algorithms is 2048 and higher. 1024 bits and below are now considered breakable. EC key length sizes are recommended to be 224 and higher with 160 and below considered breakable. This plugin test checks for use of any key less than those limits and returns a high severity error if lower than the lower threshold and a medium severity error for those lower than the higher threshold.",
+    "description": "As computational power increases, so does the ability to break ciphers with smaller key lengths. The recommended key length size for RSA and DSA algorithms is 2048 and higher. 1024 bits and below are now considered breakable. EC key length sizes are recommended to be 224 and higher with 160 and below considered breakable. This plugin test checks for use of any key less than those limits and returns a high severity error if lower than the lower threshold and a medium severity error for those.",
     "parameters": []
   },
   {
@@ -380,49 +380,49 @@
   {
     "patternId": "B602",
     "title": "Test for use of popen with shell equals true",
-    "description": "Python possesses many mechanisms to invoke an external executable. However, doing so may present a security issue if appropriate care is not taken to sanitize any user provided or variable input. This plugin test is part of a family of tests built to check for process spawning and warn appropriately. Specifically, this test looks for the spawning of a subprocess using a command shell. This type of subprocess invocation is dangerous as it is vulnerable to various shell injection attacks. Great care should be taken to sanitize all input in order to mitigate this risk. Calls of this type are identified by a parameter of 'shell=True' being given. Additionally, this plugin scans the command string given and adjusts its reported severity based on how it is presented. If the command string is a simple static string containing no special shell characters, then the resulting issue has low severity. If the string is static, but contains shell formatting characters or wildcards, then the reported issue is medium. Finally, if the string is computed using Python's string manipulation or formatting operations, then the reported issue has high severity. These severity levels reflect the likelihood that the code is vulnerable to injection. See also: - :doc:`../plugins/linux_commands_wildcard_injection` - :doc:`../plugins/subprocess_without_shell_equals_true` - :doc:`../plugins/start_process_with_no_shell` - :doc:`../plugins/start_process_with_a_shell` - :doc:`../plugins/start_process_with_partial_path`",
+    "description": "Python possesses many mechanisms to invoke an external executable. However, doing so may present a security issue if appropriate care is not taken to sanitize any user provided or variable input. This plugin test is part of a family of tests built to check for process spawning and warn appropriately. Specifically, this test looks for the spawning of a subprocess using a command shell. This type of subprocess invocation is dangerous as it is vulnerable to various shell injection attacks. Great.",
     "parameters": []
   },
   {
     "patternId": "B603",
     "title": "Test for use of subprocess without shell equals true",
-    "description": "Python possesses many mechanisms to invoke an external executable. However, doing so may present a security issue if appropriate care is not taken to sanitize any user provided or variable input. This plugin test is part of a family of tests built to check for process spawning and warn appropriately. Specifically, this test looks for the spawning of a subprocess without the use of a command shell. This type of subprocess invocation is not vulnerable to shell injection attacks, but care should still be taken to ensure validity of input. Because this is a lesser issue than that described in `subprocess_popen_with_shell_equals_true` a LOW severity warning is reported. See also: - :doc:`../plugins/linux_commands_wildcard_injection` - :doc:`../plugins/subprocess_popen_with_shell_equals_true` - :doc:`../plugins/start_process_with_no_shell` - :doc:`../plugins/start_process_with_a_shell` - :doc:`../plugins/start_process_with_partial_path`",
+    "description": "Python possesses many mechanisms to invoke an external executable. However, doing so may present a security issue if appropriate care is not taken to sanitize any user provided or variable input. This plugin test is part of a family of tests built to check for process spawning and warn appropriately. Specifically, this test looks for the spawning of a subprocess without the use of a command shell. This type of subprocess invocation is not vulnerable to shell injection attacks, but care should.",
     "parameters": []
   },
   {
     "patternId": "B604",
     "title": "Test for any function with shell equals true",
-    "description": "Python possesses many mechanisms to invoke an external executable. However, doing so may present a security issue if appropriate care is not taken to sanitize any user provided or variable input. This plugin test is part of a family of tests built to check for process spawning and warn appropriately. Specifically, this plugin test interrogates method calls for the presence of a keyword parameter `shell` equalling true. It is related to detection of shell injection issues and is intended to catch custom wrappers to vulnerable methods that may have been created. See also: - :doc:`../plugins/linux_commands_wildcard_injection` - :doc:`../plugins/subprocess_popen_with_shell_equals_true` - :doc:`../plugins/subprocess_without_shell_equals_true` - :doc:`../plugins/start_process_with_no_shell` - :doc:`../plugins/start_process_with_a_shell` - :doc:`../plugins/start_process_with_partial_path`",
+    "description": "Python possesses many mechanisms to invoke an external executable. However, doing so may present a security issue if appropriate care is not taken to sanitize any user provided or variable input. This plugin test is part of a family of tests built to check for process spawning and warn appropriately. Specifically, this plugin test interrogates method calls for the presence of a keyword parameter `shell` equalling true. It is related to detection of shell injection issues and is intended to.",
     "parameters": []
   },
   {
     "patternId": "B605",
     "title": "Test for starting a process with a shell",
-    "description": "Python possesses many mechanisms to invoke an external executable. However, doing so may present a security issue if appropriate care is not taken to sanitize any user provided or variable input. This plugin test is part of a family of tests built to check for process spawning and warn appropriately. Specifically, this test looks for the spawning of a subprocess using a command shell. This type of subprocess invocation is dangerous as it is vulnerable to various shell injection attacks. Great care should be taken to sanitize all input in order to mitigate this risk. Calls of this type are identified by the use of certain commands which are known to use shells. Bandit will report a LOW severity warning. See also: - :doc:`../plugins/linux_commands_wildcard_injection` - :doc:`../plugins/subprocess_without_shell_equals_true` - :doc:`../plugins/start_process_with_no_shell` - :doc:`../plugins/start_process_with_partial_path` - :doc:`../plugins/subprocess_popen_with_shell_equals_true`",
+    "description": "Python possesses many mechanisms to invoke an external executable. However, doing so may present a security issue if appropriate care is not taken to sanitize any user provided or variable input. This plugin test is part of a family of tests built to check for process spawning and warn appropriately. Specifically, this test looks for the spawning of a subprocess using a command shell. This type of subprocess invocation is dangerous as it is vulnerable to various shell injection attacks. Great.",
     "parameters": []
   },
   {
     "patternId": "B606",
     "title": "Test for starting a process with no shell",
-    "description": "Python possesses many mechanisms to invoke an external executable. However, doing so may present a security issue if appropriate care is not taken to sanitize any user provided or variable input. This plugin test is part of a family of tests built to check for process spawning and warn appropriately. Specifically, this test looks for the spawning of a subprocess in a way that doesn't use a shell. Although this is generally safe, it maybe useful for penetration testing workflows to track where external system calls are used.  As such a LOW severity message is generated. See also: - :doc:`../plugins/linux_commands_wildcard_injection` - :doc:`../plugins/subprocess_without_shell_equals_true` - :doc:`../plugins/start_process_with_a_shell` - :doc:`../plugins/start_process_with_partial_path` - :doc:`../plugins/subprocess_popen_with_shell_equals_true`",
+    "description": "Python possesses many mechanisms to invoke an external executable. However, doing so may present a security issue if appropriate care is not taken to sanitize any user provided or variable input. This plugin test is part of a family of tests built to check for process spawning and warn appropriately. Specifically, this test looks for the spawning of a subprocess in a way that doesn't use a shell. Although this is generally safe, it maybe useful for penetration testing workflows to track where.",
     "parameters": []
   },
   {
     "patternId": "B607",
     "title": "Test for starting a process with a partial path",
-    "description": "Python possesses many mechanisms to invoke an external executable. If the desired executable path is not fully qualified relative to the filesystem root then this may present a potential security risk. In POSIX environments, the `PATH` environment variable is used to specify a set of standard locations that will be searched for the first matching named executable. While convenient, this behavior may allow a malicious actor to exert control over a system. If they are able to adjust the contents of the `PATH` variable, or manipulate the file system, then a bogus executable may be discovered in place of the desired one. This executable will be invoked with the user privileges of the Python process that spawned it, potentially a highly privileged user. This test will scan the parameters of all configured Python methods, looking for paths that do not start at the filesystem root, that is, do not have a leading '/' character.",
+    "description": "Python possesses many mechanisms to invoke an external executable. If the desired executable path is not fully qualified relative to the filesystem root then this may present a potential security risk. In POSIX environments, the `PATH` environment variable is used to specify a set of standard locations that will be searched for the first matching named executable. While convenient, this behavior may allow a malicious actor to exert control over a system. If they are able to adjust the contents.",
     "parameters": []
   },
   {
     "patternId": "B608",
     "title": "Test for SQL injection",
-    "description": "An SQL injection attack consists of insertion or \"injection\" of a SQL query via the input data given to an application. It is a very common attack vector. This plugin test looks for strings that resemble SQL statements that are involved in some form of string building operation. For example: - \"SELECT %s FROM derp;\" % var - \"SELECT thing FROM \" + tab - \"SELECT \" + val + \" FROM \" + tab + ... - \"SELECT {} FROM derp;\".format(var) - f\"SELECT foo FROM bar WHERE id = {product}\" Unless care is taken to sanitize and control the input data when building such SQL statement strings, an injection attack becomes possible. If strings of this nature are discovered, a LOW confidence issue is reported. In order to boost result confidence, this plugin test will also check to see if the discovered string is in use with standard Python DBAPI calls `execute` or `executemany`. If so, a MEDIUM issue is reported. For example: - cursor.execute(\"SELECT %s FROM derp;\" % var) Use of str.replace in the string construction can also be dangerous. For example: - \"SELECT * FROM foo WHERE id = '[VALUE]'\".replace(\"[VALUE]\", identifier) However, such cases are always reported with LOW confidence to compensate for false positives, since valid uses of str.replace can be common.",
+    "description": "An SQL injection attack consists of insertion or \"injection\" of a SQL query via the input data given to an application. It is a very common attack vector. This plugin test looks for strings that resemble SQL statements that are involved in some form of string building operation. For example: - \"SELECT %s FROM derp;\" % var - \"SELECT thing FROM \" + tab - \"SELECT \" + val + \" FROM \" + tab + ... - \"SELECT {} FROM derp;\".format(var) - f\"SELECT foo FROM bar WHERE id = {product}\" Unless care is taken.",
     "parameters": []
   },
   {
     "patternId": "B609",
     "title": "Test for use of wildcard injection",
-    "description": "Python provides a number of methods that emulate the behavior of standard Linux command line utilities. Like their Linux counterparts, these commands may take a wildcard \"\\*\" character in place of a file system path. This is interpreted to mean \"any and all files or folders\" and can be used to build partially qualified paths, such as \"/home/user/\\*\". The use of partially qualified paths may result in unintended consequences if an unexpected file or symlink is placed into the path location given. This becomes particularly dangerous when combined with commands used to manipulate file permissions or copy data off of a system. This test plugin looks for usage of the following commands in conjunction with wild card parameters: - 'chown' - 'chmod' - 'tar' - 'rsync' As well as any method configured in the shell or subprocess injection test configurations.",
+    "description": "Python provides a number of methods that emulate the behavior of standard Linux command line utilities. Like their Linux counterparts, these commands may take a wildcard \"\\*\" character in place of a file system path. This is interpreted to mean \"any and all files or folders\" and can be used to build partially qualified paths, such as \"/home/user/\\*\". The use of partially qualified paths may result in unintended consequences if an unexpected file or symlink is placed into the path location.",
     "parameters": []
   },
   {
@@ -440,7 +440,7 @@
   {
     "patternId": "B612",
     "title": "Test for insecure use of logging.config.listen",
-    "description": "This plugin test checks for the unsafe usage of the ``logging.config.listen`` function. The logging.config.listen function provides the ability to listen for external configuration files on a socket server. Because portions of the configuration are passed through eval(), use of this function may open its users to a security risk. While the function only binds to a socket on localhost, and so does not accept connections from remote machines, there are scenarios where untrusted code could be run under the account of the process which calls listen(). logging.config.listen provides the ability to verify bytes received across the socket with signature verification or encryption/decryption.",
+    "description": "This plugin test checks for the unsafe usage of the ``logging.config.listen`` function. The logging.config.listen function provides the ability to listen for external configuration files on a socket server. Because portions of the configuration are passed through eval(), use of this function may open its users to a security risk. While the function only binds to a socket on localhost, and so does not accept connections from remote machines, there are scenarios where untrusted code could be run.",
     "parameters": []
   },
   {
@@ -452,19 +452,19 @@
   {
     "patternId": "B614",
     "title": "Test for unsafe PyTorch load",
-    "description": "This plugin checks for unsafe use of `torch.load` and `torch.serialization.load`. Using `torch.load` or `torch.serialization.load` with untrusted data can lead to arbitrary code execution. There are two safe alternatives: 1. Use `torch.load` with `weights_only=True` where only tensor data is extracted, and no arbitrary Python objects are deserialized 2. Use the `safetensors` library from huggingface, which provides a safe deserialization mechanism With `weights_only=True`, PyTorch enforces a strict type check, ensuring that only torch.Tensor objects are loaded.",
+    "description": "This plugin checks for unsafe use of `torch.load` and `torch.serialization.load`. Using `torch.load` or `torch.serialization.load` with untrusted data can lead to arbitrary code execution. There are two safe alternatives: 1. Use `torch.load` with `weights_only=True` where only tensor data is extracted, and no arbitrary Python objects are deserialized 2. Use the `safetensors` library from huggingface, which provides a safe deserialization mechanism With `weights_only=True`, PyTorch enforces a.",
     "parameters": []
   },
   {
     "patternId": "B615",
     "title": "Test for unsafe Hugging Face Hub downloads",
-    "description": "This plugin checks for unsafe downloads from Hugging Face Hub without proper integrity verification. Downloading models, datasets, or files without specifying a revision based on an immmutable revision (commit) can lead to supply chain attacks where malicious actors could replace model files and use an existing tag or branch name to serve malicious content. The secure approach is to: 1. Pin to specific revisions/commits when downloading models, files or datasets Common unsafe patterns: - ``AutoModel.from_pretrained(\"org/model-name\")`` - ``AutoModel.from_pretrained(\"org/model-name\", revision=\"main\")`` - ``AutoModel.from_pretrained(\"org/model-name\", revision=\"v1.0.0\")`` - ``load_dataset(\"org/dataset-name\")`` without revision - ``load_dataset(\"org/dataset-name\", revision=\"main\")`` - ``load_dataset(\"org/dataset-name\", revision=\"v1.0\")`` - ``AutoTokenizer.from_pretrained(\"org/model-name\")`` - ``AutoTokenizer.from_pretrained(\"org/model-name\", revision=\"main\")`` - ``AutoTokenizer.from_pretrained(\"org/model-name\", revision=\"v3.3.0\")`` - ``hf_hub_download(repo_id=\"org/model_name\", filename=\"file_name\")`` - ``hf_hub_download(repo_id=\"org/model_name\", filename=\"file_name\", revision=\"main\" )`` - ``hf_hub_download(repo_id=\"org/model_name\", filename=\"file_name\", revision=\"v2.0.0\" )`` - ``snapshot_download(repo_id=\"org/model_name\")`` - ``snapshot_download(repo_id=\"org/model_name\", revision=\"main\")`` - ``snapshot_download(repo_id=\"org/model_name\", revision=\"refs/pr/1\")``",
+    "description": "This plugin checks for unsafe downloads from Hugging Face Hub without proper integrity verification. Downloading models, datasets, or files without specifying a revision based on an immmutable revision (commit) can lead to supply chain attacks where malicious actors could replace model files and use an existing tag or branch name to serve malicious content. The secure approach is to: 1. Pin to specific revisions/commits when downloading models, files or datasets Common unsafe patterns: .",
     "parameters": []
   },
   {
     "patternId": "B701",
     "title": "Test for not auto escaping in jinja2",
-    "description": "Jinja2 is a Python HTML templating system. It is typically used to build web applications, though appears in other places well, notably the Ansible automation system. When configuring the Jinja2 environment, the option to use autoescaping on input can be specified. When autoescaping is enabled, Jinja2 will filter input strings to escape any HTML content submitted via template variables. Without escaping HTML input the application becomes vulnerable to Cross Site Scripting (XSS) attacks. Unfortunately, autoescaping is False by default. Thus this plugin test will warn on omission of an autoescape setting, as well as an explicit setting of false. A HIGH severity warning is generated in either of these scenarios.",
+    "description": "Jinja2 is a Python HTML templating system. It is typically used to build web applications, though appears in other places well, notably the Ansible automation system. When configuring the Jinja2 environment, the option to use autoescaping on input can be specified. When autoescaping is enabled, Jinja2 will filter input strings to escape any HTML content submitted via template variables. Without escaping HTML input the application becomes vulnerable to Cross Site Scripting (XSS) attacks.",
     "parameters": []
   },
   {
