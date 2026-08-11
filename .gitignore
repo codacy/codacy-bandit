@@ -17,3 +17,5 @@
 .bloop
 .metals
 .bsp/
+
+.github/instructions/codacy.instructions.md

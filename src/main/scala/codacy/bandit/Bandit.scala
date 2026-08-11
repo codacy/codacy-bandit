@@ -22,8 +22,12 @@ object Bandit extends Tool {
   )(implicit specification: Tool.Specification): Try[List[Result]] = {
     Try {
       val fullConfig = conf.withDefaultParameters
+      val excludedFiles = Set("Pipfile.lock", "requirements.txt", "poetry.lock", "uv.lock")
       val filesToLint: List[String] = files.fold(List(source.path.toString)) { paths =>
-        paths.map(_.toString).toList
+        paths
+          .map(_.toString)
+          .filterNot(path => excludedFiles.exists(excluded => path.endsWith(excluded)))
+          .toList
       }
 
       lazy val enabledPatterns = fullConfig.map(_.map(_.patternId).to(Set))

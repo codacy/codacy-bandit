@@ -1,4 +1,4 @@
-FROM python:3.12-alpine3.21
+FROM python:3.14-alpine3.24
 
 COPY requirements.txt requirements.txt
 RUN apk add --no-cache --update bash openjdk11-jre && \
