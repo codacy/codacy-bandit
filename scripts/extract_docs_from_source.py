@@ -21,6 +21,7 @@ class PatternInfo:
     severity: str
     affected_items: List[str]  # functions, imports, calls, etc.
     full_docstring: str  # for detailed markdown
+    description_for_json: str = ""  # rich description for JSON (can differ from markdown description)
 
 
 def extract_docstring(file_path: Path) -> Optional[str]:
@@ -108,10 +109,43 @@ def _is_separator_line(line: str) -> bool:
     return len(stripped) > 2 and all(c in '=-*+_' for c in stripped)
 
 
-def _extract_description(pattern_id: str, docstring: str, title: str) -> str:
-    """Extract full description from docstring until a major section marker.
+def _extract_description_for_markdown(pattern_id: str, docstring: str, title: str) -> str:
+    """Extract brief description for markdown (first sentence/paragraph only).
 
-    Captures multiple paragraphs and sentences until hitting Config/Example sections.
+    This is shown in markdown Description field to avoid duplication with Details.
+    """
+    lines = docstring.strip().split('\n')
+    start_idx = _find_description_start(pattern_id, lines)
+
+    description_lines = []
+
+    for i in range(start_idx, len(lines)):
+        line = lines[i].strip()
+
+        # Stop at any blank line - keep description brief
+        if not line:
+            break
+
+        # Skip separator lines
+        if _is_separator_line(line):
+            continue
+
+        description_lines.append(line)
+
+        # Stop after first complete sentence
+        combined = ' '.join(description_lines)
+        sentence_count = combined.count('.') + combined.count('!') + combined.count('?')
+        if sentence_count >= 1:
+            break
+
+    description = ' '.join(description_lines)
+    return description if description and len(description) > len(title) + 5 else title
+
+
+def _extract_description_for_json(pattern_id: str, docstring: str, title: str) -> str:
+    """Extract rich, detailed description for JSON (multiple paragraphs).
+
+    This is used in description.json for better detail and searchability.
     """
     lines = docstring.strip().split('\n')
     start_idx = _find_description_start(pattern_id, lines)
@@ -128,25 +162,21 @@ def _extract_description(pattern_id: str, docstring: str, title: str) -> str:
         if line.startswith('..') and ('code-block' in line or 'seealso' in line):
             break
 
-        if not line:  # Track consecutive blank lines
+        if not line:
             blank_line_count += 1
-            # Stop if we hit two blank lines (paragraph break before section)
-            if blank_line_count >= 2:
+            if blank_line_count >= 2:  # Stop at two blank lines
                 break
-            # Single blank line is fine, just don't add it
             continue
         else:
             blank_line_count = 0
 
-        # Skip separator lines
         if _is_separator_line(line):
             continue
 
         description_lines.append(line)
 
     description = ' '.join(description_lines)
-    # Ensure we have meaningful content, not just the title
-    return description if description and description != title else title
+    return description if description and len(description) > len(title) else title
 
 
 def parse_single_pattern_docstring(docstring: str, file_path: Path) -> List[PatternInfo]:
@@ -158,15 +188,17 @@ def parse_single_pattern_docstring(docstring: str, file_path: Path) -> List[Patt
     title = _extract_title(pattern_id, docstring)
     severity = _extract_severity(docstring)
     affected_items = _extract_affected_items(docstring)
-    description = _extract_description(pattern_id, docstring, title)
+    description_md = _extract_description_for_markdown(pattern_id, docstring, title)
+    description_json = _extract_description_for_json(pattern_id, docstring, title)
 
     pattern = PatternInfo(
         pattern_id=pattern_id,
         title=title,
-        description=description,
+        description=description_md,
         severity=severity,
         affected_items=affected_items,
-        full_docstring=docstring
+        full_docstring=docstring,
+        description_for_json=description_json
     )
 
     return [pattern]
@@ -263,7 +295,8 @@ def parse_blacklist_docstring(docstring: str) -> List[PatternInfo]:
             description=description,
             severity=severity,
             affected_items=affected_items,
-            full_docstring=pattern_docstring  # Store only relevant section, not entire module docstring
+            full_docstring=pattern_docstring,  # Store only relevant section, not entire module docstring
+            description_for_json=description  # For blacklist, use same description for both
         )
 
         # Avoid duplicates
@@ -423,14 +456,16 @@ def generate_patterns_json(patterns: List[PatternInfo], output_file: Path, versi
 
 
 def generate_description_json(patterns: List[PatternInfo], output_file: Path) -> None:
-    """Generate description.json file."""
+    """Generate description.json file with rich descriptions."""
     descriptions = []
 
     for pattern in sorted(patterns, key=lambda p: p.pattern_id):
+        # Use rich description for JSON if available, otherwise use markdown description
+        json_description = pattern.description_for_json if pattern.description_for_json else pattern.description
         desc = {
             "patternId": pattern.pattern_id,
             "title": pattern.title,
-            "description": pattern.description,
+            "description": json_description,
             "parameters": []
         }
         descriptions.append(desc)
