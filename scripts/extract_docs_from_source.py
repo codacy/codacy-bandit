@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 """
+
 Extract Bandit pattern documentation directly from Python source files.
 Generates clean markdown files and patterns.json with all pattern metadata.
+
 """
 
 import json
 import re
 import sys
 from pathlib import Path
-from typing import Dict, List, Tuple, Optional
-from dataclasses import dataclass, asdict
+from typing import List, Optional
+from dataclasses import dataclass
 
 
 @dataclass
@@ -24,7 +26,7 @@ class PatternInfo:
 
 def extract_docstring(file_path: Path) -> Optional[str]:
     """Extract module-level docstring from Python file."""
-    with open(file_path, 'r') as f:
+    with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
     # Match r""" ... """ or """ ... """
@@ -199,7 +201,7 @@ def extract_from_plugins(plugins_dir: Path) -> List[PatternInfo]:
             patterns.extend(parsed)
 
         # Also extract function-level docstrings with @test.test_id decorators
-        with open(py_file, 'r') as f:
+        with open(py_file, 'r', encoding='utf-8') as f:
             content = f.read()
 
         # Find all @test.test_id("BXXX") decorators and their associated function docstrings
@@ -286,7 +288,7 @@ def generate_markdown(pattern: PatternInfo, output_dir: Path) -> None:
 """
 
     if pattern.affected_items:
-        content += f"""## Affected Items
+        content += """## Affected Items
 
 """
         for item in sorted(set(pattern.affected_items)):
@@ -327,7 +329,7 @@ def generate_patterns_json(patterns: List[PatternInfo], output_file: Path, versi
         "patterns": pattern_specs
     }
 
-    with open(output_file, 'w') as f:
+    with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(tool_spec, f, indent=2)
 
     print(f"Generated {output_file.name} with {len(pattern_specs)} patterns")
@@ -346,7 +348,7 @@ def generate_description_json(patterns: List[PatternInfo], output_file: Path) ->
         }
         descriptions.append(desc)
 
-    with open(output_file, 'w') as f:
+    with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(descriptions, f, indent=2)
 
     print(f"Generated {output_file.name} with {len(descriptions)} descriptions")
@@ -390,7 +392,7 @@ def main():
     description_dir.mkdir(parents=True, exist_ok=True)
 
     # Generate outputs
-    print(f"\nGenerating documentation...")
+    print("\nGenerating documentation...")
     for pattern in all_patterns:
         generate_markdown(pattern, description_dir)
 
