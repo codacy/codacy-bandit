@@ -13,6 +13,10 @@ done)
 
 BASE_DIR="bandit"
 
-docker run -v "$PWD":/src -w /src python:3.12 bash scripts/generatePythonDocs.sh "$VERSION" "$BASE_DIR"
+echo "Using Bandit version: $VERSION"
 
-sbt "doc-generator/run $VERSION $PWD/$BASE_DIR"
+# Extract documentation directly from Python source files
+# This replaces the HTML-based extraction approach
+python3 scripts/extract_docs_from_source.py "$BASE_DIR" "docs" "$VERSION"
+
+echo "Documentation generation complete!"

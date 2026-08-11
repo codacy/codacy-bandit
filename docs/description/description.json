@@ -1,376 +1,488 @@
-[ {
-  "patternId" : "B101",
-  "title" : "assert_used",
-  "description" : "B101: Test for use of assert",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B102",
-  "title" : "exec_used",
-  "description" : "B102: Test for the use of exec",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B103",
-  "title" : "set_bad_file_permissions",
-  "description" : "B103: Test for setting permissive file permissions",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B104",
-  "title" : "hardcoded_bind_all_interfaces",
-  "description" : "B104: Test for binding to all interfaces",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B105",
-  "title" : "hardcoded_password_string",
-  "description" : "B105: Test for use of hard-coded password strings",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B106",
-  "title" : "hardcoded_password_funcarg",
-  "description" : "B106: Test for use of hard-coded password function arguments",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B107",
-  "title" : "hardcoded_password_default",
-  "description" : "B107: Test for use of hard-coded password argument defaults",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B108",
-  "title" : "hardcoded_tmp_directory",
-  "description" : "B108: Test for insecure usage of tmp file/directory",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B110",
-  "title" : "try_except_pass",
-  "description" : "B110: Test for a pass in the except block",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B112",
-  "title" : "try_except_continue",
-  "description" : "B112: Test for a continue in the except block",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B113",
-  "title" : "request_without_timeout",
-  "description" : "B113: Test for missing requests timeout",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B201",
-  "title" : "flask_debug_true",
-  "description" : "B201: Test for use of flask app with debug set to true",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B202",
-  "title" : "tarfile_unsafe_members",
-  "description" : "B202: Test for tarfile.extractall",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B301",
-  "title" : "pickle",
-  "description" : "B301: Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B302",
-  "title" : "marshal",
-  "description" : "B302: Deserialization with the marshal module is possibly dangerous.",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B303",
-  "title" : "md5",
-  "description" : "B303: Use of insecure MD2, MD4, MD5, or SHA1 hash function.",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B304",
-  "title" : "B304: ciphers and modes",
-  "description" : "B304: Use of insecure cipher or cipher mode",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B305",
-  "title" : "B305: ciphers and modes",
-  "description" : "B305: Use of insecure cipher or cipher mode",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B306",
-  "title" : "mktemp_q",
-  "description" : "B306: Use of insecure and deprecated function (mktemp).",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B307",
-  "title" : "eval",
-  "description" : "B307: Use of possibly insecure function - consider using safer ast.literal_eval.",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B308",
-  "title" : "mark_safe",
-  "description" : "B308: Use of mark_safe() may expose cross-site scripting vulnerabilities and should be reviewed.",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B310",
-  "title" : "urllib_urlopen",
-  "description" : "B310: Audit url open for permitted schemes",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B311",
-  "title" : "random",
-  "description" : "B311: Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B312",
-  "title" : "telnetlib",
-  "description" : "B312: Telnet-related functions are being called",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B313",
-  "title" : "B313: XML",
-  "description" : "B313: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B314",
-  "title" : "B314: XML",
-  "description" : "B314: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B315",
-  "title" : "B315: XML",
-  "description" : "B315: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B316",
-  "title" : "B316: XML",
-  "description" : "B316: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B317",
-  "title" : "B317: XML",
-  "description" : "B317: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B318",
-  "title" : "B318: XML",
-  "description" : "B318: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B319",
-  "title" : "B319: XML",
-  "description" : "B319: Using various XLM methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B321",
-  "title" : "ftplib",
-  "description" : "B321: FTP-related functions are being called",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B323",
-  "title" : "unverified_context",
-  "description" : "B323: By default, Python will create a secure, verified ssl context for use in such classes as HTTPSConnection",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B324",
-  "title" : "hashlib",
-  "description" : "B324: Test use of insecure md4, md5, or sha1 hash functions in hashlib",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B401",
-  "title" : "import_telnetlib",
-  "description" : "B401: A telnet-related module is being imported",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B402",
-  "title" : "import_ftplib",
-  "description" : "B402: A FTP-related module is being imported",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B403",
-  "title" : "import_pickle",
-  "description" : "B403: Consider possible security implications associated with these modules.",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B404",
-  "title" : "import_subprocess",
-  "description" : "B404: Consider possible security implications associated with these modules.",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B405",
-  "title" : "import_xml_etree",
-  "description" : "B405: Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B406",
-  "title" : "import_xml_sax",
-  "description" : "B406: Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B407",
-  "title" : "import_xml_expat",
-  "description" : "B407: Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B408",
-  "title" : "import_xml_minidom",
-  "description" : "B408: Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B409",
-  "title" : "import_xml_pulldom",
-  "description" : "B409: Using various methods to parse untrusted XML data is known to be vulnerable to XML attacks",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B411",
-  "title" : "import_xmlrpclib",
-  "description" : "B411: XMLRPC is particularly dangerous as it is also concerned with communicating data over a network",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B412",
-  "title" : "import_httpoxy",
-  "description" : "B412: httpoxy is a set of vulnerabilities that affect application code running in CGI, or CGI-like environments",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B413",
-  "title" : "import_pycrypto",
-  "description" : "B413: pycrypto library is known to have publicly disclosed buffer overflow vulnerability https://github.com/dlitz/pycrypto/issues/176",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B415",
-  "title" : "import_pyghmi",
-  "description" : "B415: An IPMI-related module is being imported",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B501",
-  "title" : "request_with_no_cert_validation",
-  "description" : "B501: Test for missing certificate validation",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B502",
-  "title" : "ssl_with_bad_version",
-  "description" : "B502: Test for SSL use with bad version used",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B503",
-  "title" : "ssl_with_bad_defaults",
-  "description" : "B503: Test for SSL use with bad defaults specified",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B504",
-  "title" : "ssl_with_no_version",
-  "description" : "B504: Test for SSL use with no version specified",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B505",
-  "title" : "weak_cryptographic_key",
-  "description" : "B505: Test for weak cryptographic key use",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B506",
-  "title" : "yaml_load",
-  "description" : "B506: Test for use of yaml load",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B507",
-  "title" : "ssh_no_host_key_verification",
-  "description" : "B507: Test for missing host key validation",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B508",
-  "title" : "snmp_insecure_version",
-  "description" : "B508: Checking for insecure SNMP versions",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B509",
-  "title" : "snmp_weak_cryptography",
-  "description" : "B509: Checking for weak cryptography",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B601",
-  "title" : "paramiko_calls",
-  "description" : "B601: Test for shell injection within Paramiko",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B602",
-  "title" : "subprocess_popen_with_shell_equals_true",
-  "description" : "B602: Test for use of popen with shell equals true",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B603",
-  "title" : "subprocess_without_shell_equals_true",
-  "description" : "B603: Test for use of subprocess without shell equals true",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B604",
-  "title" : "any_other_function_with_shell_equals_true",
-  "description" : "B604: Test for any function with shell equals true",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B605",
-  "title" : "start_process_with_a_shell",
-  "description" : "B605: Test for starting a process with a shell",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B606",
-  "title" : "start_process_with_no_shell",
-  "description" : "B606: Test for starting a process with no shell",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B607",
-  "title" : "start_process_with_partial_path",
-  "description" : "B607: Test for starting a process with a partial path",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B608",
-  "title" : "hardcoded_sql_expressions",
-  "description" : "B608: Test for SQL injection",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B609",
-  "title" : "linux_commands_wildcard_injection",
-  "description" : "B609: Test for use of wildcard injection",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B610",
-  "title" : "django_extra_used",
-  "description" : "B610: Potential SQL injection on extra function",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B611",
-  "title" : "django_rawsql_used",
-  "description" : "B611: Potential SQL injection on RawSQL function",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B612",
-  "title" : "logging_config_insecure_listen",
-  "description" : "B612: Test for insecure use of logging.config.listen",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B613",
-  "title" : "trojansource",
-  "description" : "B613: TrojanSource - Bidirectional control characters",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B614",
-  "title" : "pytorch_load",
-  "description" : "B614: Test for unsafe PyTorch load",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B615",
-  "title" : "huggingface_unsafe_download",
-  "description" : "B615: Test for unsafe Hugging Face Hub downloads",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B701",
-  "title" : "jinja2_autoescape_false",
-  "description" : "B701: Test for not auto escaping in jinja2",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B702",
-  "title" : "use_of_mako_templates",
-  "description" : "B702: Test for use of mako templates",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B703",
-  "title" : "django_mark_safe",
-  "description" : "B703: Potential XSS on mark_safe function",
-  "parameters" : [ ]
-}, {
-  "patternId" : "B704",
-  "title" : "markupsafe_markup_xss",
-  "description" : "B704: Potential XSS on markupsafe.Markup use",
-  "parameters" : [ ]
-} ]
+[
+  {
+    "patternId": "B101",
+    "title": "Test for use of assert",
+    "description": "This plugin test checks for the use of the Python ``assert`` keyword. It was discovered that some projects used assert to enforce interface constraints. However, assert is removed with compiling to optimised byte code (`python -O`",
+    "parameters": []
+  },
+  {
+    "patternId": "B102",
+    "title": "Test for the use of exec",
+    "description": "This plugin test checks for the use of Python's `exec` method or keyword. The Python docs succinctly describe why the use of `exec` is risky.",
+    "parameters": []
+  },
+  {
+    "patternId": "B103",
+    "title": "Test for setting permissive file permissions",
+    "description": "POSIX based operating systems utilize a permissions model to protect access to parts of the file system. This model supports three roles \"owner\", \"group\" and \"world\" each role may have a combination of \"read\", \"write\" or \"execute\"",
+    "parameters": []
+  },
+  {
+    "patternId": "B104",
+    "title": "Test for binding to all interfaces",
+    "description": "Binding to all network interfaces can potentially open up a service to traffic on unintended interfaces, that may not be properly documented or secured. This plugin test looks for a string pattern \"0.0.0.0\" that may indicate a hardcoded",
+    "parameters": []
+  },
+  {
+    "patternId": "B105",
+    "title": "Test for use of hard-coded password strings**",
+    "description": "The use of hard-coded passwords increases the possibility of password guessing tremendously. This plugin test looks for all string literals and checks the following conditions:",
+    "parameters": []
+  },
+  {
+    "patternId": "B106",
+    "title": "Test for use of hard-coded password function arguments**",
+    "description": "The use of hard-coded passwords increases the possibility of password guessing tremendously. This plugin test looks for all function calls being passed a keyword argument that is a string literal. It checks that the",
+    "parameters": []
+  },
+  {
+    "patternId": "B107",
+    "title": "Test for use of hard-coded password argument defaults**",
+    "description": "The use of hard-coded passwords increases the possibility of password guessing tremendously. This plugin test looks for all function definitions that specify a default string literal for some argument. It checks that",
+    "parameters": []
+  },
+  {
+    "patternId": "B108",
+    "title": "Test for insecure usage of tmp file/directory",
+    "description": "Safely creating a temporary file or directory means following a number of rules (see the references for more details). This plugin test looks for strings starting with (configurable) commonly used temporary paths, for example:",
+    "parameters": []
+  },
+  {
+    "patternId": "B110",
+    "title": "Test for a pass in the except block",
+    "description": "Errors in Python code bases are typically communicated using ``Exceptions``. An exception object is 'raised' in the event of an error and can be 'caught' at a later point in the program, typically some error handling or logging action",
+    "parameters": []
+  },
+  {
+    "patternId": "B112",
+    "title": "Test for a continue in the except block",
+    "description": "Errors in Python code bases are typically communicated using ``Exceptions``. An exception object is 'raised' in the event of an error and can be 'caught' at a later point in the program, typically some error handling or logging action",
+    "parameters": []
+  },
+  {
+    "patternId": "B113",
+    "title": "Test for missing requests timeout",
+    "description": "This plugin test checks for ``requests`` or ``httpx`` calls without a timeout specified. Nearly all production code should use this parameter in nearly all requests,",
+    "parameters": []
+  },
+  {
+    "patternId": "B201",
+    "title": "Test for use of flask app with debug set to true",
+    "description": "Running Flask applications in debug mode results in the Werkzeug debugger being enabled. This includes a feature that allows arbitrary code execution. Documentation for both Flask [1]_ and Werkzeug [2]_ strongly suggests that",
+    "parameters": []
+  },
+  {
+    "patternId": "B202",
+    "title": "Test for tarfile.extractall",
+    "description": "This plugin will look for usage of ``tarfile.extractall()`` Severity are set as follows: * ``tarfile.extractall(members=function(tarfile))`` - LOW",
+    "parameters": []
+  },
+  {
+    "patternId": "B301",
+    "title": "pickle",
+    "description": "",
+    "parameters": []
+  },
+  {
+    "patternId": "B302",
+    "title": "marshal",
+    "description": "marshal",
+    "parameters": []
+  },
+  {
+    "patternId": "B303",
+    "title": "md5",
+    "description": "md5",
+    "parameters": []
+  },
+  {
+    "patternId": "B304",
+    "title": "ciphers",
+    "description": "ciphers",
+    "parameters": []
+  },
+  {
+    "patternId": "B305",
+    "title": "cipher_modes",
+    "description": "cipher_modes",
+    "parameters": []
+  },
+  {
+    "patternId": "B306",
+    "title": "mktemp_q",
+    "description": "mktemp_q",
+    "parameters": []
+  },
+  {
+    "patternId": "B307",
+    "title": "eval",
+    "description": "eval",
+    "parameters": []
+  },
+  {
+    "patternId": "B308",
+    "title": "mark_safe",
+    "description": "mark_safe",
+    "parameters": []
+  },
+  {
+    "patternId": "B309",
+    "title": "httpsconnection",
+    "description": "httpsconnection",
+    "parameters": []
+  },
+  {
+    "patternId": "B310",
+    "title": "urllib_urlopen",
+    "description": "urllib_urlopen",
+    "parameters": []
+  },
+  {
+    "patternId": "B311",
+    "title": "random",
+    "description": "random",
+    "parameters": []
+  },
+  {
+    "patternId": "B312",
+    "title": "telnetlib",
+    "description": "telnetlib",
+    "parameters": []
+  },
+  {
+    "patternId": "B313",
+    "title": "xml_bad_cElementTree",
+    "description": "xml_bad_cElementTree",
+    "parameters": []
+  },
+  {
+    "patternId": "B314",
+    "title": "xml_bad_ElementTree",
+    "description": "xml_bad_ElementTree",
+    "parameters": []
+  },
+  {
+    "patternId": "B315",
+    "title": "xml_bad_expatreader",
+    "description": "xml_bad_expatreader",
+    "parameters": []
+  },
+  {
+    "patternId": "B316",
+    "title": "xml_bad_expatbuilder",
+    "description": "xml_bad_expatbuilder",
+    "parameters": []
+  },
+  {
+    "patternId": "B317",
+    "title": "xml_bad_sax",
+    "description": "xml_bad_sax",
+    "parameters": []
+  },
+  {
+    "patternId": "B318",
+    "title": "xml_bad_minidom",
+    "description": "xml_bad_minidom",
+    "parameters": []
+  },
+  {
+    "patternId": "B319",
+    "title": "xml_bad_pulldom",
+    "description": "xml_bad_pulldom",
+    "parameters": []
+  },
+  {
+    "patternId": "B320",
+    "title": "xml_bad_etree",
+    "description": "xml_bad_etree",
+    "parameters": []
+  },
+  {
+    "patternId": "B321",
+    "title": "ftplib",
+    "description": "ftplib",
+    "parameters": []
+  },
+  {
+    "patternId": "B322",
+    "title": "input",
+    "description": "input",
+    "parameters": []
+  },
+  {
+    "patternId": "B323",
+    "title": "unverified_context",
+    "description": "unverified_context",
+    "parameters": []
+  },
+  {
+    "patternId": "B324",
+    "title": "Test use of insecure md4, md5, or sha1 hash functions in hashlib",
+    "description": "This plugin checks for the usage of the insecure MD4, MD5, or SHA1 hash functions in ``hashlib`` and ``crypt``. The ``hashlib.new`` function provides the ability to construct a new hashing object using the named algorithm. This",
+    "parameters": []
+  },
+  {
+    "patternId": "B325",
+    "title": "tempnam",
+    "description": "tempnam",
+    "parameters": []
+  },
+  {
+    "patternId": "B401",
+    "title": "import_telnetlib",
+    "description": "",
+    "parameters": []
+  },
+  {
+    "patternId": "B402",
+    "title": "import_ftplib",
+    "description": "import_ftplib",
+    "parameters": []
+  },
+  {
+    "patternId": "B403",
+    "title": "import_pickle",
+    "description": "import_pickle",
+    "parameters": []
+  },
+  {
+    "patternId": "B404",
+    "title": "import_subprocess",
+    "description": "import_subprocess",
+    "parameters": []
+  },
+  {
+    "patternId": "B405",
+    "title": "import_xml_etree",
+    "description": "",
+    "parameters": []
+  },
+  {
+    "patternId": "B406",
+    "title": "import_xml_sax",
+    "description": "import_xml_sax",
+    "parameters": []
+  },
+  {
+    "patternId": "B407",
+    "title": "import_xml_expat",
+    "description": "import_xml_expat",
+    "parameters": []
+  },
+  {
+    "patternId": "B408",
+    "title": "import_xml_minidom",
+    "description": "import_xml_minidom",
+    "parameters": []
+  },
+  {
+    "patternId": "B409",
+    "title": "import_xml_pulldom",
+    "description": "",
+    "parameters": []
+  },
+  {
+    "patternId": "B410",
+    "title": "import_lxml",
+    "description": "import_lxml",
+    "parameters": []
+  },
+  {
+    "patternId": "B411",
+    "title": "import_xmlrpclib",
+    "description": "import_xmlrpclib",
+    "parameters": []
+  },
+  {
+    "patternId": "B412",
+    "title": "import_httpoxy",
+    "description": "import_httpoxy",
+    "parameters": []
+  },
+  {
+    "patternId": "B413",
+    "title": "import_pycrypto",
+    "description": "import_pycrypto",
+    "parameters": []
+  },
+  {
+    "patternId": "B414",
+    "title": "import_pycryptodome",
+    "description": "import_pycryptodome",
+    "parameters": []
+  },
+  {
+    "patternId": "B415",
+    "title": "import_pyghmi",
+    "description": "import_pyghmi",
+    "parameters": []
+  },
+  {
+    "patternId": "B501",
+    "title": "Test for missing certificate validation",
+    "description": "Encryption in general is typically critical to the security of many applications.  Using TLS can greatly increase security by guaranteeing the identity of the party you are communicating with.  This is accomplished by one",
+    "parameters": []
+  },
+  {
+    "patternId": "B502",
+    "title": "Test for SSL use with bad version used**",
+    "description": "Several highly publicized exploitable flaws have been discovered in all versions of SSL and early versions of TLS. It is strongly recommended that use of the following known broken protocol versions be",
+    "parameters": []
+  },
+  {
+    "patternId": "B503",
+    "title": "Test for SSL use with bad defaults specified**",
+    "description": "This plugin is part of a family of tests that detect the use of known bad versions of SSL/TLS, please see :doc:`../plugins/ssl_with_bad_version` for a complete discussion. Specifically, this plugin test scans for Python",
+    "parameters": []
+  },
+  {
+    "patternId": "B504",
+    "title": "Test for SSL use with no version specified**",
+    "description": "This plugin is part of a family of tests that detect the use of known bad versions of SSL/TLS, please see :doc:`../plugins/ssl_with_bad_version` for a complete discussion. Specifically, This plugin test scans for specific",
+    "parameters": []
+  },
+  {
+    "patternId": "B505",
+    "title": "Test for weak cryptographic key use",
+    "description": "As computational power increases, so does the ability to break ciphers with smaller key lengths. The recommended key length size for RSA and DSA algorithms is 2048 and higher. 1024 bits and below are now considered breakable. EC key",
+    "parameters": []
+  },
+  {
+    "patternId": "B506",
+    "title": "Test for use of yaml load",
+    "description": "This plugin test checks for the unsafe usage of the ``yaml.load`` function from the PyYAML package. The yaml.load function provides the ability to construct an arbitrary Python object, which may be dangerous if you receive a YAML",
+    "parameters": []
+  },
+  {
+    "patternId": "B507",
+    "title": "Test for missing host key validation",
+    "description": "Encryption in general is typically critical to the security of many applications.  Using SSH can greatly increase security by guaranteeing the identity of the party you are communicating with.  This is accomplished by one",
+    "parameters": []
+  },
+  {
+    "patternId": "B508",
+    "title": "Checking for insecure SNMP versions**",
+    "description": "This test is for checking for the usage of insecure SNMP version like v1, v2c Please update your code to use more secure versions of SNMP.",
+    "parameters": []
+  },
+  {
+    "patternId": "B509",
+    "title": "Checking for weak cryptography**",
+    "description": "This test is for checking for the usage of insecure SNMP cryptography: v3 using noAuthNoPriv. Please update your code to use more secure versions of SNMP. For example:",
+    "parameters": []
+  },
+  {
+    "patternId": "B601",
+    "title": "Test for shell injection within Paramiko",
+    "description": "Paramiko is a Python library designed to work with the SSH2 protocol for secure (encrypted and authenticated) connections to remote machines. It is intended to run commands on a remote host. These commands are run within a shell on the",
+    "parameters": []
+  },
+  {
+    "patternId": "B602",
+    "title": "Test for use of popen with shell equals true**",
+    "description": "Python possesses many mechanisms to invoke an external executable. However, doing so may present a security issue if appropriate care is not taken to sanitize any user provided or variable input.",
+    "parameters": []
+  },
+  {
+    "patternId": "B603",
+    "title": "Test for use of subprocess without shell equals true**",
+    "description": "Python possesses many mechanisms to invoke an external executable. However, doing so may present a security issue if appropriate care is not taken to sanitize any user provided or variable input.",
+    "parameters": []
+  },
+  {
+    "patternId": "B604",
+    "title": "Test for any function with shell equals true**",
+    "description": "Python possesses many mechanisms to invoke an external executable. However, doing so may present a security issue if appropriate care is not taken to sanitize any user provided or variable input.",
+    "parameters": []
+  },
+  {
+    "patternId": "B605",
+    "title": "Test for starting a process with a shell**",
+    "description": "Python possesses many mechanisms to invoke an external executable. However, doing so may present a security issue if appropriate care is not taken to sanitize any user provided or variable input.",
+    "parameters": []
+  },
+  {
+    "patternId": "B606",
+    "title": "Test for starting a process with no shell**",
+    "description": "Python possesses many mechanisms to invoke an external executable. However, doing so may present a security issue if appropriate care is not taken to sanitize any user provided or variable input.",
+    "parameters": []
+  },
+  {
+    "patternId": "B607",
+    "title": "Test for starting a process with a partial path**",
+    "description": "Python possesses many mechanisms to invoke an external executable. If the desired executable path is not fully qualified relative to the filesystem root then this may present a potential security risk.",
+    "parameters": []
+  },
+  {
+    "patternId": "B608",
+    "title": "Test for SQL injection",
+    "description": "An SQL injection attack consists of insertion or \"injection\" of a SQL query via the input data given to an application. It is a very common attack vector. This plugin test looks for strings that resemble SQL statements that are involved in",
+    "parameters": []
+  },
+  {
+    "patternId": "B609",
+    "title": "Test for use of wildcard injection",
+    "description": "Python provides a number of methods that emulate the behavior of standard Linux command line utilities. Like their Linux counterparts, these commands may take a wildcard \"\\*\" character in place of a file system path. This is interpreted",
+    "parameters": []
+  },
+  {
+    "patternId": "B610",
+    "title": "Potential SQL injection on extra function**",
+    "description": "Potential SQL injection on extra function**",
+    "parameters": []
+  },
+  {
+    "patternId": "B611",
+    "title": "Potential SQL injection on RawSQL function**",
+    "description": "Potential SQL injection on RawSQL function**",
+    "parameters": []
+  },
+  {
+    "patternId": "B612",
+    "title": "Test for insecure use of logging.config.listen",
+    "description": "This plugin test checks for the unsafe usage of the ``logging.config.listen`` function. The logging.config.listen function provides the ability to listen for external",
+    "parameters": []
+  },
+  {
+    "patternId": "B613",
+    "title": "TrojanSource - Bidirectional control characters",
+    "description": "This plugin checks for the presence of unicode bidirectional control characters in Python source files. Those characters can be embedded in comments and strings to reorder source code characters in a way that changes its logic.",
+    "parameters": []
+  },
+  {
+    "patternId": "B614",
+    "title": "Test for unsafe PyTorch load",
+    "description": "This plugin checks for unsafe use of `torch.load` and `torch.serialization.load`. Using `torch.load` or `torch.serialization.load` with untrusted data can lead to arbitrary",
+    "parameters": []
+  },
+  {
+    "patternId": "B615",
+    "title": "Test for unsafe Hugging Face Hub downloads",
+    "description": "This plugin checks for unsafe downloads from Hugging Face Hub without proper integrity verification. Downloading models, datasets, or files without specifying a revision based on an immmutable revision (commit) can",
+    "parameters": []
+  },
+  {
+    "patternId": "B701",
+    "title": "Test for not auto escaping in jinja2",
+    "description": "Jinja2 is a Python HTML templating system. It is typically used to build web applications, though appears in other places well, notably the Ansible automation system. When configuring the Jinja2 environment, the option to use",
+    "parameters": []
+  },
+  {
+    "patternId": "B702",
+    "title": "Test for use of mako templates",
+    "description": "Mako is a Python templating system often used to build web applications. It is the default templating system used in Pylons and Pyramid. Unlike Jinja2 (an alternative templating system), Mako has no environment wide variable escaping",
+    "parameters": []
+  },
+  {
+    "patternId": "B703",
+    "title": "Potential XSS on mark_safe function**",
+    "description": "Potential XSS on mark_safe function**",
+    "parameters": []
+  },
+  {
+    "patternId": "B704",
+    "title": "Potential XSS on markupsafe.Markup use",
+    "description": "``markupsafe.Markup`` does not perform any escaping, so passing dynamic content, like f-strings, variables or interpolated strings will potentially lead to XSS vulnerabilities, especially if that data was submitted by users.",
+    "parameters": []
+  }
+]
