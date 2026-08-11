@@ -40,72 +40,125 @@ def extract_docstring(file_path: Path) -> Optional[str]:
     return None
 
 
-def parse_single_pattern_docstring(docstring: str, file_path: Path) -> List[PatternInfo]:
-    """Parse docstring from a single plugin file (one pattern)."""
-    patterns = []
+def _extract_pattern_id(docstring: str) -> Optional[str]:
+    """Extract pattern ID from docstring."""
+    match = re.search(r'[Bb](\d{3})(?:\W|$)', docstring)
+    return f"B{match.group(1)}" if match else None
 
-    # Extract pattern ID from decorator or docstring
-    pattern_id_match = re.search(r'[Bb](\d{3})(?:\W|$)', docstring)
-    if not pattern_id_match:
-        return patterns
 
-    pattern_id = f"B{pattern_id_match.group(1)}"
+def _extract_title(pattern_id: str, docstring: str) -> str:
+    """Extract and clean title from docstring."""
+    match = re.search(rf'{pattern_id}:\s*(.+?)(?:\n|$)', docstring)
+    return match.group(1).strip().strip('*_') if match else "Unknown"
 
-    # Extract title - usually on the first line or after the ID
-    title_match = re.search(rf'{pattern_id}:\s*(.+?)(?:\n|$)', docstring)
-    title = title_match.group(1).strip() if title_match else "Unknown"
 
-    # Extract severity and map to level
-    severity = "Warning"  # default
-    severity_match = re.search(r'[Ss]everity:\s*(High|Medium|Low|INFO|WARNING|ERROR)', docstring)
-    if severity_match:
-        sev = severity_match.group(1).lower()
-        if sev in ['high', 'error']:
-            severity = "Error"
-        elif sev in ['medium', 'warning']:
-            severity = "Warning"
-        elif sev in ['low', 'info']:
-            severity = "Info"
+def _extract_severity(docstring: str) -> str:
+    """Extract and map severity level from docstring."""
+    match = re.search(r'[Ss]everity:\s*(High|Medium|Low|INFO|WARNING|ERROR)', docstring)
+    if not match:
+        return "Warning"
 
-    # Extract affected items (functions, calls, imports) - only from code blocks or examples
-    affected_items = []
+    sev = match.group(1).lower()
+    if sev in ['high', 'error']:
+        return "Error"
+    elif sev in ['low', 'info']:
+        return "Info"
+    else:
+        return "Warning"
+
+
+def _extract_affected_items(docstring: str) -> List[str]:
+    """Extract affected items (functions, calls, imports) from docstring."""
     # Look for actual module/function names (with dots)
-    affected_matches = re.findall(r'(?:^|\s)([a-zA-Z_][a-zA-Z0-9_.]*(?:\.[a-zA-Z_][a-zA-Z0-9_]*)+)', docstring)
-    affected_items = [item for item in affected_matches if len(item.split('.')) >= 2]  # Must have at least one dot
-    affected_items = list(set(affected_items))  # deduplicate
-    affected_items = [item for item in affected_items if not item.startswith('_')]  # Remove private items
+    matches = re.findall(r'(?:^|\s)([a-zA-Z_][a-zA-Z0-9_.]*(?:\.[a-zA-Z_][a-zA-Z0-9_]*)+)', docstring)
+    # Filter: must have at least one dot, not private
+    items = [item for item in matches if len(item.split('.')) >= 2 and not item.startswith('_')]
+    return list(set(items))  # deduplicate
 
-    # Extract description - text after title until first section marker
-    lines = docstring.strip().split('\n')
 
-    # Skip title line
+def _find_description_start(pattern_id: str, lines: List[str]) -> int:
+    """Find the start index of description content."""
     start_idx = 0
     for i, line in enumerate(lines):
         if pattern_id in line:
             start_idx = i + 1
             break
 
-    # Skip separator lines (===, ---, etc)
+    # Skip separator lines
     while start_idx < len(lines) and re.match(r'^[=\-*]+$', lines[start_idx].strip()):
         start_idx += 1
 
-    # Collect description until we hit a section marker or example
+    return start_idx
+
+
+def _is_section_marker(line: str) -> bool:
+    """Check if line is a section marker (RST/Markdown)."""
+    stripped = line.strip()
+    return (
+        re.match(r'^[:|\[]', stripped)
+        or stripped.startswith('..')
+        or stripped.startswith('Example')
+        or stripped.startswith('Config')
+    )
+
+
+def _is_separator_line(line: str) -> bool:
+    """Check if line is a separator/underline."""
+    stripped = line.strip()
+    return len(stripped) > 2 and all(c in '=-*+_' for c in stripped)
+
+
+def _extract_description(pattern_id: str, docstring: str, title: str) -> str:
+    """Extract full description from docstring until a major section marker.
+
+    Captures multiple paragraphs and sentences until hitting Config/Example sections.
+    """
+    lines = docstring.strip().split('\n')
+    start_idx = _find_description_start(pattern_id, lines)
+
     description_lines = []
+    blank_line_count = 0
+
     for i in range(start_idx, len(lines)):
         line = lines[i].strip()
-        if not line:
-            continue
-        # Stop at section markers
-        if re.match(r'^[:|\[]', line) or line.startswith('..') or line.startswith('Example') or line.startswith('Config'):
+
+        # Stop at Config Options, Examples, or other major section markers
+        if line.startswith('**Config') or line.startswith('Config') or line.startswith(':Example'):
             break
-        # Skip lines that are too long (likely section underlines)
-        if len(line) > 2 and all(c in '=-*+_' for c in line):
-            continue
-        description_lines.append(line)
-        if len(description_lines) >= 3:  # Get first 3 lines
+        if line.startswith('..') and ('code-block' in line or 'seealso' in line):
             break
 
-    description = ' '.join(description_lines) if description_lines else title
+        if not line:  # Track consecutive blank lines
+            blank_line_count += 1
+            # Stop if we hit two blank lines (paragraph break before section)
+            if blank_line_count >= 2:
+                break
+            # Single blank line is fine, just don't add it
+            continue
+        else:
+            blank_line_count = 0
+
+        # Skip separator lines
+        if _is_separator_line(line):
+            continue
+
+        description_lines.append(line)
+
+    description = ' '.join(description_lines)
+    # Ensure we have meaningful content, not just the title
+    return description if description and description != title else title
+
+
+def parse_single_pattern_docstring(docstring: str, file_path: Path) -> List[PatternInfo]:
+    """Parse docstring from a single plugin file (one pattern)."""
+    pattern_id = _extract_pattern_id(docstring)
+    if not pattern_id:
+        return []
+
+    title = _extract_title(pattern_id, docstring)
+    severity = _extract_severity(docstring)
+    affected_items = _extract_affected_items(docstring)
+    description = _extract_description(pattern_id, docstring, title)
 
     pattern = PatternInfo(
         pattern_id=pattern_id,
@@ -115,8 +168,8 @@ def parse_single_pattern_docstring(docstring: str, file_path: Path) -> List[Patt
         affected_items=affected_items,
         full_docstring=docstring
     )
-    patterns.append(pattern)
-    return patterns
+
+    return [pattern]
 
 
 def parse_blacklist_docstring(docstring: str) -> List[PatternInfo]:
@@ -124,25 +177,57 @@ def parse_blacklist_docstring(docstring: str) -> List[PatternInfo]:
     patterns = []
 
     # Strategy: Find all pattern IDs and their associated info from table rows and headings
-    # First extract section headings to get descriptions
+    # First extract section headings to get descriptions and relevant content
+    section_content = {}
     section_descriptions = {}
-    for match in re.finditer(r'(B\d{3}(?:\s*-\s*B\d{3})?:\s*([^\n]+))\n-+\n((?:(?!\n\n)[^\n]|\n(?!\n\n))*)', docstring, re.DOTALL):
+
+    for match in re.finditer(r'(B\d{3}(?:\s*-\s*B\d{3})?:\s*([^\n]+))\n-+\n((?:(?!B\d{3}:)[^\n]|\n(?!B\d{3}:))*?)(?=\n\nB\d{3}:|$)', docstring, re.DOTALL):
         heading = match.group(1)
-        section_desc_text = match.group(3)
+        section_text = match.group(3)
+
         # Extract just description lines (before tables)
+        # For blacklist patterns, description is usually 1-3 sentences before the table
         desc_lines = []
-        for line in section_desc_text.split('\n'):
-            line = line.strip()
-            if not line or line.startswith('+') or line.startswith('|'):
+        in_description = False
+        for line in section_text.split('\n'):
+            stripped = line.strip()
+
+            # Skip initial blank lines
+            if not in_description and not stripped:
+                continue
+
+            # Stop at table markers
+            if stripped.startswith('+') or stripped.startswith('|'):
                 break
-            if not re.match(r'^[\s\-|+]+$', line):
-                desc_lines.append(line)
+
+            # Skip separator lines
+            if stripped and all(c in '=-*+_' for c in stripped):
+                continue
+
+            # Collect non-empty lines as description
+            if stripped:
+                in_description = True
+                desc_lines.append(stripped)
+            elif in_description:
+                # Stop at blank line after we've started collecting description
+                break
+
         description = ' '.join(desc_lines)
 
-        # Extract pattern ID(s) from heading
-        ids = re.findall(r'(B\d{3})', heading)
+        # Extract pattern ID(s) from heading - handle ranges like "B313 - B319"
+        range_match = re.match(r'B(\d{3})\s*-\s*B(\d{3})', heading)
+        if range_match:
+            # Generate all IDs in the range
+            start_num = int(range_match.group(1))
+            end_num = int(range_match.group(2))
+            ids = [f"B{i:03d}" for i in range(start_num, end_num + 1)]
+        else:
+            # Single pattern
+            ids = re.findall(r'(B\d{3})', heading)
+
         for pid in ids:
             section_descriptions[pid] = description
+            section_content[pid] = section_text
 
     # Now extract all individual patterns from table rows
     # Look for table rows like "| B301 | pickle | ... | Medium |"
@@ -169,13 +254,16 @@ def parse_blacklist_docstring(docstring: str) -> List[PatternInfo]:
         # Get description from section if available, otherwise use title
         description = section_descriptions.get(pattern_id, title)
 
+        # Get only the relevant section content for this pattern, not the entire docstring
+        pattern_docstring = section_content.get(pattern_id, '')
+
         pattern = PatternInfo(
             pattern_id=pattern_id,
             title=title,
             description=description,
             severity=severity,
             affected_items=affected_items,
-            full_docstring=docstring  # Store full docstring for details
+            full_docstring=pattern_docstring  # Store only relevant section, not entire module docstring
         )
 
         # Avoid duplicates
