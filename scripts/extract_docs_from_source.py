@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""
 
+"""
 Extract Bandit pattern documentation directly from Python source files.
 Generates clean markdown files and patterns.json with all pattern metadata.
-
 """
 
 import json
