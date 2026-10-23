@@ -94,11 +94,25 @@ object Bandit extends Tool {
 
   private def resultFilter(result: Result, patternIds: Option[Set[Pattern.Id]]): Boolean = {
     result match {
-      case Issue(_, _, id, _, _) =>
-        patternIds.forall(_.contains(id))
+      case Issue(file, _, id, _, _) =>
+        patternIds.forall(_.contains(id)) && !(id == assertUsedPatternId && isTestFile(file.path))
       case _ =>
         true
     }
+  }
+
+  // B101 (assert_used) is expected in tests, so it is never reported for test files
+  private val assertUsedPatternId = Pattern.Id("B101")
+  // Python test conventions: pytest (test_*.py, *_test.py, conftest.py), unittest/Django (test.py, tests.py)
+  // and anything under a test directory
+  private val testDirNames = Set("test", "tests", "testing")
+  private val testFileNames = Set("conftest.py", "test.py", "tests.py")
+
+  private def isTestFile(path: String): Boolean = {
+    val segments = path.replace('\\', '/').split('/').toList
+    val fileName = segments.lastOption.getOrElse("")
+    testFileNames.contains(fileName) || fileName.startsWith("test_") || fileName.endsWith("_test.py") ||
+    fileName.endsWith("_tests.py") || segments.init.exists(testDirNames.contains)
   }
 
   private def parseToolResult(toolResult: String): List[Result] = {
