@@ -24,6 +24,24 @@ DEFAULT_PATTERNS = {
     "B701", "B702",
 }
 
+# Codacy security subcategory per pattern; patterns not listed have none
+_SUBCATEGORY_GROUPS = {
+    "XSS": ["B308", "B701", "B702", "B703"],
+    "InputValidation": ["B102", "B307", "B313", "B314", "B315", "B316", "B317", "B318", "B319", "B320",
+                        "B322", "B506", "B609"],
+    "FileAccess": ["B103", "B108", "B306", "B325"],
+    "HTTP": ["B310"],
+    "InsecureModulesLibraries": ["B301", "B302", "B312", "B321", "B401", "B402", "B403", "B404", "B405",
+                                 "B406", "B407", "B408", "B409", "B410", "B411", "B412"],
+    "Cryptography": ["B303", "B304", "B305", "B311", "B413", "B414", "B505"],
+    "CommandInjection": ["B601", "B602", "B603", "B604", "B605", "B606", "B607"],
+    "Auth": ["B105", "B106", "B107", "B109", "B111", "B507"],
+    "SQLInjection": ["B608", "B611"],
+    "SSL": ["B309", "B323", "B501", "B502", "B503", "B504"],
+    "UnexpectedBehaviour": ["B201"],
+}
+SUBCATEGORIES = {pid: sub for sub, pids in _SUBCATEGORY_GROUPS.items() for pid in pids}
+
 
 @dataclass
 class PatternInfo:
@@ -449,10 +467,14 @@ def generate_patterns_json(patterns: List[PatternInfo], output_file: Path, versi
             "patternId": pattern.pattern_id,
             "level": pattern.severity,  # Use the severity level directly (Error, Warning, or Info)
             "category": "Security",
+        }
+        if pattern.pattern_id in SUBCATEGORIES:
+            spec["subcategory"] = SUBCATEGORIES[pattern.pattern_id]
+        spec.update({
             "parameters": [],
             "languages": [],
             "enabled": pattern.pattern_id in DEFAULT_PATTERNS
-        }
+        })
         pattern_specs.append(spec)
 
     tool_spec = {
