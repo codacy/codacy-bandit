@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<checkstyle version="4.3">
+    <file name="app.py">
+        <error source="B101" line="2" message="Use of assert detected. The enclosed code will be removed when compiling to optimised byte code." severity="info" />
+    </file>
+    <file name="latest_report.py">
+        <error source="B101" line="5" message="Use of assert detected. The enclosed code will be removed when compiling to optimised byte code." severity="info" />
+    </file>
+    <file name="app_test.py"></file>
+    <file name="app_tests.py"></file>
+    <file name="conftest.py"></file>
+    <file name="test_app.py"></file>
+    <file name="tests.py"></file>
+    <file name="testing/fixtures.py"></file>
+    <file name="tests/helpers.py"></file>
+</checkstyle>
