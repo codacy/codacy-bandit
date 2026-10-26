@@ -3,7 +3,6 @@
 /project/*-shim.sbt
 /project/project/
 /project/target/
-/doc-generator/target/
 /target/
 .idea
 .DS_Store

@@ -55,10 +55,7 @@ The `docs/` directory is machine-consumed configuration, not just documentation:
 - `docs/tests/*.py` and `docs/multiple-tests/{with-config,without-config}` — fixtures used by `codacy-plugins-test` to validate the engine actually produces the results it claims to for real code samples.
 - `docs/tool-description.md` — short blurb about the tool, hand-maintained.
 
-All the generated artifacts above are produced by a two-step pipeline, orchestrated by `scripts/generateDocs.sh`:
-
-1. `scripts/generatePythonDocs.sh <version> <baseDir>` clones `PyCQA/bandit` at tag `<version>` into `<baseDir>`, creates a virtualenv, installs Bandit's own deps plus its Sphinx doc requirements, and runs `sphinx-build` to render Bandit's own documentation to HTML. This step runs inside a `python:3.12` Docker container (`generateDocs.sh` invokes `docker run ... python:3.12 bash scripts/generatePythonDocs.sh ...`), so it needs Docker and network access, but not a local Python install.
-2. `sbt "doc-generator/run $VERSION $PWD/$BASE_DIR"` runs the Scala program `doc-generator/src/main/scala/docs/GenerateDocs.scala` (a separate sbt subproject, see the `doc-generator` project in `build.sbt`), which scrapes the freshly built Sphinx HTML for pattern definitions and writes `docs/patterns.json`, `docs/description/description.json`, and `docs/description/*.md`.
+All the generated artifacts above are produced by `scripts/generateDocs.sh`, which reads the Bandit version from `requirements.txt` and runs `scripts/extract_docs_from_source.py bandit docs <version>`. That script parses the pattern docstrings in a Bandit source checkout at `./bandit` (clone `PyCQA/bandit` at the matching tag there first: `git clone -b <version> --depth 1 https://github.com/PyCQA/bandit.git bandit`) and writes `docs/patterns.json`, `docs/description/description.json`, and `docs/description/*.md`. Which patterns are enabled by default is controlled by `DEFAULT_PATTERNS` in that script.
 
 Confirmed from real history: commit `0e0b2b5` ("feat: Bump bandit to 1.9.4 [TCE-1554] (#80)") bumped `requirements.txt` and regenerated `docs/patterns.json` + `docs/description/*` accordingly — adding markdown/pattern-test files for newly introduced pattern IDs and removing them for dropped ones, while preserving hand-set `level`/`subcategory`/`enabled` values on patterns that survived. Treat that commit as the ground-truth template for the diff shape of a version bump.
 
@@ -76,7 +73,7 @@ Confirmed from real history: commit `0e0b2b5` ("feat: Bump bandit to 1.9.4 [TCE-
 ### 3. Step-by-step update procedure
 
 1. **Bump the version** in `requirements.txt` (and `.circleci/config.yml` orbs / `Dockerfile` base image, if in scope for the task).
-2. **Regenerate the docs**, from the repo root: `./scripts/generateDocs.sh`. This requires Docker (for the Python/Sphinx step) and `sbt`/network access (for the Scala scraping step). Review the diff for new/removed/renamed pattern IDs in `docs/patterns.json` and `docs/description/`, and check whether `docs/tests/` needs new fixture files for newly added patterns (add one small `.py` sample per new pattern, following the naming convention `docs/tests/<PatternId>.py` used by existing fixtures).
+2. **Regenerate the docs**, from the repo root: `./scripts/generateDocs.sh`. This requires `python3` and a Bandit checkout at `./bandit` for the target version (see above). For newly added patterns, decide whether they belong in `DEFAULT_PATTERNS`. Review the diff for new/removed/renamed pattern IDs in `docs/patterns.json` and `docs/description/`, and check whether `docs/tests/` needs new fixture files for newly added patterns (add one small `.py` sample per new pattern, following the naming convention `docs/tests/<PatternId>.py` used by existing fixtures).
 3. **Build the sbt project and format-check it**: `sbt "clean; set scalafmtUseIvy in ThisBuild := false; scalafmtCheckAll; Test / scalafmtCheck; scalafmtCheck; universal:stage"` (mirrors the CI `publish_docker_local` job).
 4. **Build the Docker image**: `docker build -t codacy-bandit .`
 5. **Run `codacy-plugins-test` locally** before pushing — clone https://github.com/codacy/codacy-plugins-test and run its `pattern`, `json`, and `multiple` DockerTest commands against your local image tag (the CI job runs the multi-test variant, see `run_multiple_tests: true` for `codacy_plugins_test/run` in `.circleci/config.yml`).
@@ -90,7 +87,7 @@ Confirmed from real history: commit `0e0b2b5` ("feat: Bump bandit to 1.9.4 [TCE-
 | Symptom | Likely cause | Fix |
 |---|---|---|
 | `scalafmtCheckAll`/`scalafmtCheck` fails in CI/locally | Generated or hand-edited Scala file not formatted | Run `sbt scalafmt` then re-run the check command |
-| `generatePythonDocs.sh` / `sphinx-build` step fails | Wrong/nonexistent version tag, or Bandit's own doc dependencies changed | Verify the tag exists upstream in `PyCQA/bandit`; check Bandit's `doc/requirements.txt` for changes |
+| `extract_docs_from_source.py` finds no/few patterns | `./bandit` missing or checked out at the wrong tag | Re-clone `PyCQA/bandit` at the version in `requirements.txt` into `./bandit` |
 | `pattern`/`json` DockerTest fails after a bump | Pattern IDs renamed/removed/added upstream between versions and `docs/patterns.json`/`description.json` weren't fully regenerated or reviewed | Re-run `./scripts/generateDocs.sh`; diff against the previous `docs/patterns.json` and confirm every add/remove matches Bandit's upstream changelog for that version |
 | `multiple` DockerTest fails on a specific fixture folder | `docs/multiple-tests/{with-config,without-config}` expectations stale for new tool behavior | Regenerate/update the expected results to match the new (verified correct) output |
 | CI `publish_docker`/`tag_version` don't run on your branch | Expected — gated to the default branch only | Nothing to fix |

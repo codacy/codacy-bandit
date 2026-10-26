@@ -8,12 +8,13 @@
       "category": "Security",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B102",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "InputValidation",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -22,6 +23,7 @@
       "patternId": "B103",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "FileAccess",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -38,6 +40,7 @@
       "patternId": "B105",
       "level": "Info",
       "category": "Security",
+      "subcategory": "Auth",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -46,14 +49,16 @@
       "patternId": "B106",
       "level": "Info",
       "category": "Security",
+      "subcategory": "Auth",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B107",
       "level": "Info",
       "category": "Security",
+      "subcategory": "Auth",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -62,6 +67,7 @@
       "patternId": "B108",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "FileAccess",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -88,12 +94,13 @@
       "category": "Security",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B201",
       "level": "Error",
       "category": "Security",
+      "subcategory": "UnexpectedBehaviour",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -104,12 +111,13 @@
       "category": "Security",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B301",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "InsecureModulesLibraries",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -118,6 +126,7 @@
       "patternId": "B302",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "InsecureModulesLibraries",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -126,6 +135,7 @@
       "patternId": "B303",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "Cryptography",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -134,6 +144,7 @@
       "patternId": "B304",
       "level": "Error",
       "category": "Security",
+      "subcategory": "Cryptography",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -142,6 +153,7 @@
       "patternId": "B305",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "Cryptography",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -150,6 +162,7 @@
       "patternId": "B306",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "FileAccess",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -158,6 +171,7 @@
       "patternId": "B307",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "InputValidation",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -166,6 +180,7 @@
       "patternId": "B308",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "XSS",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -174,6 +189,7 @@
       "patternId": "B309",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "SSL",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -182,6 +198,7 @@
       "patternId": "B310",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "HTTP",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -190,6 +207,7 @@
       "patternId": "B311",
       "level": "Info",
       "category": "Security",
+      "subcategory": "Cryptography",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -198,6 +216,7 @@
       "patternId": "B312",
       "level": "Error",
       "category": "Security",
+      "subcategory": "InsecureModulesLibraries",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -206,6 +225,7 @@
       "patternId": "B313",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "InputValidation",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -214,6 +234,7 @@
       "patternId": "B314",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "InputValidation",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -222,6 +243,7 @@
       "patternId": "B315",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "InputValidation",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -230,6 +252,7 @@
       "patternId": "B316",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "InputValidation",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -238,6 +261,7 @@
       "patternId": "B317",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "InputValidation",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -246,6 +270,7 @@
       "patternId": "B318",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "InputValidation",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -254,6 +279,7 @@
       "patternId": "B319",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "InputValidation",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -262,6 +288,7 @@
       "patternId": "B320",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "InputValidation",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -270,6 +297,7 @@
       "patternId": "B321",
       "level": "Error",
       "category": "Security",
+      "subcategory": "InsecureModulesLibraries",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -278,17 +306,19 @@
       "patternId": "B322",
       "level": "Error",
       "category": "Security",
+      "subcategory": "InputValidation",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B323",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "SSL",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B324",
@@ -296,20 +326,22 @@
       "category": "Security",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B325",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "FileAccess",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B401",
       "level": "Error",
       "category": "Security",
+      "subcategory": "InsecureModulesLibraries",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -318,6 +350,7 @@
       "patternId": "B402",
       "level": "Error",
       "category": "Security",
+      "subcategory": "InsecureModulesLibraries",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -326,6 +359,7 @@
       "patternId": "B403",
       "level": "Info",
       "category": "Security",
+      "subcategory": "InsecureModulesLibraries",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -334,6 +368,7 @@
       "patternId": "B404",
       "level": "Info",
       "category": "Security",
+      "subcategory": "InsecureModulesLibraries",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -342,6 +377,7 @@
       "patternId": "B405",
       "level": "Info",
       "category": "Security",
+      "subcategory": "InsecureModulesLibraries",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -350,6 +386,7 @@
       "patternId": "B406",
       "level": "Info",
       "category": "Security",
+      "subcategory": "InsecureModulesLibraries",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -358,6 +395,7 @@
       "patternId": "B407",
       "level": "Info",
       "category": "Security",
+      "subcategory": "InsecureModulesLibraries",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -366,6 +404,7 @@
       "patternId": "B408",
       "level": "Info",
       "category": "Security",
+      "subcategory": "InsecureModulesLibraries",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -374,6 +413,7 @@
       "patternId": "B409",
       "level": "Info",
       "category": "Security",
+      "subcategory": "InsecureModulesLibraries",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -382,6 +422,7 @@
       "patternId": "B410",
       "level": "Info",
       "category": "Security",
+      "subcategory": "InsecureModulesLibraries",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -390,6 +431,7 @@
       "patternId": "B411",
       "level": "Error",
       "category": "Security",
+      "subcategory": "InsecureModulesLibraries",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -398,25 +440,28 @@
       "patternId": "B412",
       "level": "Error",
       "category": "Security",
+      "subcategory": "InsecureModulesLibraries",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B413",
       "level": "Error",
       "category": "Security",
+      "subcategory": "Cryptography",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B414",
       "level": "Error",
       "category": "Security",
+      "subcategory": "Cryptography",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B415",
@@ -424,12 +469,13 @@
       "category": "Security",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B501",
       "level": "Error",
       "category": "Security",
+      "subcategory": "SSL",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -438,6 +484,7 @@
       "patternId": "B502",
       "level": "Error",
       "category": "Security",
+      "subcategory": "SSL",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -446,6 +493,7 @@
       "patternId": "B503",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "SSL",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -454,6 +502,7 @@
       "patternId": "B504",
       "level": "Info",
       "category": "Security",
+      "subcategory": "SSL",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -462,6 +511,7 @@
       "patternId": "B505",
       "level": "Error",
       "category": "Security",
+      "subcategory": "Cryptography",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -470,6 +520,7 @@
       "patternId": "B506",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "InputValidation",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -478,9 +529,10 @@
       "patternId": "B507",
       "level": "Error",
       "category": "Security",
+      "subcategory": "Auth",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B508",
@@ -488,7 +540,7 @@
       "category": "Security",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B509",
@@ -496,12 +548,13 @@
       "category": "Security",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B601",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "CommandInjection",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -510,6 +563,7 @@
       "patternId": "B602",
       "level": "Info",
       "category": "Security",
+      "subcategory": "CommandInjection",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -518,6 +572,7 @@
       "patternId": "B603",
       "level": "Info",
       "category": "Security",
+      "subcategory": "CommandInjection",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -526,6 +581,7 @@
       "patternId": "B604",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "CommandInjection",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -534,14 +590,16 @@
       "patternId": "B605",
       "level": "Info",
       "category": "Security",
+      "subcategory": "CommandInjection",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B606",
       "level": "Info",
       "category": "Security",
+      "subcategory": "CommandInjection",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -550,14 +608,16 @@
       "patternId": "B607",
       "level": "Info",
       "category": "Security",
+      "subcategory": "CommandInjection",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B608",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "SQLInjection",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -566,6 +626,7 @@
       "patternId": "B609",
       "level": "Error",
       "category": "Security",
+      "subcategory": "InputValidation",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -576,15 +637,16 @@
       "category": "Security",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B611",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "SQLInjection",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B612",
@@ -592,7 +654,7 @@
       "category": "Security",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B613",
@@ -600,7 +662,7 @@
       "category": "Security",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B614",
@@ -608,7 +670,7 @@
       "category": "Security",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B615",
@@ -616,12 +678,13 @@
       "category": "Security",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B701",
       "level": "Error",
       "category": "Security",
+      "subcategory": "XSS",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -630,6 +693,7 @@
       "patternId": "B702",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "XSS",
       "parameters": [],
       "languages": [],
       "enabled": true
@@ -638,9 +702,10 @@
       "patternId": "B703",
       "level": "Warning",
       "category": "Security",
+      "subcategory": "XSS",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "B704",
@@ -648,7 +713,7 @@
       "category": "Security",
       "parameters": [],
       "languages": [],
-      "enabled": true
+      "enabled": false
     }
   ]
 }
